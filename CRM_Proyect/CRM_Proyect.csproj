@@ -150,6 +150,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="InfoEmpresas.aspx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -196,7 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contactos.aspx" />
-    <Content Include="Formulario web1.aspx" />
     <Content Include="Gruntfile.js" />
     <Content Include="index.html" />
     <Content Include="index2.html" />
@@ -220,15 +220,15 @@
       <DependentUpon>Contactos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controlador\Controlador.cs" />
-    <Compile Include="Formulario web1.aspx.cs">
-      <DependentUpon>Formulario web1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Formulario web1.aspx.designer.cs">
-      <DependentUpon>Formulario web1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InfoEmpresas.aspx.cs">
+      <DependentUpon>InfoEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InfoEmpresas.aspx.designer.cs">
+      <DependentUpon>InfoEmpresas.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\examples\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

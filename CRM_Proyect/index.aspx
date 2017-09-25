@@ -3,5 +3,5 @@
     <title>Nueva seccion</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    contenido
+    contenido Principal
 </asp:Content>

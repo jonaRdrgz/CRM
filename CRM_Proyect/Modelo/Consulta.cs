@@ -89,7 +89,43 @@ public class Consulta
                 correo = reader["correo"].ToString();
                 telefono = reader["Telefono"].ToString();
                 empresa = reader["Empresa"].ToString();
-                result += codigoContactos(nick, nombre, empresa, correo, telefono);
+                result += codigoContactos(nick, nombre, empresa, correo, direccion,telefono);
+
+            }
+
+            reader.Dispose();
+            cerrarConexion();
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+
+        return result;
+    }
+    public string obtenerContactoEmpresas()
+    {
+        string nombre = "";
+        string direccion = "";
+        string correo = "";
+        string telefono = "";
+        string result = "";
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call obtenerContactosEmpresas()";
+
+        // La consulta podría generar errores
+        try
+        {
+            MySqlDataReader reader = instruccion.ExecuteReader();
+            while (reader.Read())
+            {
+                nombre = reader["Nombre"].ToString();
+                direccion = reader["Direccion"].ToString();
+                correo = reader["Correo"].ToString();
+                telefono = reader["Telefono"].ToString();
+
+                result += codigoEmpresas(nombre, correo, direccion, telefono);
 
             }
 
@@ -104,7 +140,7 @@ public class Consulta
         return result;
     }
 
-    public string codigoContactos(string nick, string nombre, string empresa, string correo, string telefono)
+    public string codigoContactos(string nick, string nombre, string empresa, string correo, string direccion, string telefono)
     {
         string codigoParaContacto = "<div class='col-md-6'>"
             + "<div class='box box-primary'>"
@@ -123,6 +159,9 @@ public class Consulta
             + "</li>"
             + "<b>Teléfono</b> <a class='pull-right'>" + telefono + "</a>"
             + "</li>"
+            + "<li class='list-group-item'>"
+            + "<b>Dirección</b> <a class='pull-right'>" + direccion + "</a>"
+            + "</li>"
             + "</ul>"
 
             + "<a href = '#' class='btn btn-primary btn-block'><b>Follow</b></a>"
@@ -131,5 +170,32 @@ public class Consulta
 
         return codigoParaContacto;
         
+    }
+
+    public string codigoEmpresas(string nombre, string correo, string direccion, string telefono)
+    {
+        string codigoParaContacto = "<div class='col-md-6'>"
+            + "<div class='box box-primary'>"
+            + "<div class='box-body box-profile'>"
+            + "<img class='profile-user-img img-responsive img-circle' src = '../../dist/img/user4-128x128.jpg' alt='User profile picture'>"
+            + "<h3 class='profile-username text-center'>" + nombre + "</h3>"
+
+            + "<p class='text-muted text-center'>" + direccion + "</p>"
+
+            + "<ul class='list-group list-group-unbordered'>"
+            + "<li class='list-group-item'>"
+            + "<b>Correo</b> <a class='pull-right'>" + correo + "</a>"
+            + "</li>"
+            + "<li class='list-group-item'>"
+            + "<b>Teléfono</b> <a class='pull-right'>" + telefono + "</a>"
+            + "</li>"
+            + "</ul>"
+
+            + "<a href = '#' class='btn btn-primary btn-block'><b>Follow</b></a>"
+            + "</div>"
+            + "</div>";
+
+        return codigoParaContacto;
+
     }
 }

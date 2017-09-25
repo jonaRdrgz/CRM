@@ -7,21 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace CRM_Proyect
 {
-    public partial class Contactos : System.Web.UI.Page
+    public partial class InfoEmpresas : System.Web.UI.Page
     {
         Controlador controlador = Controlador.getInstance();
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void obtenerPersonasContacto()
-        {
-            string contactoPeronas = controlador.obtenerContactoPersonas();
-            Response.Write(contactoPeronas);
+        protected void obtenerEmpresas() {
+            string contactoEmpresas = controlador.obtenerContactoEmpresas();
+            Response.Write(contactoEmpresas);
         }
-
-
     }
 }

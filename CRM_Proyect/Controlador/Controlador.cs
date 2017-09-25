@@ -43,5 +43,9 @@ public class Controlador{
         return consultas.obtenerContactoPersonas();
     }
 
+    public string obtenerContactoEmpresas()
+    {
+        return consultas.obtenerContactoEmpresas();
+    }
 
 }

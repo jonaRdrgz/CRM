@@ -220,11 +220,19 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li>
-          <a href="Contactos.aspx">
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-dashboard"></i> <span>Contactos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="Contactos.aspx"><i class="fa fa-circle-o"></i> Personas</a></li>
+            <li><a href="InfoEmpresas.aspx"><i class="fa fa-circle-o"></i> Empresas </a></li>
+          </ul>
         </li>
+
          <li>
           <a href="PropuestaDeVentas.aspx">
             <i class="fa fa-files-o""></i> <span>Productos</span>
@@ -246,15 +254,7 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Blank page
-        <small>it all starts here</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
+      
     </section>
 
     <!-- Main content -->
