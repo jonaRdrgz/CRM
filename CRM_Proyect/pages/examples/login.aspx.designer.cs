@@ -22,13 +22,13 @@ namespace CRM_Proyect {
         protected global::System.Web.UI.HtmlControls.HtmlForm form2;
         
         /// <summary>
-        /// Control TextBoxCorreo.
+        /// Control TextBoxUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCorreo;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxUsuario;
         
         /// <summary>
         /// Control reqName.
@@ -40,13 +40,13 @@ namespace CRM_Proyect {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqName;
         
         /// <summary>
-        /// Control TextBoxContraseña.
+        /// Control TextBoxContrasena.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxContraseña;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxContrasena;
         
         /// <summary>
         /// Control RequiredFieldValidator2.

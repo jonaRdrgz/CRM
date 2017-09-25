@@ -40,14 +40,14 @@
 
       <form id="form2" runat="server">
       <div class="form-group has-feedback">
-          <asp:TextBox CssClass="form-control" ID="TextBoxCorreo" placeholder="Correo"  runat="server"></asp:TextBox>
-           <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="reqName" controltovalidate="TextBoxCorreo" errormessage="¡Por favor ingrese un correo válido!" ForeColor="Red" />
+          <asp:TextBox CssClass="form-control" ID="TextBoxUsuario" placeholder="Usuario"  runat="server"></asp:TextBox>
+           <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="reqName" controltovalidate="TextBoxUsuario" errormessage="¡Por favor ingrese su usuario!" ForeColor="Red" />
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
         
-        <asp:TextBox CssClass="form-control" ID="TextBoxContraseña" placeholder="Contraseña" textMode="Password"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator2" controltovalidate="TextBoxContraseña" errormessage="¡Por favor ingrese su contraseña!" ForeColor="Red" />
+        <asp:TextBox CssClass="form-control" ID="TextBoxContrasena" placeholder="Contraseña" textMode="Password"  runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator2" controltovalidate="TextBoxContrasena" errormessage="¡Por favor ingrese su contraseña!" ForeColor="Red" />
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -60,7 +60,7 @@
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <asp:Button ID="Button1" runat="server" class="btn btn-primary btn-block btn-flat" Text="Button" OnClick="ingresarUsuario" />
+          <asp:Button ID="Button1" runat="server" class="btn btn-primary btn-block btn-flat" Text="Ingresar" OnClick="ingresarUsuario" />
          
         </div>
               
@@ -92,7 +92,6 @@
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
-<script src="../../Scripts/vista.js"></script>
 <script>
   $(function () {
     $('input').iCheck({

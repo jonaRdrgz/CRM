@@ -14,30 +14,28 @@ namespace CRM_Proyect
     
     public partial class login : System.Web.UI.Page
     {
-        Controlador controlador = new Controlador();
+        Controlador controlador = Controlador.getInstance();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-
-        [WebMethod]
-        public String DoWork(String correo, String contrasena)
-        {
-
-            return "jdshdsjfh";
-        }
-
         protected void ingresarUsuario(object sender, EventArgs e)
         {
-            string n = controlador.getUser();
-
-            Response.Write("<script>alert('"+n+"');</script>");
-
             if (Page.IsValid)
             {
-                
-                //Response.Redirect("../../index.aspx");
+                string usuario = TextBoxUsuario.Text;
+                string contrasena = TextBoxContrasena.Text;
+                if (controlador.validarUsuario(usuario, contrasena))
+                {
+                    Response.Redirect("../../index.aspx");
+                }else {
+                    string str = "Usuario o contraseña incorrectos";
+                    Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                }
+
+
             }
 
         }
