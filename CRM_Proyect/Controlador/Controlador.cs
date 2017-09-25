@@ -39,4 +39,9 @@ public class Controlador{
         return consultas.validarUsuario(usuario, contrasena);
     }
 
+    public string obtenerContactoPersonas() {
+        return consultas.obtenerContactoPersonas();
+    }
+
+
 }

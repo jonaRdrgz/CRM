@@ -14,7 +14,6 @@ public class Consulta
 
     public Consulta() {
         
-
     } 
 
     private void iniciarConexion() {
@@ -37,35 +36,100 @@ public class Consulta
     public Boolean validarUsuario(string usuario, string contrasena) {
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
-        string usuarioDB = null;
         string contrasenaDb = null;
-        instruccion.CommandText = "call obtenerDatosUsuario()";
+        instruccion.CommandText = "call obtenerContrasena('" + usuario + "')";
 
+        try {
+            MySqlDataReader reader = instruccion.ExecuteReader();
+            while (reader.Read())
+            {
+                contrasenaDb = reader["Contraseña"].ToString();
+                if (contrasenaDb != null)
+                {
+                    if (contrasenaDb.Equals(contrasena))
+                    {
+                        reader.Dispose();
+                        cerrarConexion();
+                        return true;
+                    }
+                }
+            }
+
+            reader.Dispose();
+            cerrarConexion();
+        }
+        catch (MySqlException ex) {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+        return false;
+    }
+
+    public string  obtenerContactoPersonas() {
+        string nick = "";
+        string nombre = "";
+        string direccion = "";
+        string correo = "";
+        string telefono = "";
+        string empresa = "";
+        string result = "";
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call obtenerContactosPersonas()";
+
+        // La consulta podría generar errores
         try
         {
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                usuarioDB = reader["Nombre"].ToString();
-                contrasenaDb = reader["Contraseña"].ToString();
+                nick = reader["Nick"].ToString();
+                nombre = reader["Nombre"].ToString() + reader["Primer_Apellido"].ToString()
+                        + reader["Segundo_Apellido"].ToString();
+                direccion = reader["Direccion"].ToString();
+                correo = reader["correo"].ToString();
+                telefono = reader["Telefono"].ToString();
+                empresa = reader["Empresa"].ToString();
+                result += codigoContactos(nick, nombre, empresa, correo, telefono);
+
             }
-            if (usuarioDB != null && contrasenaDb != null)
-            {
-                if (usuarioDB.Equals(usuario) && contrasenaDb.Equals(contrasena))
-                {
-                    reader.Dispose();
-                    return true;
-                }
-            }
+
             reader.Dispose();
             cerrarConexion();
         }
-        catch (MySqlException) {
-
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
         }
 
-        cerrarConexion();
-        return false;
+        return result;
+    }
 
+    public string codigoContactos(string nick, string nombre, string empresa, string correo, string telefono)
+    {
+        string codigoParaContacto = "<div class='col-md-6'>"
+            + "<div class='box box-primary'>"
+            + "<div class='box-body box-profile'>"
+            + "<img class='profile-user-img img-responsive img-circle' src = '../../dist/img/user4-128x128.jpg' alt='User profile picture'>"
+            + "<h3 class='profile-username text-center'>" + nick + "</h3>"
+
+            + "<p class='text-muted text-center'>" + nombre + "</p>"
+
+            + "<ul class='list-group list-group-unbordered'>"
+            + "<li class='list-group-item'>"
+            + "<b>Empresa</b> <a class='pull-right'>" + empresa + "</a>"
+            + "</li>"
+            + "<li class='list-group-item'>"
+            + "<b>Correo</b> <a class='pull-right'>" + correo + "</a>"
+            + "</li>"
+            + "<b>Teléfono</b> <a class='pull-right'>" + telefono + "</a>"
+            + "</li>"
+            + "</ul>"
+
+            + "<a href = '#' class='btn btn-primary btn-block'><b>Follow</b></a>"
+            + "</div>"
+            + "</div>";
+
+        return codigoParaContacto;
+        
     }
 }

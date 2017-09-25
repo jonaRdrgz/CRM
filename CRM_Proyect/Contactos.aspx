@@ -5,5 +5,5 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     Contenido Usuarios
     <br />
-    <% codigoContactos(); %>
+    <% obtenerPersonasContacto(); %>
 </asp:Content>
