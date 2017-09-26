@@ -6,9 +6,10 @@ using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
 
+
 public class Consulta
 {
-
+	//Valores para inicial la conexion
     private MySqlConnection conexion;
     String cadenaDeConexion;
 
@@ -16,6 +17,7 @@ public class Consulta
         
     } 
 
+    //Crea la conexion
     private void iniciarConexion() {
         try
         {
@@ -33,6 +35,9 @@ public class Consulta
         conexion.Close();
     }
 
+    //Primero tiene que iniciar una conexion y despues empieza a crear el query
+    //Luego verifica si los datos son validos y se entra sesion
+    //de lo contrario no entra y muestra mensaje de error.
     public Boolean validarUsuario(string usuario, string contrasena) {
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
@@ -64,6 +69,7 @@ public class Consulta
         return false;
     }
 
+    //Esta funcion obtiene la informacion de los contactos
     public string  obtenerContactoPersonas() {
         string nick = "";
         string nombre = "";
@@ -103,6 +109,7 @@ public class Consulta
 
         return result;
     }
+
     public string obtenerContactoEmpresas()
     {
         string nombre = "";
@@ -140,6 +147,7 @@ public class Consulta
         return result;
     }
 
+    //Esta funcion es para agregar los contactos a la pagina
     public string codigoContactos(string nick, string nombre, string empresa, string correo, string direccion, string telefono)
     {
         string codigoParaContacto = "<div class='col-md-6'>"
@@ -172,6 +180,7 @@ public class Consulta
         
     }
 
+    //Esta funcion es para agregar las empresas a la pagina
     public string codigoEmpresas(string nombre, string correo, string direccion, string telefono)
     {
         string codigoParaContacto = "<div class='col-md-6'>"
