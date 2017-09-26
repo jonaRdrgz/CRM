@@ -81,8 +81,8 @@ public class Consulta
             {
                 listaUsuarios.Add(new Usuario(reader["Nombre"].ToString(), reader["Primer_Apellido"].ToString(),
                     reader["Segundo_Apellido"].ToString(), reader["Direccion"].ToString(), reader["correo"].ToString(),
-                    reader["Telefono"].ToString(), 
-                    "<a href='#' onclick='entrar("+ reader["id"] +
+                    reader["Telefono"].ToString(),
+                    "<a href='#' onclick='borrarContacto(" + reader["id"] +
                     ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
             }
 
@@ -160,17 +160,20 @@ public class Consulta
         return listaUsuarios;
     }
 
-    public Boolean registarConntacto(int idPersona)
+    
+
+    public Boolean registarContacto(int idPersona)
     {
        
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
-        instruccion.CommandText = "call obtenerPersonas(" + idUsuarioActual + ", "+ idPersona + ")";
+        instruccion.CommandText = "call registarContacto(" + idUsuarioActual + ", "+ idPersona + ")";
          
         // La consulta podría generar errores
         try
         {
             if (instruccion.ExecuteNonQuery() == 1) {
+                cerrarConexion();
                 return true;
             }
         }
@@ -178,8 +181,63 @@ public class Consulta
         {
             MessageBox.Show("Falló la operación " + ex.Message);
         }
-
+        cerrarConexion();
         return false;
+    }
+
+    public Boolean borrarContacto(int idPersona)
+    {
+
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call borrarContacto(" + idUsuarioActual + ", " + idPersona + ")";
+
+        // La consulta podría generar errores
+        try
+        {
+            if (instruccion.ExecuteNonQuery() == 1)
+            {
+                cerrarConexion();
+                return true;
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+        cerrarConexion();
+        return false;
+    }
+
+    public List<Empresa> obtenerEmpresas()
+    {
+        List<Empresa> listaEmpresas = new List<Empresa>();
+
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call obtenerEmpresas(" + idUsuarioActual + ")";
+
+        // La consulta podría generar errores
+        try
+        {
+            MySqlDataReader reader = instruccion.ExecuteReader();
+            while (reader.Read())
+            {
+                listaEmpresas.Add(new Empresa(reader["Nombre"].ToString(), reader["Direccion"].ToString(), reader["correo"].ToString(),
+                    reader["Telefono"].ToString(),
+                    "<a href='#' onclick='agregarEmpresa(" + reader["id"]
+                    + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Agregar</span></a>"));
+            }
+
+            reader.Dispose();
+            cerrarConexion();
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+
+        return listaEmpresas;
     }
 
 }

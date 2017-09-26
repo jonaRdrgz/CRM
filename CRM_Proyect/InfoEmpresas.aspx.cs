@@ -28,12 +28,5 @@ namespace CRM_Proyect
             return json;
         }
 
-        [WebMethod]
-        public static string agregarContacto(int user)
-        {
-            
-
-            return "dsada";
-        }
     }
 }

@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
-using System.Windows.Forms;
+using CRM_Proyect.Modelo;
 
 namespace CRM_Proyect
 {
-    public partial class AgregarPersonas : System.Web.UI.Page
+    public partial class AgregarEmpresa : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,17 +17,17 @@ namespace CRM_Proyect
         }
 
         [WebMethod]
-        public static object obtenerPersonas()
+        public static object mostrarEmpresas()
         {
             Controlador controlador = Controlador.getInstance();
-            List<Usuario> personas = controlador.obtenerPersonas();
-            object json = new { data = personas };
+            List<Empresa> empresas = controlador.obtenerEmpresas();
+            object json = new { data = empresas };
 
             return json;
         }
 
         [WebMethod]
-        public static string agregarContacto(int user)
+        public static string agregarEmpresa(int user)
         {
             Controlador controlador = Controlador.getInstance();
 
@@ -39,5 +39,4 @@ namespace CRM_Proyect
 
         }
     }
-
 }

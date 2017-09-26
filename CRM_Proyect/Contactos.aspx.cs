@@ -28,8 +28,18 @@ namespace CRM_Proyect
             return json;
         }
 
+        [WebMethod]
+        public static string borrarContacto(int user)
+        {
+            Controlador controlador = Controlador.getInstance();
 
+            if (controlador.borrarContacto(user))
+            {
+                return "true";
+            }
+            return "false";
 
+        }
 
     }
 }

@@ -232,7 +232,7 @@
             <li><a href="InfoEmpresas.aspx"><i class="fa fa-circle-o"></i> Empresas </a></li>
             <li><a href="Contactos.aspx"><i class="fa fa-circle-o"></i> Propuestas de venta</a></li>
             <li><a href="AgregarPersonas.aspx"><i class="fa fa-circle-o"></i> Agregar Personas</a></li>
-            <li><a href="InfoEmpresas.aspx"><i class="fa fa-circle-o"></i> Agregar Empresas </a></li>
+            <li><a href="AgregarEmpresa.aspx"><i class="fa fa-circle-o"></i> Agregar Empresas </a></li>
           </ul>
         </li>
 

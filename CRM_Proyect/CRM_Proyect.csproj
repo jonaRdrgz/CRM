@@ -145,6 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarEmpresa.aspx" />
     <Content Include="AgregarPersonas.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -210,6 +211,13 @@
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarEmpresa.aspx.cs">
+      <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEmpresa.aspx.designer.cs">
+      <DependentUpon>AgregarEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgregarPersonas.aspx.cs">
       <DependentUpon>AgregarPersonas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

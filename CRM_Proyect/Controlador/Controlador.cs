@@ -53,4 +53,18 @@ public class Controlador{
     {
         return consultas.obtenerPersonas();
     }
+
+    public Boolean registarContacto(int idPersona) {
+        return consultas.registarContacto(idPersona);
+    }
+
+    public Boolean borrarContacto(int idPersona)
+    {
+        return consultas.borrarContacto(idPersona);
+    }
+
+    public List<Empresa> obtenerEmpresas()
+    {
+        return consultas.obtenerEmpresas();
+    }
 }

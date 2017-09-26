@@ -97,21 +97,65 @@ function desplagarTablaPersonas() {
 }
 
 function agregarContacto(id) {
-    alert(id);
+    var data = {user : id}
     $.ajax({
 
-        type: "POST",
-        cache: false,
-        async: false,
-        dataType: "json",
-        url: "AgregarPersonas.aspx/agregarContacto",
-        data: {
-            user: id
-        },
+        method: "POST",
+        url: "/AgregarPersonas.aspx/agregarContacto",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
 
     }).done(function (info) {
         //Respuesta del servidor
         console.log(info);
-        alert("exito");
+        desplagarTablaPersonas();
+    });
+}
+
+function borrarContacto(id) {
+    var data = { user: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Contactos.aspx/borrarContacto",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        dtUsers();
+    });
+}
+function mostrarEmpresasLibre() {
+    $("#botonEmpresaLibre").on("click", function () {
+        deplegarTablaEmpresaLibre();
+    });
+}
+
+function deplegarTablaEmpresaLibre() {
+    var table = $("#tablaEmpresaLibre").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/AgregarEmpresa.aspx/mostrarEmpresas",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "nombre" },
+            { "data": "direccion" },
+            { "data": "correo" },
+            { "data": "telefono" },
+            { "data": "accion" }
+
+        ]
     });
 }
