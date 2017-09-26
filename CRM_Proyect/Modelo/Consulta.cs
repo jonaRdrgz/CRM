@@ -113,25 +113,21 @@ public class Consulta
         instruccion.CommandText = "call obtenerContactosEmpresas()";
 
         // La consulta podría generar errores
-        try
-        {
+        try {
             MySqlDataReader reader = instruccion.ExecuteReader();
-            while (reader.Read())
-            {
+            while (reader.Read()) {
                 nombre = reader["Nombre"].ToString();
                 direccion = reader["Direccion"].ToString();
                 correo = reader["Correo"].ToString();
                 telefono = reader["Telefono"].ToString();
 
                 result += codigoEmpresas(nombre, correo, direccion, telefono);
-
             }
 
             reader.Dispose();
             cerrarConexion();
         }
-        catch (MySqlException ex)
-        {
+        catch (MySqlException ex) {
             MessageBox.Show("Falló la operación " + ex.Message);
         }
 
