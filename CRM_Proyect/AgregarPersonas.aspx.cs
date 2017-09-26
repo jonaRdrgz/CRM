@@ -8,28 +8,22 @@ using System.Web.Services;
 
 namespace CRM_Proyect
 {
-    public partial class Contactos : System.Web.UI.Page
+    public partial class AgregarPersonas : System.Web.UI.Page
     {
-        Controlador controlador = Controlador.getInstance();
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-
         [WebMethod]
-        public static  object obtenerUsuarios()
+        public static object obtenerPersonas()
         {
             Controlador controlador = Controlador.getInstance();
-            List<Usuario> usuarios = controlador.obtenerContactoPersonas();
-            object json = new { data = usuarios };
+            List<Usuario> personas = controlador.obtenerPersonas();
+            object json = new { data = personas };
 
             return json;
         }
-
-
-
 
     }
 }

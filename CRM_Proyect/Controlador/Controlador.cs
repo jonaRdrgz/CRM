@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CRM_Proyect.Modelo;
 
 /**
  *  Clase Controlador, con el patron Singleton
@@ -39,13 +40,17 @@ public class Controlador{
         return consultas.validarUsuario(usuario, contrasena);
     }
 
-    public string obtenerContactoPersonas() {
+    public  List<Usuario> obtenerContactoPersonas() {
         return consultas.obtenerContactoPersonas();
     }
 
-    public string obtenerContactoEmpresas()
+    public List<Empresa> obtenerContactoEmpresas()
     {
         return consultas.obtenerContactoEmpresas();
     }
 
+    public List<Usuario> obtenerPersonas()
+    {
+        return consultas.obtenerPersonas();
+    }
 }

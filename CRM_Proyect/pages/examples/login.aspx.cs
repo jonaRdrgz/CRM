@@ -27,10 +27,13 @@ namespace CRM_Proyect
             {
                 string usuario = TextBoxUsuario.Text;
                 string contrasena = TextBoxContrasena.Text;
+                
                 if (controlador.validarUsuario(usuario, contrasena))
                 {
-                    Response.Redirect("../../index.aspx");
-                }else {
+                    //Response.Write("<script language=javascript>alert('" + idBoton + "');</script>");
+                     Response.Redirect("../../index.aspx");
+                }
+                else {
                     string str = "Usuario o contraseña incorrectos";
                     Response.Write("<script language=javascript>alert('" + str + "');</script>");
                 }

@@ -230,6 +230,9 @@
           <ul class="treeview-menu">
             <li><a href="Contactos.aspx"><i class="fa fa-circle-o"></i> Personas</a></li>
             <li><a href="InfoEmpresas.aspx"><i class="fa fa-circle-o"></i> Empresas </a></li>
+            <li><a href="Contactos.aspx"><i class="fa fa-circle-o"></i> Propuestas de venta</a></li>
+            <li><a href="AgregarPersonas.aspx"><i class="fa fa-circle-o"></i> Agregar Personas</a></li>
+            <li><a href="InfoEmpresas.aspx"><i class="fa fa-circle-o"></i> Agregar Empresas </a></li>
           </ul>
         </li>
 
@@ -491,6 +494,12 @@
     $('.sidebar-menu').tree()
   })
 </script>
+ <script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+        
+</asp:ContentPlaceHolder>
+
 </form>
 </body>
 </html>
