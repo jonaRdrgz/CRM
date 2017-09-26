@@ -29,11 +29,9 @@ public class Controlador{
     public static Controlador getInstance() {
         if (instancia == null) {
             instancia = new Controlador();
-
         }
         return instancia;
     }
-
 
     public Boolean validarUsuario(string usuario, string contrasena) {
         return consultas.validarUsuario(usuario, contrasena);
@@ -43,8 +41,7 @@ public class Controlador{
         return consultas.obtenerContactoPersonas();
     }
 
-    public string obtenerContactoEmpresas()
-    {
+    public string obtenerContactoEmpresas() {
         return consultas.obtenerContactoEmpresas();
     }
 

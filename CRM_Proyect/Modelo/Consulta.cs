@@ -19,15 +19,13 @@ public class Consulta
 
     //Crea la conexion
     private void iniciarConexion() {
-        try
-        {
+        try {
             conexion = new MySqlConnection();
             cadenaDeConexion = ";server=localhost;user id=root;database=crm;password=root";
             conexion.ConnectionString = cadenaDeConexion;
             conexion.Open();
             
-        }
-        catch (MySqlException) {
+        } catch (MySqlException) {
             MessageBox.Show("Conexion sin exito");
         }
     }
@@ -46,13 +44,10 @@ public class Consulta
 
         try {
             MySqlDataReader reader = instruccion.ExecuteReader();
-            while (reader.Read())
-            {
+            while (reader.Read()) {
                 contrasenaDb = reader["Contraseña"].ToString();
-                if (contrasenaDb != null)
-                {
-                    if (contrasenaDb.Equals(contrasena))
-                    {
+                if (contrasenaDb != null) {
+                    if (contrasenaDb.Equals(contrasena)) {
                         reader.Dispose();
                         cerrarConexion();
                         return true;
@@ -83,11 +78,9 @@ public class Consulta
         instruccion.CommandText = "call obtenerContactosPersonas()";
 
         // La consulta podría generar errores
-        try
-        {
+        try {
             MySqlDataReader reader = instruccion.ExecuteReader();
-            while (reader.Read())
-            {
+            while (reader.Read()) {
                 nick = reader["Nick"].ToString();
                 nombre = reader["Nombre"].ToString() + reader["Primer_Apellido"].ToString()
                         + reader["Segundo_Apellido"].ToString();
@@ -101,9 +94,7 @@ public class Consulta
 
             reader.Dispose();
             cerrarConexion();
-        }
-        catch (MySqlException ex)
-        {
+        } catch (MySqlException ex) {
             MessageBox.Show("Falló la operación " + ex.Message);
         }
 
