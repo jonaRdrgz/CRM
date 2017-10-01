@@ -250,6 +250,7 @@
     </Compile>
     <Compile Include="Modelo\Empresa.cs" />
     <Compile Include="Modelo\InsertarUsuario.cs" />
+    <Compile Include="Modelo\Seguridad.cs" />
     <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="pages\examples\InsertarEmpresa.aspx.cs">
       <DependentUpon>InsertarEmpresa.aspx</DependentUpon>

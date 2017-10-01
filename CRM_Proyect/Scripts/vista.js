@@ -194,3 +194,18 @@ function borrarContactoEmpresa(id) {
         deplegarTablaEmpresa();
     });
 }
+
+function cerrarSesion() {
+    $.ajax({
+
+        method: "POST",
+        url: "/index.aspx/cerrarSession",
+        data: {},
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+    });
+}

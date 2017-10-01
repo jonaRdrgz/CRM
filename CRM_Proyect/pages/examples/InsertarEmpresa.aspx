@@ -33,6 +33,16 @@
             font-weight: bold;
             color: #444444;
         }
+        .auto-style2 {
+            position: relative;
+            min-height: 1px;
+            float: left;
+            width: 39%;
+            left: -3px;
+            top: 0px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     </style>
 </head>
 <body class="hold-transition register-page">
@@ -42,48 +52,38 @@
   </div>
 
   <div class="register-box-body">
-    <p class="login-box-msg">Registrar una nueva persona</p>
+    <p class="login-box-msg">Ingrese una empresa</p>
 
       <form id="form1" runat="server">
       <div class="form-group has-feedback">
         <asp:TextBox CssClass="form-control" ID="TextBoxNombre" placeholder="Nombre"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator2" controltovalidate="TextBoxNombre" errormessage="¡Por favor ingrese su nombre!" ForeColor="Red" />
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-
-      <div class="form-group has-feedback">
-        <asp:TextBox CssClass="form-control" ID="TextBoxUsuario" placeholder="Usuario"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator8" controltovalidate="TextBoxUsuario" errormessage="¡Por favor ingrese su Usuario!" ForeColor="Red" />
+        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator2" controltovalidate="TextBoxNombre" errormessage="¡Por favor ingrese el nombre de la empresa!" ForeColor="Red" />
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
        <div class="form-group has-feedback">
         <asp:TextBox CssClass="form-control" ID="TextBoxDireccion" placeholder="Dirección"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator4" controltovalidate="TextBoxDireccion" errormessage="¡Por favor ingrese su dirección!" ForeColor="Red" />
+        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator4" controltovalidate="TextBoxDireccion" errormessage="¡Por favor ingrese la dirección de la empresa!" ForeColor="Red" />
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
+        <asp:TextBox CssClass="form-control" ID="TextBoxTelefono" placeholder="Teléfono"  runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="help-block" Display = "Dynamic" runat="server" id="RequiredFieldValidator6" controltovalidate="TextBoxTelefono" errormessage="¡Por favor ingrese el telefono de la empresa!" ForeColor="Red" />
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+       <div class="form-group has-feedback">
         <asp:TextBox CssClass="form-control" ID="TextBoxCorreo" placeholder="Correo" textMode="Email"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator5" controltovalidate="TextBoxCorreo" errormessage="¡Por favor ingrese un correo válido!" ForeColor="Red" />
+        <asp:RequiredFieldValidator CssClass="help-block" runat="server" Display = "Dynamic" id="RequiredFieldValidator5" controltovalidate="TextBoxCorreo" errormessage="¡Por favor ingrese un correo válido!" ForeColor="Red" />
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
-        <asp:TextBox CssClass="form-control" ID="TextBoxContraseña" placeholder="Contraseña" textMode="Password"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator6" controltovalidate="TextBoxContraseña" errormessage="¡Por favor ingrese una contraseña válida!" ForeColor="Red" />
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <asp:TextBox CssClass="form-control" ID="TextBoxReContraseña" placeholder="Confirmar Contraseña" textMode="Password"  runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator CssClass="help-block" runat="server" id="RequiredFieldValidator7" controltovalidate="TextBoxReContraseña" errormessage="¡Debe llenar este campo!" ForeColor="Red" />
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
+
       <div class="row">
         <div class="col-xs-8">
           <div>
           </div>
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-           <asp:Button ID="Button1" runat="server" class="btn btn-primary btn-block btn-flat" Text="Registrarse" OnClick="registrarUsuario" />
+        <div class="auto-style2">
+           <asp:Button ID="Button1" runat="server" class="btn btn-primary btn-block btn-flat" Text="Registrar Empresa" OnClick="registrarEmpresa" Width="163px" />
  
         </div>
         <!-- /.col -->
@@ -98,7 +98,7 @@
         Google+</a>
     </div>
 
-    <a href="login.aspx" class="text-center">Ya tengo cuenta, iniciar sesión</a>
+    <a href="login.aspx" class="text-center">Ir al Login</a>
   </div>
   <!-- /.form-box -->
 </div>

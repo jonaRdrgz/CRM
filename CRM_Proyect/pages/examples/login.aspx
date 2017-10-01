@@ -78,7 +78,7 @@
     </div>
     <!-- /.social-auth-links -->
 
-    <a href="#">I forgot my password</a><br>
+    <a href="insertarEmpresa.aspx">Registrar Empresa</a><br>
     <a href="registrarUsuario.aspx" class="text-center">Registrar un usuario</a>
 
   </div>

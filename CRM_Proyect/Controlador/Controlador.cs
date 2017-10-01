@@ -46,7 +46,10 @@ public class Controlador{
     public Boolean getSession() {
         return consultas.getSession();
     }
-
+    public void setSessionFalse()
+    {
+        consultas.setSessionFalse();
+    }
 
     public Boolean validarUsuario(string usuario, string contrasena) {
         return consultas.validarUsuario(usuario, contrasena);
@@ -124,6 +127,21 @@ public class Controlador{
 
 
     }
+
+    public int insertarEmpresa(string nombre, string correo,  string direccion, string telefono)
+    {
+        //Validando los parámetros
+
+        if (!IsNumeric(telefono))
+        {
+            return TELEFONO_NO_NUMERICO;
+        }
+
+        int resultadoInsercion = insertar.insertarEmpresa(nombre, correo,direccion, telefono);
+        return resultadoInsercion;
+    }
+
+
     static bool IsNumeric(string sValue)
     {
         return Regex.IsMatch(sValue, "^[0-9]+$");

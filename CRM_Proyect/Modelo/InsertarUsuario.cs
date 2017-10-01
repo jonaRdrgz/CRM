@@ -53,6 +53,7 @@ namespace CRM_Proyect.Modelo
             }
 
             iniciarConexion();
+            contrasena = Seguridad.encriptar(contrasena);
             MySqlCommand instruccion = conexion.CreateCommand();
             instruccion.CommandText = "call insertarUsuario('" + nombre + "', '" + primerApellido + "', '"+  segundoApellido +
                 "', '" + direccion + "', '" +  correo + "', '" +  usuario + "', '" + contrasena + "', '" + telefono +"')";
@@ -77,7 +78,7 @@ namespace CRM_Proyect.Modelo
         private Boolean validarUsuario(string usuario) {
             iniciarConexion();
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
-            instruccionVerificarUsuario.CommandText = "call verificarUsuario('" + usuario + "')";
+            instruccionVerificarUsuario.CommandText = "call validarUsuario('" + usuario + "')";
             // La consulta podría generar errores
             try
             {
@@ -100,6 +101,7 @@ namespace CRM_Proyect.Modelo
             cerrarConexion();
             return false;
         }
+
         private Boolean validarCorreo(string correo)
         {
             iniciarConexion();
@@ -111,7 +113,7 @@ namespace CRM_Proyect.Modelo
                 MySqlDataReader reader = instruccionVerificarUsuario.ExecuteReader();
                 while (reader.Read())
                 {
-                    if (reader["Correo"] != null)
+                    if (!reader["Correo"].ToString().Equals(""))
                     {
                         return true;
                     }
@@ -128,5 +130,35 @@ namespace CRM_Proyect.Modelo
             cerrarConexion();
             return false;
         }
+
+        public int insertarEmpresa(string nombre,  string correo, string direccion, string telefono)
+        {
+
+            if (validarCorreo(correo))
+            {
+                return CORREO_INVALIDO;
+            }
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call insertarEmpresa('" + nombre + "', '" + direccion + "', '" + correo + "', '"  + telefono + "')";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return EXITO_DE_INSERCION;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return FALLO_DE_INSERCION;
+        }
+
     }
 }

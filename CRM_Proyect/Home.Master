@@ -14,6 +14,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
+    
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
@@ -176,7 +177,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="pages/examples/login.aspx" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="/pages/examples/login.aspx" onclick="cerrarSesion()" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -495,6 +496,7 @@
   })
 </script>
  <script src="../../dist/js/demo.js"></script>
+<script src="Scripts/vista.js"></script>
 <!-- page script -->
 <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
         

@@ -16,7 +16,7 @@ public class Consulta
 {
 
     private MySqlConnection conexion;
-    String cadenaDeConexion;
+    String cadenaDeConexion; 
     public int idUsuarioActual ;
     private Boolean session = false;
     public Consulta() {
@@ -26,6 +26,10 @@ public class Consulta
     public Boolean getSession()
     {
         return session;
+    }
+    public void setSessionFalse()
+    {
+        session = false;
     }
 
     private void iniciarConexion() {
@@ -59,6 +63,7 @@ public class Consulta
                 idUsuarioActual = (int) reader["idUsuario"];
                 if (contrasenaDb != null)
                 {
+                    contrasenaDb = Seguridad.desEncriptar(contrasenaDb);
                     if (contrasenaDb.Equals(contrasena))
                     {
                         reader.Dispose();
