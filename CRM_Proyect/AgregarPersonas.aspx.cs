@@ -11,9 +11,18 @@ namespace CRM_Proyect
 {
     public partial class AgregarPersonas : System.Web.UI.Page
     {
+        Controlador controlador = Controlador.getInstance();
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        void Page_PreInit(Object sender, EventArgs e)
+        {
+
+            if (!controlador.getSession())
+            {
+                Response.Redirect("/pages/examples/login.aspx");
+            }
         }
 
         [WebMethod]
@@ -31,7 +40,7 @@ namespace CRM_Proyect
         {
             Controlador controlador = Controlador.getInstance();
 
-            if (controlador.registarContacto(user))
+            if (controlador.registarContactoPersona(user))
             {
                 return "true";
             }

@@ -169,6 +169,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="pages\examples\InsertarEmpresa.aspx" />
+    <Content Include="pages\examples\registrarUsuario.aspx" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -247,13 +249,28 @@
       <DependentUpon>InfoEmpresas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Empresa.cs" />
+    <Compile Include="Modelo\InsertarUsuario.cs" />
     <Compile Include="Modelo\Usuario.cs" />
+    <Compile Include="pages\examples\InsertarEmpresa.aspx.cs">
+      <DependentUpon>InsertarEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\examples\InsertarEmpresa.aspx.designer.cs">
+      <DependentUpon>InsertarEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\examples\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\examples\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\examples\registrarUsuario.aspx.cs">
+      <DependentUpon>registrarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\examples\registrarUsuario.aspx.designer.cs">
+      <DependentUpon>registrarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Home.Master.cs">

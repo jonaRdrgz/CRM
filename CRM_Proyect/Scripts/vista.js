@@ -129,6 +129,7 @@ function borrarContacto(id) {
         dtUsers();
     });
 }
+
 function mostrarEmpresasLibre() {
     $("#botonEmpresaLibre").on("click", function () {
         deplegarTablaEmpresaLibre();
@@ -157,5 +158,39 @@ function deplegarTablaEmpresaLibre() {
             { "data": "accion" }
 
         ]
+    });
+}
+
+function agregarContactoEmpresa(id) {
+    var data = { user: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/AgregarEmpresa.aspx/agregarContactoEmpresa",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        deplegarTablaEmpresaLibre();
+    });
+}
+
+function borrarContactoEmpresa(id) {
+    var data = { idEmpresa: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/InfoEmpresas.aspx/borrarContactoEmpresa",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        deplegarTablaEmpresa();
     });
 }

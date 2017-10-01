@@ -17,6 +17,14 @@ namespace CRM_Proyect
 
         }
 
+        void Page_PreInit(Object sender, EventArgs e)
+        {
+
+            if (!controlador.getSession())
+            {
+                Response.Redirect("/pages/examples/login.aspx");
+            }
+        }
 
         [WebMethod]
         public static  object obtenerUsuarios()

@@ -5,17 +5,28 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo;
+using System.Web.SessionState;
+
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 
 public class Consulta
+
 {
 
     private MySqlConnection conexion;
     String cadenaDeConexion;
-    int idUsuarioActual;
+    public int idUsuarioActual ;
+    private Boolean session = false;
     public Consulta() {
         
-    } 
+    }
+
+    public Boolean getSession()
+    {
+        return session;
+    }
 
     private void iniciarConexion() {
         try
@@ -52,11 +63,12 @@ public class Consulta
                     {
                         reader.Dispose();
                         cerrarConexion();
+                        session = true;
                         return true;
                     }
                 }
             }
-
+            
             reader.Dispose();
             cerrarConexion();
         }
@@ -112,7 +124,7 @@ public class Consulta
             {
                 listaEmpresas.Add(new Empresa(reader["Nombre"].ToString(),  reader["Direccion"].ToString(), reader["correo"].ToString(),
                     reader["Telefono"].ToString(),
-                    "<a href='#' onclick='accionEmpresa(" + reader["id"]
+                    "<a href='#' onclick='borrarContactoEmpresa(" + reader["id"]
                     + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
 
             }
@@ -162,12 +174,12 @@ public class Consulta
 
     
 
-    public Boolean registarContacto(int idPersona)
+    public Boolean registarContactoPersona(int idPersona)
     {
        
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
-        instruccion.CommandText = "call registarContacto(" + idUsuarioActual + ", "+ idPersona + ")";
+        instruccion.CommandText = "call registarContactoPersona(" + idUsuarioActual + ", "+ idPersona + ")";
          
         // La consulta podría generar errores
         try
@@ -215,7 +227,7 @@ public class Consulta
 
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
-        instruccion.CommandText = "call obtenerEmpresas(" + idUsuarioActual + ")";
+        instruccion.CommandText = "call obtenerEmpresasLibres(" + idUsuarioActual + ")";
 
         // La consulta podría generar errores
         try
@@ -225,7 +237,7 @@ public class Consulta
             {
                 listaEmpresas.Add(new Empresa(reader["Nombre"].ToString(), reader["Direccion"].ToString(), reader["correo"].ToString(),
                     reader["Telefono"].ToString(),
-                    "<a href='#' onclick='agregarEmpresa(" + reader["id"]
+                    "<a href='#' onclick='agregarContactoEmpresa(" + reader["id"]
                     + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Agregar</span></a>"));
             }
 
@@ -240,4 +252,52 @@ public class Consulta
         return listaEmpresas;
     }
 
+    public Boolean registarContactoEmpresa(int idEmpresa)
+    {
+
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call registarContactoEmpresa(" + idUsuarioActual + ", " + idEmpresa + ")";
+
+        // La consulta podría generar errores
+        try
+        {
+            if (instruccion.ExecuteNonQuery() == 1)
+            {
+                cerrarConexion();
+                return true;
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+        cerrarConexion();
+        return false;
+    }
+
+
+    public Boolean borrarContactoEmpresa(int idEmpresa)
+    {
+
+        iniciarConexion();
+        MySqlCommand instruccion = conexion.CreateCommand();
+        instruccion.CommandText = "call borrarContactoEmpresa(" + idUsuarioActual + ", " + idEmpresa + ")";
+
+        // La consulta podría generar errores
+        try
+        {
+            if (instruccion.ExecuteNonQuery() == 1)
+            {
+                cerrarConexion();
+                return true;
+            }
+        }
+        catch (MySqlException ex)
+        {
+            MessageBox.Show("Falló la operación " + ex.Message);
+        }
+        cerrarConexion();
+        return false;
+    }
 }

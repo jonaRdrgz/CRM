@@ -9,9 +9,18 @@ namespace CRM_Proyect
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        Controlador controlador = Controlador.getInstance();
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+        void Page_PreInit(Object sender, EventArgs e)
+        {
+
+            if (!controlador.getSession())
+            {
+                Response.Redirect("/pages/examples/login.aspx");
+            }
         }
     }
 }
