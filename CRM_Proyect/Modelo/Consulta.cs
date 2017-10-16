@@ -41,8 +41,8 @@ public class Consulta
             conexion.Open();
             
         }
-        catch (MySqlException) {
-            MessageBox.Show("Conexion sin exito");
+        catch (MySqlException ex) {
+            MessageBox.Show("Conexion sin exito" + ex.Message);
         }
     }
     private void cerrarConexion() {
