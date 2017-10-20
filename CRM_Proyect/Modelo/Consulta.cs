@@ -59,7 +59,7 @@ public class Consulta
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                contrasenaDb = reader["contrasenia"].ToString();
+                contrasenaDb = reader["Contraseña"].ToString();
                 idUsuarioActual = (int) reader["idUsuario"];
                 if (contrasenaDb != null)
                 {
