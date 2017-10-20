@@ -10,6 +10,8 @@ namespace CRM_Proyect
     [TestFixture]
     public class Tests
     {
+        /*Pruebas para Manejo de Acceso y Usuarios*/
+
         [TestCase]
         public void Prueba_Usuario_Contraseña_Validos()
         {
@@ -47,15 +49,66 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, false);
 
         }
-       /* [TestCase]
-        public void Prueba_mensaje_error()
+        
+        [TestCase]
+        public void Prueba_Verificar_Usuario_Existente()
         {
             var instancia = new InsertarUsuario();
+            var resultado1 = instancia.validarUsuario("JonaRdrgz");
+            Assert.AreEqual(resultado1, true);
 
-            var resultado1 = instancia.InsertarUsuarioBD("Rocío", "Hidalgo", "Rodríguez", "marcos.com.com", "Bebedero,Escazú 400 oeste del Restaurante Tiquicia", "rociohr", "rociohr1308g", "88197746");
-            Assert.AreEqual(resultado1, 2);
+        }
 
-        }*/
+        /*Pruebas para el manejo de contactos*/
+
+
+        [TestCase]
+        public void Prueba_Agregar_Contacto()
+        {
+            var instancia = new Consulta();
+            var resultado1 = instancia.registarContactoPersona(1);
+            Assert.AreEqual(resultado1, true);
+
+        }
+
+        [TestCase]
+        public void Prueba_Agregar_Empresa()
+        {
+            var instancia = new Consulta();
+             
+            var resultado1 = instancia.registarContactoEmpresa();
+            Assert.AreEqual(resultado1, true);
+
+        }
+        [TestCase]
+        public void Prueba_Borrar_Contacto()
+        {
+            var instancia = new Consulta();
+            var resultado1 = instancia.borrarContacto();
+            Assert.AreEqual(resultado1, true);
+
+        }
+        [TestCase]
+
+        public void Prueba_Borrar_Contacto_Personas()
+        {
+            var instancia = new Consulta();
+            var resultado1 = instancia.borrarContacto();
+            Assert.AreEqual(resultado1, true);
+
+        }
+        [TestCase]
+
+        public void Prueba_Borrar_Contacto_Empresas()
+        {
+            var instancia = new Consulta();
+            var resultado1 = instancia.borrarContactoEmpresa();
+            Assert.AreEqual(resultado1, true);
+
+        }
+
+
+
 
     }
 }

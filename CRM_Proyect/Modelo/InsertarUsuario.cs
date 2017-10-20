@@ -78,7 +78,7 @@ public class InsertarUsuario
             return FALLO_DE_INSERCION;
         }
 
-        private Boolean validarUsuario(string usuario) {
+        public Boolean validarUsuario(string usuario) {
             iniciarConexion();
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
             instruccionVerificarUsuario.CommandText = "call validarUsuario('" + usuario + "')";
