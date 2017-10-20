@@ -66,6 +66,7 @@ namespace CRM_Proyect
         public void Prueba_Agregar_Contacto()
         {
             var instancia = new Consulta();
+            instancia.idUsuarioActual = 1;
             var resultado1 = instancia.registarContactoPersona(1);
             Assert.AreEqual(resultado1, true);
 
@@ -75,8 +76,8 @@ namespace CRM_Proyect
         public void Prueba_Agregar_Empresa()
         {
             var instancia = new Consulta();
-             
-            var resultado1 = instancia.registarContactoEmpresa();
+            instancia.idUsuarioActual = 1;
+            var resultado1 = instancia.registarContactoEmpresa(2);
             Assert.AreEqual(resultado1, true);
 
         }
@@ -84,25 +85,19 @@ namespace CRM_Proyect
         public void Prueba_Borrar_Contacto()
         {
             var instancia = new Consulta();
-            var resultado1 = instancia.borrarContacto();
+            instancia.idUsuarioActual = 1;
+            var resultado1 = instancia.borrarContacto(2);
             Assert.AreEqual(resultado1, true);
 
         }
-        [TestCase]
-
-        public void Prueba_Borrar_Contacto_Personas()
-        {
-            var instancia = new Consulta();
-            var resultado1 = instancia.borrarContacto();
-            Assert.AreEqual(resultado1, true);
-
-        }
+        
         [TestCase]
 
         public void Prueba_Borrar_Contacto_Empresas()
         {
             var instancia = new Consulta();
-            var resultado1 = instancia.borrarContactoEmpresa();
+            instancia.idUsuarioActual = 1;
+            var resultado1 = instancia.borrarContactoEmpresa(2);
             Assert.AreEqual(resultado1, true);
 
         }
