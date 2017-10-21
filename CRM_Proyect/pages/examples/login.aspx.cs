@@ -21,8 +21,9 @@ namespace CRM_Proyect
 
         }
 
-        protected void ingresarUsuario(object sender, EventArgs e)
+        public string ingresarUsuario(object sender, EventArgs e)
         {
+            string str;
             if (Page.IsValid)
             {
                 string usuario = TextBoxUsuario.Text;
@@ -34,13 +35,14 @@ namespace CRM_Proyect
                      Response.Redirect("../../index.aspx");
                 }
                 else {
-                    string str = "Usuario o contraseña incorrectos";
+                    str = "Usuario o contraseña incorrectos";
                     Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                    
                 }
-
+                
 
             }
-
+            return "Usuario o contraseña incorrectos";
         }
     }
 }

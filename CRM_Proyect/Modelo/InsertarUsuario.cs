@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using CRM_Proyect.Modelo;
 
 
-namespace CRM_Proyect.Modelo
-{
-    public class InsertarUsuario
+
+public class InsertarUsuario
     {
         private int EXITO_DE_INSERCION = 0;
         private int FALLO_DE_INSERCION = -1;
@@ -18,7 +18,10 @@ namespace CRM_Proyect.Modelo
         private MySqlConnection conexion;
         String cadenaDeConexion;
 
+        public InsertarUsuario()
+        {
 
+        }
         private void iniciarConexion()
         {
             try
@@ -75,7 +78,7 @@ namespace CRM_Proyect.Modelo
             return FALLO_DE_INSERCION;
         }
 
-        private Boolean validarUsuario(string usuario) {
+        public Boolean validarUsuario(string usuario) {
             iniciarConexion();
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
             instruccionVerificarUsuario.CommandText = "call validarUsuario('" + usuario + "')";
@@ -102,7 +105,7 @@ namespace CRM_Proyect.Modelo
             return false;
         }
 
-        private Boolean validarCorreo(string correo)
+        public Boolean validarCorreo(string correo)
         {
             iniciarConexion();
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
@@ -161,4 +164,3 @@ namespace CRM_Proyect.Modelo
         }
 
     }
-}
