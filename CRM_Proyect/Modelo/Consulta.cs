@@ -18,6 +18,7 @@ public class Consulta
     private MySqlConnection conexion;
     String cadenaDeConexion; 
     public int idUsuarioActual ;
+    public static int tipoCuenta;
     private Boolean session = false;
     public Consulta() {
         
@@ -60,12 +61,13 @@ public class Consulta
             while (reader.Read())
             {
                 contrasenaDb = reader["Contraseña"].ToString();
-                idUsuarioActual = (int) reader["idUsuario"];
                 if (contrasenaDb != null)
                 {
                     contrasenaDb = Seguridad.desEncriptar(contrasenaDb);
                     if (contrasenaDb.Equals(contrasena))
                     {
+                        tipoCuenta = (int)reader["tipoCuenta"];
+                        idUsuarioActual = (int)reader["idUsuario"];
                         reader.Dispose();
                         cerrarConexion();
                         session = true;

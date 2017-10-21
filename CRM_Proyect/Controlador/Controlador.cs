@@ -125,7 +125,6 @@ public class Controlador{
                         direccion, usuario, contrasena, telefono);
         return resultadoInsercion;
 
-
     }
 
     public int insertarEmpresa(string nombre, string correo,  string direccion, string telefono)

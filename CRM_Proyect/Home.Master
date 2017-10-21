@@ -247,7 +247,15 @@
             <i class="fa fa-th"></i> <span>Empresas</span>
           </a>
         </li>
+          <%if (Consulta.tipoCuenta == 0 || Consulta.tipoCuenta == 1 ) {
+                Response.Write("<li>"
+                    + " <a href='PropuestaDeVentas.aspx'>"
+                   + "<i class='fa fa-th'></i> <span>prueba</span>"
+                    + "</a>"
+                    + "</li>");
+           } %>
         </ul>
+        
     </section>
     <!-- /.sidebar -->
   </aside>
