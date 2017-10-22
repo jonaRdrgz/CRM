@@ -160,6 +160,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\VerPropuestas.aspx" />
+    <Content Include="Vista\CrearVenta.aspx" />
     <Content Include="Vista\EliminarProducto.aspx" />
     <Content Include="Vista\AgregarProducto.aspx" />
     <Content Include="Vista\AgregarEmpresa.aspx" />
@@ -12757,6 +12759,21 @@
     <Content Include="Vista\index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\ConsultaPropuestaVenta.cs" />
+    <Compile Include="Vista\VerPropuestas.aspx.cs">
+      <DependentUpon>VerPropuestas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\VerPropuestas.aspx.designer.cs">
+      <DependentUpon>VerPropuestas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\CrearVenta.aspx.cs">
+      <DependentUpon>CrearVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CrearVenta.aspx.designer.cs">
+      <DependentUpon>CrearVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ConsultaProducto.cs" />
     <Compile Include="Vista\EliminarProducto.aspx.cs">
       <DependentUpon>EliminarProducto.aspx</DependentUpon>

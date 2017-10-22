@@ -209,31 +209,7 @@ function cerrarSesion() {
     });
 }
 
-function agregarProducto() {
-    
-    $nombre = $("#nombre").val();
-    $descripcion = $("#descripcion").val();
-    $precio = $("#precio").val();
-    var data = {
-        nombre: $nombre,
-        descripcion: $descripcion,
-        precio : $precio
-    }
-    $.ajax({
 
-        method: "POST",
-        url: "/Vista/AgregarProducto.aspx/insertarProducto",
-        data: JSON.stringify(data),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json"
-
-    }).done(function (info) {
-        //Respuesta del servidor
-        console.log(info);
-        //alert(info.d)
-        //alert("exito");
-    });
-}
 
 function mostrarProductos() {
     $("#botonProductos").on("click", function () {
@@ -278,5 +254,156 @@ function eliminarProducto(id) {
         //Respuesta del servidor
         console.log(info);
         tablaProductos();
+    });
+}
+
+function mostrarProductosDisponibles() {
+    $("#botonProductosDisponibles").on("click", function () {
+        tablaProductosDisponibles();
+
+    });
+}
+function mostrarProductosCarrito() {
+    $("#botonProductosCarrito").on("click", function () {
+        tablaProductosCarrito();
+    });
+}
+function tablaProductosDisponibles() {
+    var table = $("#tablaProductosDisponibles").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/CrearVenta.aspx/mostrarProductosDisponibles",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "nombre" },
+            { "data": "descripcion" },
+            { "data": "precio" },
+            { "data": "accion" },
+        ]
+    });
+}
+
+function tablaProductosCarrito() {
+    var table = $("#tablaProductosCarrito").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/CrearVenta.aspx/mostrarProductosCarrito",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "nombre" },
+            { "data": "descripcion" },
+            { "data": "precio" },
+            { "data": "accion" },
+        ]
+    });
+}
+
+function agregarAlCarrito(id) {
+    var data = { idProducto: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/CrearVenta.aspx/agregarAlCarrito",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        tablaProductosDisponibles();
+        tablaProductosCarrito();
+        var valores = "";
+        $("#tablaProductosDisponibles").find("td").each(function () {
+            if ($(this).html() == "precio") {
+                valores += $(this).html() + " ";
+            }
+        });
+    });
+
+}
+
+function eliminarDelCarrito(id) {
+    var data = { idProducto: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/CrearVenta.aspx/eliminarDelCarrito",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        tablaProductosDisponibles();
+        tablaProductosCarrito();
+    });
+}
+function crearPropuesta() {
+
+    $precio = $("#precio").val();
+    $descuento = $("#descuento").val();
+    $comision = $("#comision").val();
+    var data = {
+        precio: $precio,
+        descuento: $descuento,
+        comision: $comision
+    }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/CrearVenta.aspx/crearPropuesta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        //alert(info.d)
+        //alert("exito");
+    });
+}
+
+function agregarProducto() {
+
+    $nombre = $("#nombre").val();
+    $descripcion = $("#descripcion").val();
+    $precio = $("#precio").val();
+    var data = {
+        nombre: $nombre,
+        descripcion: $descripcion,
+        precio: $precio
+    }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/AgregarProducto.aspx/insertarProducto",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        //alert(info.d)
+        //alert("exito");
     });
 }

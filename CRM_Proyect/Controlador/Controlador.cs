@@ -31,6 +31,7 @@ public class Controlador{
     private Consulta consultas = new Consulta();
     private InsertarUsuario insertar = new InsertarUsuario();
     private ConsultaProducto producto = new ConsultaProducto();
+    private ConsultaPropuestaVenta propuesta = new ConsultaPropuestaVenta();
 
     protected Controlador() {
         
@@ -166,8 +167,34 @@ public class Controlador{
     {
         return producto.borrarProducto(idProducto);
     }
+    public List<Producto> obtenerProductosDisponibles()
+    {
+        return producto.obtenerProductosDisponibles();
+    }
+
+    public Boolean agregarAlCarrito(int idProducto)
+    {
+        return producto.agregarAlCarrito(idProducto);
+    }
+    public List<Producto> obtenerProductosCarrito()
+    {
+        return producto.obtenerProductosCarrito();
+    }
+    public Boolean eliminarDelCarrito(int idProducto)
+    {
+        return producto.eliminarDelCarrito(idProducto);
+    }
+
     static bool IsNumeric(string sValue)
     {
         return Regex.IsMatch(sValue, "^[0-9]+$");
+    }
+
+    public int crearPropuestaVenta(string nombre, string descripcion, string precio)
+    {
+        //Validando los parámetros
+
+        int resultadoInsercion = propuesta.crearPropuestaVenta(nombre, descripcion, precio);
+        return resultadoInsercion;
     }
 }

@@ -17,12 +17,21 @@ public class Consulta
 
     private MySqlConnection conexion;
     String cadenaDeConexion; 
-    public int idUsuarioActual ;
+    public static int idUsuarioActual ;
     public  int tipoCuenta;
     private Boolean session = false;
     public Consulta() {
         
     }
+    public int getIdUsuarioActual()
+    {
+        return idUsuarioActual;
+    }
+
+    public void setIdUsuarioActual(int nuevoId) {
+        idUsuarioActual = nuevoId;
+    }
+
     public int getTipoCuenta() {
         return tipoCuenta;
     }

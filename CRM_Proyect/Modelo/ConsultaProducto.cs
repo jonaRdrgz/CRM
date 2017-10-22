@@ -114,5 +114,113 @@ namespace CRM_Proyect.Modelo
             cerrarConexion();
             return false;
         }
+
+        public List<Producto> obtenerProductosDisponibles()
+        {
+            List<Producto> listaProductos = new List<Producto>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerProductos()";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaProductos.Add(new Producto(reader["Nombre"].ToString(), reader["Descripcion"].ToString(), reader["Precio"].ToString(),
+                        "<a href='#' onclick='agregarAlCarrito(" + reader["id"]
+                        + ")'><span class='glyphicon -class'>Agregar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaProductos;
+        }
+
+        public Boolean agregarAlCarrito(int idProducto)
+        {
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call agregarAlCarrito(" + idProducto + ")";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return false;
+        }
+
+        public List<Producto> obtenerProductosCarrito()
+        {
+            List<Producto> listaProductos = new List<Producto>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerProductosCarrito()";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaProductos.Add(new Producto(reader["Nombre"].ToString(), reader["Descripcion"].ToString(), reader["Precio"].ToString(),
+                        "<a href='#' onclick='eliminarDelCarrito(" + reader["id"]
+                        + ")'><span class='glyphicon -class'>Eliminar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaProductos;
+        }
+
+        public Boolean eliminarDelCarrito(int idProducto)
+        {
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call eliminarProductoDelCarrito(" + idProducto + ")";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return false;
+        }
     }
 }
