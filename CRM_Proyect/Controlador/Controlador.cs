@@ -25,22 +25,27 @@ public class Controlador{
     private int USUARIO_MUY_CORTO = -3;
     private int NO_CONTIENE_LETRAS = -5;
     private int NO_CONTIENE_NUMEROS = -6;
-    private int TELEFONO_NO_NUMERICO = -7;
+    private int DATO_NO_NUMERICO = -7;
 
     private static Controlador instancia = null;
     private Consulta consultas = new Consulta();
     private InsertarUsuario insertar = new InsertarUsuario();
+    private ConsultaProducto producto = new ConsultaProducto();
 
     protected Controlador() {
         
     }
-
+    
     public static Controlador getInstance() {
         if (instancia == null) {
             instancia = new Controlador();
 
         }
         return instancia;
+    }
+    public int getTipoCuenta()
+    {
+        return consultas.getTipoCuenta();
     }
 
     public Boolean getSession() {
@@ -109,7 +114,7 @@ public class Controlador{
             return USUARIO_MUY_CORTO;
         }
         if (!IsNumeric(telefono)) {
-            return TELEFONO_NO_NUMERICO;
+            return DATO_NO_NUMERICO;
         }
         bool tieneNumeros = contrasena.Any(c => char.IsDigit(c));
         bool tieneLetras = contrasena.Any(c => char.IsLetter(c));
@@ -133,14 +138,34 @@ public class Controlador{
 
         if (!IsNumeric(telefono))
         {
-            return TELEFONO_NO_NUMERICO;
+            return DATO_NO_NUMERICO;
         }
 
         int resultadoInsercion = insertar.insertarEmpresa(nombre, correo,direccion, telefono);
         return resultadoInsercion;
     }
 
+    public int agregarProducto(string nombre, string descripcion, string precio)
+    {
+        //Validando los parámetros
 
+        if (!IsNumeric(precio))
+        {
+            return DATO_NO_NUMERICO;
+        }
+
+        int resultadoInsercion = producto.agregarProducto(nombre, descripcion, precio);
+        return resultadoInsercion;
+    }
+
+    public List<Producto> obtenerProductos()
+    {
+        return producto.obtenerProductos();
+    }
+    public Boolean borrarProducto(int idProducto)
+    {
+        return producto.borrarProducto(idProducto);
+    }
     static bool IsNumeric(string sValue)
     {
         return Regex.IsMatch(sValue, "^[0-9]+$");

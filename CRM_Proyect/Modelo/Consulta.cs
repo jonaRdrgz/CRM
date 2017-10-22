@@ -18,10 +18,13 @@ public class Consulta
     private MySqlConnection conexion;
     String cadenaDeConexion; 
     public int idUsuarioActual ;
-    public static int tipoCuenta;
+    public  int tipoCuenta;
     private Boolean session = false;
     public Consulta() {
         
+    }
+    public int getTipoCuenta() {
+        return tipoCuenta;
     }
 
     public Boolean getSession()
@@ -183,7 +186,6 @@ public class Consulta
 
     public Boolean registarContactoPersona(int idPersona)
     {
-       
         iniciarConexion();
         MySqlCommand instruccion = conexion.CreateCommand();
         instruccion.CommandText = "call registarContactoPersona(" + idUsuarioActual + ", "+ idPersona + ")";
