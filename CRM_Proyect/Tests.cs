@@ -6,6 +6,7 @@ using NUnit.Framework;
 using CRM_Proyect.Modelo;
 
 
+
 namespace CRM_Proyect
 {
 
@@ -19,7 +20,7 @@ namespace CRM_Proyect
         {
             var instancia = new Consulta();
             var resultado1 = instancia.validarUsuario("JonaRdrgz", "PassWord123");
-            Assert.AreEqual(resultado1,true);
+            Assert.AreEqual(resultado1, true);
 
         }
 
@@ -49,7 +50,7 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, false);
 
         }
-        
+
         [TestCase]
         public void Prueba_Verificar_Usuario_Existente()
         {
@@ -67,9 +68,70 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, 0);
 
         }
+        [TestCase]
+        public void Prueba_Contraseña_Corta()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "12345", "84167767");
+            Assert.AreEqual(resultado1, -2);
+
+        }
+
+        [TestCase]
+        public void Prueba_Contraseña_Muy_Larga()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "84167767");
+            Assert.AreEqual(resultado1, -4);
+
+        }
+
+        [TestCase]
+        public void Prueba_Usuario_Muy_Corto()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "gabo13hp", "84167767");
+            Assert.AreEqual(resultado1, -3);
+
+        }
+
+        [TestCase]
+        public void Prueba_Usuario_Muy_Largo()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "Melissa_04_MolinaCorrales", "84167767");
+            Assert.AreEqual(resultado1, -8);
+
+        }
+
+        [TestCase]
+        public void Prueba_Verificar_Telefono()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "gabo13hp", "2a2b8h2o");
+            Assert.AreEqual(resultado1, -7);
+
+        }
+
+        [TestCase]
+        public void Prueba_Contraseña_Sin_Letras()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "987987904", "84167767");
+            Assert.AreEqual(resultado1, -5);
+
+        }
+
+        [TestCase]
+        public void Prueba_Contraseña_Con_Numeros()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "PassWord", "84167767");
+            Assert.AreEqual(resultado1, -6);
+
+        }
 
         /*Pruebas para el manejo de contactos*/
-
 
         [TestCase]
         public void Prueba_Agregar_Contacto()
@@ -99,7 +161,7 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, true);
 
         }
-        
+
         [TestCase]
 
         public void Prueba_Borrar_Contacto_Empresas()
@@ -167,7 +229,123 @@ namespace CRM_Proyect
         }*/
 
 
+        /*Pruebas para Productos*/
 
+        [TestCase]
+
+        public void Prueba_Agregar_Producto()
+        {
+            var instancia = new ConsultaProducto();
+            var resultado1 = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "300000");
+            Assert.AreEqual(resultado1, 0);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Verificar_Precio()
+        {
+            var instancia = new ConsultaProducto();
+            var resultado1 = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "30a00o");
+            Assert.AreEqual(resultado1, -7);
+
+        }
+
+
+        [TestCase]
+
+        public void Prueba_Obtener_Productos()
+        {
+            var instancia = new ConsultaProducto();
+            List<Producto> lista = new List<Producto>();
+            var resultado1 = instancia.obtenerProductos();
+            Assert.AreEqual(resultado1, lista);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Borrar_Producto()
+        {
+            var instancia = new ConsultaProducto();
+
+            var resultado1 = instancia.borrarProducto(2);
+            Assert.AreEqual(resultado1, true);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Obtener_Productos_Disponibles()
+        {
+            var instancia = new ConsultaProducto();
+            List<Producto> lista = new List<Producto>();
+            var resultado1 = instancia.obtenerProductosDisponibles();
+            Assert.AreEqual(resultado1, lista);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Agregar_Al_Carrito()
+        {
+            var instancia = new ConsultaProducto();
+            var resultado1 = instancia.agregarAlCarrito(3);
+            Assert.AreEqual(resultado1, true);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Obtener_Productos_Carrito()
+        {
+            var instancia = new ConsultaProducto();
+            List<Producto> lista = new List<Producto>();
+            var resultado1 = instancia.obtenerProductosCarrito();
+            Assert.AreEqual(resultado1, lista);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Eliminar_Del_Carrito()
+        {
+            var instancia = new ConsultaProducto();
+            var resultado1 = instancia.eliminarDelCarrito(3);
+            Assert.AreEqual(resultado1, true);
+
+        }
+
+        /*Pruebas para Propuestas de Ventas*/
+
+        [TestCase]
+
+        public void Prueba_InsertarProductoAPropuesta()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            var resultado1 = instancia.insertarProductoAPropuesta(2);
+            Assert.AreEqual(resultado1, 0);
+
+        }
+        [TestCase]
+
+        public void Prueba_Crear_Propuesta_De_Venta()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            var resultado1 = instancia.crearPropuestaVenta("5500", "25%", "6%");
+            Assert.AreEqual(resultado1, 0);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_VerificarNumeroProductosCarrito()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            var resultado1 = instancia.verificarNumeroProductosCarrito();
+            Assert.AreEqual(resultado1, true);
+
+        }
 
     }
 }

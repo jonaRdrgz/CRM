@@ -26,6 +26,7 @@ public class Controlador{
     private int NO_CONTIENE_LETRAS = -5;
     private int NO_CONTIENE_NUMEROS = -6;
     private int DATO_NO_NUMERICO = -7;
+    private int USUARIO_MUY_LARGO = -8;
 
     private static Controlador instancia = null;
     private Consulta consultas = new Consulta();
@@ -33,7 +34,7 @@ public class Controlador{
     private ConsultaProducto producto = new ConsultaProducto();
     private ConsultaPropuestaVenta propuesta = new ConsultaPropuestaVenta();
 
-    protected Controlador() {
+    public Controlador() {
         
     }
     
@@ -114,6 +115,11 @@ public class Controlador{
         {
             return USUARIO_MUY_CORTO;
         }
+        if (usuario.Length > 20)
+        {
+            return USUARIO_MUY_LARGO;
+        }
+
         if (!IsNumeric(telefono)) {
             return DATO_NO_NUMERICO;
         }
