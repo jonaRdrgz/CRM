@@ -81,7 +81,7 @@ namespace CRM_Proyect
         public void Prueba_Contraseña_Muy_Larga()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "84167767");
+            var resultado1 = instancia.insertarUsuario("Alejandra", "Carranza", "Chaves", "alecarranza04@gmail.com", "San Antonio,Escazú", "ale56cc", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "85169767");
             Assert.AreEqual(resultado1, -4);
 
         }
@@ -90,7 +90,7 @@ namespace CRM_Proyect
         public void Prueba_Usuario_Muy_Corto()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "gabo13hp", "84167767");
+            var resultado1 = instancia.insertarUsuario("Jonnathan", "Perez", "Picado", "jonapicado@gmail.com", "San Rafael Arriba, Desamparados", "Jona", "jona45pp", "82145767");
             Assert.AreEqual(resultado1, -3);
 
         }
@@ -99,7 +99,7 @@ namespace CRM_Proyect
         public void Prueba_Usuario_Muy_Largo()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "Melissa_04_MolinaCorrales", "84167767");
+            var resultado1 = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "meli04mc", "Melissa_04_MolinaCorrales", "83410868");
             Assert.AreEqual(resultado1, -8);
 
         }
@@ -108,7 +108,7 @@ namespace CRM_Proyect
         public void Prueba_Verificar_Telefono()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "gabo13hp", "2a2b8h2o");
+            var resultado1 = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "Sandra15cc", "sandra15hp", "2a2b8h2o");
             Assert.AreEqual(resultado1, -7);
 
         }
@@ -117,7 +117,7 @@ namespace CRM_Proyect
         public void Prueba_Contraseña_Sin_Letras()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "987987904", "84167767");
+            var resultado1 = instancia.insertarUsuario("Liza", "Fernández", "Parajeles", "lizach07@gmail.com", "Sabanilla, San Pedro", "lizchv07", "987987904", "85187797");
             Assert.AreEqual(resultado1, -5);
 
         }
@@ -126,7 +126,7 @@ namespace CRM_Proyect
         public void Prueba_Contraseña_Con_Numeros()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "Jona", "PassWord", "84167767");
+            var resultado1 = instancia.insertarUsuario("María", "Arce", "Montoya", "maria78am@gmail.com", "San Joaquín de Flores, Heredia", "maria78am", "PassWord", "86225767");
             Assert.AreEqual(resultado1, -6);
 
         }
@@ -344,6 +344,30 @@ namespace CRM_Proyect
             var instancia = new ConsultaPropuestaVenta();
             var resultado1 = instancia.verificarNumeroProductosCarrito();
             Assert.AreEqual(resultado1, true);
+
+        }
+
+        /*Pruebas comentarios de propuestas de ventas*/
+
+        [TestCase]
+
+        public void Prueba_Ver_Comentarios_Propuesta()
+        {
+            var instancia = new ConsultaComentario();
+            List<Comentario> lista = new List<Comentario>();
+            var resultado1 = instancia.verComentariosPropuesta(1);
+            Assert.AreEqual(resultado1, lista);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Ver_Comentarios_Empresas_Propuesta()
+        {
+            var instancia = new ConsultaComentario();
+            List<Comentario> lista = new List<Comentario>();
+            var resultado1 = instancia.verComentariosEmpresasPropuesta(2);
+            Assert.AreEqual(resultado1, lista);
 
         }
 
