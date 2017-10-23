@@ -142,5 +142,68 @@ namespace CRM_Proyect.Modelo
                 cerrarConexion();
             
         }
+
+        public List<PropuestasVenta> obtenerPropuestasVenta()
+        {
+            List<PropuestasVenta> listaPropuestas = new List<PropuestasVenta>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerPropuestasVenta()";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "<a href='#' onclick='verComentarios(" + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Ver</span></a>", "<a href='#' onclick='borrarPropuesta(" 
+                        + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaPropuestas;
+        }
+
+        public List<Producto> verProductosPropuesta(int idPropuesta)
+        {
+            List<Producto> listaProductos = new List<Producto>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerProductoPropuestasVenta('" + idPropuesta + "')";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaProductos.Add(new Producto(reader["Nombre"].ToString(), reader["Descripcion"].ToString(), reader["Precio"].ToString(),
+                        "<a href='#' onclick='eliminarProducto(" + reader["id"]
+                        + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Eliminar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaProductos;
+        }
     }
 }

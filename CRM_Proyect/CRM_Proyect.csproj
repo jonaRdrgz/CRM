@@ -12759,7 +12759,10 @@
     <Content Include="Vista\index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\Comentario.cs" />
+    <Compile Include="Modelo\ConsultaComentario.cs" />
     <Compile Include="Modelo\ConsultaPropuestaVenta.cs" />
+    <Compile Include="Modelo\PropuestasVenta.cs" />
     <Compile Include="Vista\VerPropuestas.aspx.cs">
       <DependentUpon>VerPropuestas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

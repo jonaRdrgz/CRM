@@ -329,12 +329,6 @@ function agregarAlCarrito(id) {
         console.log(info);
         tablaProductosDisponibles();
         tablaProductosCarrito();
-        var valores = "";
-        $("#tablaProductosDisponibles").find("td").each(function () {
-            if ($(this).html() == "precio") {
-                valores += $(this).html() + " ";
-            }
-        });
     });
 
 }
@@ -407,3 +401,92 @@ function agregarProducto() {
         //alert("exito");
     });
 }
+
+function mostrarPropuestasVenta() {
+    $("#botonVerPropuestaVenta").on("click", function () {
+        tablaPropuestaDeVenta();
+    });
+}
+
+function tablaPropuestaDeVenta() {
+    var table = $("#tablaPropuestasVenta").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/VerPropuestas.aspx/obtenerPropuestasDeVenta",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "productos" },
+            { "data": "precio" },
+            { "data": "descuento" },
+            { "data": "comision" },
+            { "data": "comentarios" }
+        ]
+    });
+}
+
+function verProductos(id) {
+    var data = { idPropuesta: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/VerPropuestas.aspx/verProductosPropuesta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        $.each(info.d.data, function (index, value) {
+            llenarTablaProductoPropuesta(info.d.data, index, value);
+        });
+    });
+}
+
+function llenarTablaProductoPropuesta(response, index, value)
+{
+    $('#tablaProductoPropuesta').DataTable({
+        "destroy": true,
+        "data": response,
+        "columns":[
+            {"data":"nombre"},
+            {"data":"descripcion"},
+            {"data":"precio"}
+        ]
+    });
+}
+
+function verComentarios(id) {
+    var data = { idPropuesta: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/VerPropuestas.aspx/verComentariosPropuesta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        $.each(info.d.data, function (index, value) {
+            llenarTablaComentariosPropuesta(info.d.data, index, value);
+        });
+    });
+}
+
+function llenarTablaComentariosPropuesta(response, index, value) {
+    $('#tablaComentarios').DataTable({
+        "destroy": true,
+        "data": response,
+        "columns": [
+            { "data": "persona" },
+            { "data": "comentario" }
+        ]
+    });
+}
+

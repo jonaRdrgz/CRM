@@ -68,7 +68,7 @@ namespace CRM_Proyect
                 + "</a>"
                 + "<ul class='treeview-menu'>"
                 + "<li><a href = 'CrearVenta.aspx'><i class='fa fa-circle-o'></i>Crear Propuesta</a></li>"
-                + "<li><a href = 'Contactos.aspx' ><i class='fa fa-circle-o'></i> Ver Propuestas</a></li>"
+                + "<li><a href = 'VerPropuestas.aspx' ><i class='fa fa-circle-o'></i> Ver Propuestas</a></li>"
                 + "<li><a href = 'InfoEmpresas.aspx'><i class='fa fa-circle-o'></i> Ver Ventas</a></li>"
                 + "</ul>"
                 + "</li>"

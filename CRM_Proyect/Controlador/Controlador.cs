@@ -197,4 +197,13 @@ public class Controlador{
         int resultadoInsercion = propuesta.crearPropuestaVenta(nombre, descripcion, precio);
         return resultadoInsercion;
     }
+
+    public List<PropuestasVenta> obtenerPropuestasVenta()
+    {
+        return propuesta.obtenerPropuestasVenta();
+    }
+    public List<Producto> verProductosPropuesta(int idPropuesta)
+    {
+        return propuesta.verProductosPropuesta(idPropuesta);
+    }
 }
