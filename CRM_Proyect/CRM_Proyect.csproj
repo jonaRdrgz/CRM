@@ -160,6 +160,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\ComentarPropuesta.aspx" />
+    <Content Include="Vista\VerVentas.aspx" />
+    <Content Include="Vista\Compras.aspx" />
     <Content Include="Vista\VerPropuestas.aspx" />
     <Content Include="Vista\CrearVenta.aspx" />
     <Content Include="Vista\EliminarProducto.aspx" />
@@ -12759,6 +12762,29 @@
     <Content Include="Vista\index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vista\ComentarPropuesta.aspx.cs">
+      <DependentUpon>ComentarPropuesta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\ComentarPropuesta.aspx.designer.cs">
+      <DependentUpon>ComentarPropuesta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ConsultaVenta.cs" />
+    <Compile Include="Modelo\Venta.cs" />
+    <Compile Include="Vista\VerVentas.aspx.cs">
+      <DependentUpon>VerVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\VerVentas.aspx.designer.cs">
+      <DependentUpon>VerVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Compras.aspx.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\Compras.aspx.designer.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Comentario.cs" />
     <Compile Include="Modelo\ConsultaComentario.cs" />
     <Compile Include="Modelo\ConsultaPropuestaVenta.cs" />

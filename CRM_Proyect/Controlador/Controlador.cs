@@ -32,6 +32,8 @@ public class Controlador{
     private InsertarUsuario insertar = new InsertarUsuario();
     private ConsultaProducto producto = new ConsultaProducto();
     private ConsultaPropuestaVenta propuesta = new ConsultaPropuestaVenta();
+    private ConsultaComentario comentario = new ConsultaComentario();
+    private ConsultaVenta venta = new ConsultaVenta();
 
     protected Controlador() {
         
@@ -133,7 +135,7 @@ public class Controlador{
 
     }
 
-    public int insertarEmpresa(string nombre, string correo,  string direccion, string telefono)
+    public int insertarEmpresa(string nombre, string correo,  string direccion, string telefono, string usuario, string contrasena)
     {
         //Validando los parámetros
 
@@ -142,7 +144,7 @@ public class Controlador{
             return DATO_NO_NUMERICO;
         }
 
-        int resultadoInsercion = insertar.insertarEmpresa(nombre, correo,direccion, telefono);
+        int resultadoInsercion = insertar.insertarEmpresa(nombre, correo,direccion, telefono, usuario, contrasena);
         return resultadoInsercion;
     }
 
@@ -206,4 +208,34 @@ public class Controlador{
     {
         return propuesta.verProductosPropuesta(idPropuesta);
     }
+    public List<Comentario> verComentariosPropuesta(int idPropuesta)
+    {
+        return comentario.verComentariosPropuesta(idPropuesta);
+    }
+    public List<PropuestasVenta> obtenerPropuestasVentaCompra()
+    {
+        return propuesta.obtenerPropuestasVentaCompra();
+    }
+
+    public Boolean comprar(int idPropuesta)
+    {
+        return propuesta.comprar(idPropuesta);
+    }
+
+    public List<Venta> obtenerVentas()
+    {
+        return venta.obtenerVentas();
+    }
+    public List<PropuestasVenta> obtenerPropuestasDeVentaUsuario()
+    {
+        return propuesta.obtenerPropuestasDeVentaUsuario();
+    }
+
+    public Boolean comentarPropuesta(int idPropuesta, string comentario)
+    {
+        return propuesta.comentarPropuesta(idPropuesta, comentario);
+    }
+
+
+
 }

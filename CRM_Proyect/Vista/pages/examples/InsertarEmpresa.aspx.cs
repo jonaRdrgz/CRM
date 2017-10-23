@@ -34,7 +34,9 @@ namespace CRM_Proyect.pages.examples
 
         protected void registrarEmpresa(object sender, EventArgs e)
         {
-
+            string contrasena = TextBoxContraseña.Text;
+            string reContrasena = TextBoxReContraseña.Text;
+            string usuario = TextBoxUsuario.Text;
             string telefono = TextBoxTelefono.Text;
 
             if (!IsNumeric(telefono))
@@ -44,6 +46,50 @@ namespace CRM_Proyect.pages.examples
                 TextBoxTelefono.Focus();
                 return;
             }
+            bool tieneNumeros = contrasena.Any(c => char.IsDigit(c));
+            bool tieneLetras = contrasena.Any(c => char.IsLetter(c));
+            if (!tieneNumeros)
+            {
+                string str = "La contraseña debe tener al menos 1 número";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxContraseña.Focus();
+            }
+            else if (!tieneLetras)
+            {
+                string str = "La contraseña debe tener al menos una letra";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxContraseña.Focus();
+            }
+
+            else if (contrasena.Length < 7)
+            {
+
+                string str = "La contraseña debe tener al menos 7 caracteres";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxContraseña.Focus();
+            }
+            else if (contrasena.Length > 50)
+            {
+                string str = "La contraseña no debe tener más de 50 caracteres";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxContraseña.Focus();
+
+            }
+            else if (!contrasena.Equals(reContrasena))
+            {
+                string str = "Las contraseñas no coinciden";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxReContraseña.Focus();
+
+            }
+            else if (usuario.Length < 5)
+            {
+                string str = "El nombre de usuario debe tener al menos 5 caracteres";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");
+                TextBoxUsuario.Focus();
+
+            }
+
             else
             {
                 if (Page.IsValid)
@@ -53,7 +99,7 @@ namespace CRM_Proyect.pages.examples
                     string correo = TextBoxCorreo.Text;
 
                     int resultadoControlador = controlador.insertarEmpresa(nombre, correo,
-                        direccion, telefono);
+                        direccion, telefono, usuario, contrasena);
                     switch (resultadoControlador)
                     {
                         case EXITO_DE_INSERCION:

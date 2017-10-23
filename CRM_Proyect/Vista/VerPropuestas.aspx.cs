@@ -40,8 +40,8 @@ namespace CRM_Proyect
         {
 
             Controlador controlador = Controlador.getInstance();
-            List<Producto> comentarios = controlador.verProductosPropuesta(idPropuesta);
-            object json = new { data = productos };
+            List<Comentario> comentarios = controlador.verComentariosPropuesta(idPropuesta);
+            object json = new { data = comentarios };
             return json;
         }
 

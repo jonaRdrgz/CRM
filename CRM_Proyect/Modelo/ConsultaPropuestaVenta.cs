@@ -205,5 +205,119 @@ namespace CRM_Proyect.Modelo
 
             return listaProductos;
         }
+        public List<PropuestasVenta> obtenerPropuestasVentaCompra()
+        {
+            List<PropuestasVenta> listaPropuestas = new List<PropuestasVenta>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerPropuestasVenta()";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "", "<a href='#' onclick='comprar("
+                        + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comprar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaPropuestas;
+        }
+
+        public Boolean comprar(int idPropuesta)
+        {
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            DateTime fechaHora = DateTime.Now;
+            string date = fechaHora.ToString("yyyy-MM-dd H:mm:ss");
+            instruccion.CommandText = "call comprar('" + date + "', '" + idPropuesta + "', '" + Consulta.idUsuarioActual + "')";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return false;
+        }
+
+        public List<PropuestasVenta> obtenerPropuestasDeVentaUsuario()
+        {
+            List<PropuestasVenta> listaPropuestas = new List<PropuestasVenta>();
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call obtenerPropuestasVenta()";
+
+            // La consulta podría generar errores
+            try
+            {
+                MySqlDataReader reader = instruccion.ExecuteReader();
+                while (reader.Read())
+                {
+                    listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "", "<a href='#' onclick='comentar("
+                        + reader["id"] +
+                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comentar</span></a>"));
+                }
+
+                reader.Dispose();
+                cerrarConexion();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+
+            return listaPropuestas;
+        }
+
+        public Boolean comentarPropuesta(int idPropuesta, string comentario)
+        {
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call comentarPropuesta('"  + idPropuesta + "', '" + comentario +
+                "', '" + Consulta.idUsuarioActual + "')";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return false;
+        }
     }
 }

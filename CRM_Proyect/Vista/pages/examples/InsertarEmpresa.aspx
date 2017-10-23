@@ -75,12 +75,22 @@
         <asp:RequiredFieldValidator CssClass="help-block" runat="server" Display = "Dynamic" id="RequiredFieldValidator5" controltovalidate="TextBoxCorreo" errormessage="¡Por favor ingrese un correo válido!" ForeColor="Red" />
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
-
+        <div class="form-group has-feedback">
+        <asp:TextBox CssClass="form-control" ID="TextBoxUsuario" placeholder="Usuario"  runat="server"></asp:TextBox>
+        <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "TextBoxUsuario" ID="RegularExpressionValidator3" ValidationExpression = "^[\s\S]{5,20}$" runat="server" ErrorMessage="El usuario debe ser mínimo 5, máximo 20 *" ForeColor="Red"></asp:RegularExpressionValidator>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback" >
+        <asp:TextBox CssClass="form-control" ID="TextBoxContraseña" placeholder="Contraseña" textMode="Password"  runat="server"></asp:TextBox>
+        <asp:RegularExpressionValidator Display = "Dynamic" ControlToValidate = "TextBoxContraseña" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{7,50}$" runat="server" ErrorMessage="Contraseña debe tener al menos 7 caracteres, máximo 50 *" ForeColor="Red"></asp:RegularExpressionValidator>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <asp:TextBox CssClass="form-control" ID="TextBoxReContraseña" placeholder="Confirmar Contraseña" textMode="Password"  runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator CssClass="help-block" Display = "Dynamic" runat="server" id="RequiredFieldValidator7" controltovalidate="TextBoxReContraseña" errormessage="¡Debe llenar este campo!" ForeColor="Red" />
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
       <div class="row">
-        <div class="col-xs-8">
-          <div>
-          </div>
-        </div>
         <!-- /.col -->
         <div class="auto-style2">
            <asp:Button ID="Button1" runat="server" class="btn btn-primary btn-block btn-flat" Text="Registrar Empresa" OnClick="registrarEmpresa" Width="163px" />

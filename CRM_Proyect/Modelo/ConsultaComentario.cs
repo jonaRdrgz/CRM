@@ -59,9 +59,10 @@ namespace CRM_Proyect.Modelo
             {
                 MessageBox.Show("Falló la operación " + ex.Message);
             }
-            
+            listaComentarios.AddRange(verComentariosEmpresasPropuesta(idPropuesta));
             return listaComentarios;
         }
+
         public List<Comentario> verComentariosEmpresasPropuesta(int idPropuesta)
         {
             List<Comentario> listaComentarios = new List<Comentario>();

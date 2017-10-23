@@ -69,7 +69,7 @@ namespace CRM_Proyect
                 + "<ul class='treeview-menu'>"
                 + "<li><a href = 'CrearVenta.aspx'><i class='fa fa-circle-o'></i>Crear Propuesta</a></li>"
                 + "<li><a href = 'VerPropuestas.aspx' ><i class='fa fa-circle-o'></i> Ver Propuestas</a></li>"
-                + "<li><a href = 'InfoEmpresas.aspx'><i class='fa fa-circle-o'></i> Ver Ventas</a></li>"
+                + "<li><a href = 'VerVentas.aspx'><i class='fa fa-circle-o'></i> Ver Ventas</a></li>"
                 + "</ul>"
                 + "</li>"
                 );
@@ -77,15 +77,15 @@ namespace CRM_Proyect
 
         private void imprimirOpcionesCliente() {
             Response.Write("<li>"
-                   + " <a href='/Vista/PropuestaDeVentas.aspx'>"
-                  + "<i class='fa-shopping-cart'></i> <span>Compras</span>"
+                   + " <a href='/Vista/Compras.aspx'>"
+                  + "<i class='fa fa-shopping-cart'></i> <span>Compras</span>"
                    + "</a>"
                    + "</li>"
 
 
                   + "<li>"
-                  + " <a href='/Vista/PropuestaDeVentas.aspx'>"
-                  + "<i class=' fa-commenting-o'></i> <span>Propuestas de ventas</span>"
+                  + " <a href='ComentarPropuesta.aspx'>"
+                  + "<i class='fa fa-commenting-o'></i> <span>Propuestas de ventas</span>"
                   + "</a>"
                   + "</li>");
         }

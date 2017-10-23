@@ -405,6 +405,8 @@ function agregarProducto() {
 function mostrarPropuestasVenta() {
     $("#botonVerPropuestaVenta").on("click", function () {
         tablaPropuestaDeVenta();
+        actualizarTablaProductoPropuesta();
+        actualizarTablaComentariosPropuesta();
     });
 }
 
@@ -433,6 +435,7 @@ function tablaPropuestaDeVenta() {
 }
 
 function verProductos(id) {
+    actualizarTablaProductoPropuesta();
     var data = { idPropuesta: id }
     $.ajax({
 
@@ -463,6 +466,7 @@ function llenarTablaProductoPropuesta(response, index, value)
 }
 
 function verComentarios(id) {
+    actualizarTablaComentariosPropuesta();
     var data = { idPropuesta: id }
     $.ajax({
 
@@ -484,9 +488,171 @@ function llenarTablaComentariosPropuesta(response, index, value) {
         "destroy": true,
         "data": response,
         "columns": [
-            { "data": "persona" },
+            { "data": "nombre" },
+            { "data": "apellidoUno" },
+            { "data": "apellidoDos" },
             { "data": "comentario" }
         ]
     });
 }
 
+function actualizarTablaProductoPropuesta() {
+    $("#tablaProductoPropuesta tr>td").remove();
+}
+
+function actualizarTablaComentariosPropuesta() {
+    $("#tablaComentarios tr>td").remove();
+}
+
+function mostrarPropuestasVentaCompras() {
+    $("#botonVerPropuestaVenta").on("click", function () {
+        tablaPropuestaDeVentaCompra();
+        actualizarTablaProductoPropuestaCompra();
+    });
+}
+
+function tablaPropuestaDeVentaCompra() {
+    var table = $("#tablaPropuestasVenta").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/Compras.aspx/obtenerPropuestasDeVenta",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "productos" },
+            { "data": "precio" },
+            { "data": "descuento" },
+            { "data": "accion" }
+        ]
+    });
+}
+
+function actualizarTablaProductoPropuestaCompra() {
+    $("#tablaProductoPropuesta tr>td").remove();
+}
+
+function comprar(id) {
+    var data = { idPropuesta: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/Compras.aspx/comprar",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        tablaPropuestaDeVentaCompra();
+    });
+
+}
+
+function mostrarVentas() {
+    $("#botonVerPropuestaVenta").on("click", function () {
+        tablaVentas();
+        actualizarTablaVentas();
+    });
+}
+
+function tablaVentas() {
+    var table = $("#tablaPropuestasVenta").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/VerVentas.aspx/obtenerVentas",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "productos" },
+            { "data": "fecha" },
+            { "data": "precio" },
+            { "data": "descuento" },
+            { "data": "comision" },
+            { "data": "vendedor" }
+        ]
+    });
+}
+
+function actualizarTablaVentas() {
+    $("#tablaProductoPropuesta tr>td").remove();
+}
+
+
+//
+function mostrarPropuestasVentaComprasUsuario() {
+    $("#botonVerPropuestaVenta").on("click", function () {
+        tablaPropuestaDeVentaCompraUsuario();
+        actualizarTablaProductoPropuestaCompraUsuario();
+    });
+}
+
+function tablaPropuestaDeVentaCompraUsuario() {
+    var table = $("#tablaPropuestasVenta").DataTable({
+        destroy: true,
+        responsive: true,
+        ajax: {
+            method: "POST",
+            url: "/Vista/ComentarPropuesta.aspx/obtenerPropuestasDeVenta",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: function (d) {
+                return JSON.stringify(d);
+            },
+            dataSrc: "d.data"
+        },
+        columns: [
+            { "data": "productos" },
+            { "data": "precio" },
+            { "data": "descuento" },
+            { "data": "accion" }
+        ]
+    });
+}
+tablaProductoPropuesta
+function actualizarTablaProductoPropuestaCompraUsuario() {
+    $("#tablaProductoPropuesta tr>td").remove();
+}
+
+function comentar(id) {
+    document.getElementById("botonComentar").disabled = false;
+    document.getElementById("botonComentar").value = id;
+}
+
+function agregarComentario() {
+    $comentario = $('#comentario').val();
+    alert(comentario);
+    $id = document.getElementById("botonComentar").value;
+    var data = {
+        idPropuesta: $id,
+        comentario : $comentario
+    }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/ComentarPropuesta.aspx/comentarPropuesta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        document.getElementById("botonComentar").disabled = true;
+        $('#comentario').val('');
+    });
+}

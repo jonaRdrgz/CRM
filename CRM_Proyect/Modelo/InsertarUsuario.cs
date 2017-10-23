@@ -134,17 +134,23 @@ public class InsertarUsuario
             return false;
         }
 
-        public int insertarEmpresa(string nombre,  string correo, string direccion, string telefono)
+        public int insertarEmpresa(string nombre,  string correo, string direccion, string telefono, string usuario, string contrasena)
         {
+            if (validarUsuario(usuario))
+            {
+                return USUARIO_INVALIDO;
+            }
 
-            if (validarCorreo(correo))
+        if (validarCorreo(correo))
             {
                 return CORREO_INVALIDO;
             }
 
             iniciarConexion();
             MySqlCommand instruccion = conexion.CreateCommand();
-            instruccion.CommandText = "call insertarEmpresa('" + nombre + "', '" + direccion + "', '" + correo + "', '"  + telefono + "')";
+            contrasena = Seguridad.encriptar(contrasena);   
+        instruccion.CommandText = "call insertarEmpresa('" + nombre + "', '" + direccion + "', '" + correo + "', '"  +
+                telefono + "', '" + usuario + "', '" + contrasena + "')";
 
             // La consulta podría generar errores
             try
