@@ -46,7 +46,8 @@ namespace CRM_Proyect
         public void Prueba_Verificar_Correo()
         {
             var instancia = new InsertarUsuario();
-            var resultado1 = instancia.validarCorreo("rocio.com");
+            // var resultado1 = instancia.validarCorreo("rocio.com");
+            var resultado1 = instancia.InsertarUsuarioBD("Rocío", "Hidalgo", "Rodríguez", "rocio.com", "Bebedero 400 oeste del Restaurante Tiquicia", "rociohr", "rociohr1308g", "88197746");
             Assert.AreEqual(resultado1, false);
 
         }
@@ -72,7 +73,7 @@ namespace CRM_Proyect
         public void Prueba_Contraseña_Corta()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "12345", "84167767");
+            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "gab13", "84167767");
             Assert.AreEqual(resultado1, -2);
 
         }
@@ -99,7 +100,7 @@ namespace CRM_Proyect
         public void Prueba_Usuario_Muy_Largo()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "meli04mc", "Melissa_04_MolinaCorrales", "83410868");
+            var resultado1 = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
             Assert.AreEqual(resultado1, -8);
 
         }
@@ -108,7 +109,7 @@ namespace CRM_Proyect
         public void Prueba_Verificar_Telefono()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "Sandra15cc", "sandra15hp", "2a2b8h2o");
+            var resultado1 = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "sandra15cc", "sandra15hp", "2a2b8h2o");
             Assert.AreEqual(resultado1, -7);
 
         }
@@ -130,6 +131,16 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, -6);
 
         }
+
+        [TestCase]
+        public void Prueba_Espacios_Vacios()
+        {
+            var instancia = new Controlador();
+            var resultado1 = instancia.insertarUsuario("Daniel", "", "Mendez", " ", "Santo Domingo, Heredia", "daniel79m", "", "81245767");
+            Assert.AreEqual(resultado1, -9);
+
+        }
+
 
         /*Pruebas para el manejo de contactos*/
 
@@ -344,6 +355,28 @@ namespace CRM_Proyect
             var instancia = new ConsultaPropuestaVenta();
             var resultado1 = instancia.verificarNumeroProductosCarrito();
             Assert.AreEqual(resultado1, true);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Obtener_Propuestas_Venta()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            List<PropuestasVenta> lista = new List<PropuestasVenta>();
+            var resultado1 = instancia.obtenerPropuestasVenta();
+            Assert.AreEqual(resultado1, lista);
+
+        }
+
+        [TestCase]
+
+        public void Prueba_Ver_Productos_Propuesta()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            List<Producto> lista = new List<Producto>();
+            var resultado1 = instancia.verProductosPropuesta(3);
+            Assert.AreEqual(resultado1, lista);
 
         }
 
