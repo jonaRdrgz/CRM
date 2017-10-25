@@ -23,19 +23,7 @@ namespace CRM_Proyect
         {
 
             Controlador controlador = Controlador.getInstance();
-            int respuestaControlador = controlador.crearVenta(precio, descuento, comision);
-            switch (respuestaControlador)
-            {
-                case PRODUCTOS_INSUFICIENTES:
-                    return "Producto Insuficientes";
-
-                case FALLO_DE_INSERCION:
-                    return "false";
-                default:
-
-                    return "true";
-
-            }
+            return controlador.crearVenta(precio, descuento, comision);
         }
     }
     

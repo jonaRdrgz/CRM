@@ -23,6 +23,9 @@ using System.Text.RegularExpressions;
 
 public class Controlador{
     private int CONTRASEÑA_MUY_CORTA = -2;
+    const int PRODUCTOS_INSUFICIENTES = -2;
+    const int EXITO_DE_INSERCION = 0;
+    const int FALLO_DE_INSERCION = -1;
     private int CONTRASEÑA_MUY_LARGA = -4;
     private int USUARIO_MUY_CORTO = -3;
     private int NO_CONTIENE_LETRAS = -5;
@@ -30,6 +33,11 @@ public class Controlador{
     private int DATO_NO_NUMERICO = -7;
     private int USUARIO_MUY_LARGO = -8;
     private int ESPACIO_VACIO = -9;
+    private int NOMBRE_MUY_LARGO = -10;
+    private int DESCRIPCION_MUY_LARGO = -11;
+    private int DATO_VACIO = -12;
+
+
 
     private static Controlador instancia = null;
     private Consulta consultas = new Consulta();
@@ -154,7 +162,19 @@ public class Controlador{
     public int insertarEmpresa(string nombre, string correo,  string direccion, string telefono, string usuario, string contrasena)
     {
         //Validando los parámetros
+        if (nombre.Length > 45)
+        {
+            return CONTRASEÑA_MUY_CORTA;
+        }
 
+        if (usuario.Length < 5)
+        {
+            return USUARIO_MUY_CORTO;
+        }
+        if (usuario.Length > 20)
+        {
+            return USUARIO_MUY_LARGO;
+        }
         if (!IsNumeric(telefono))
         {
             return DATO_NO_NUMERICO;
@@ -167,10 +187,22 @@ public class Controlador{
     public int agregarProducto(string nombre, string descripcion, string precio)
     {
         //Validando los parámetros
-
         if (!IsNumeric(precio))
         {
             return DATO_NO_NUMERICO;
+        }
+        else if (nombre.Length > 45)
+        {
+            return NOMBRE_MUY_LARGO;
+        }
+        else if (descripcion.Length > 200)
+        {
+            return DESCRIPCION_MUY_LARGO;
+
+        }
+        else if (precio.Length == 0 && descripcion.Length == 0 && precio.Length ==0) {
+            return DATO_VACIO;
+
         }
 
         int resultadoInsercion = producto.agregarProducto(nombre, descripcion, precio);
@@ -208,13 +240,47 @@ public class Controlador{
         return Regex.IsMatch(sValue, "^[0-9]+$");
     }
 
-    public int crearPropuestaVenta(string nombre, string descripcion, string precio)
+    public string  crearPropuestaVenta(string precio, string descuento, string comision)
     {
         //Validando los parámetros
+        if (!IsNumeric(precio))
+        {
+            return "Precio debe ser numérico";
+        }
+        else if (precio.Length > 11)
+        {
+            return "Precio debe tener como máximo 11 dígitos" ;
+        }
+        if (!IsNumeric(descuento))
+        {
+            return "Descuento debe ser numérico";
+        }
+        else if (descuento.Length > 11)
+        {
+            return "Descuento debe tener como máximo 11 dígitos";
+        }
 
-        int resultadoInsercion = propuesta.crearPropuestaVenta(nombre, descripcion, precio);
-        return resultadoInsercion;
-    }
+        if (!IsNumeric(comision))
+        {
+            return "Comision debe ser numérico";
+        }
+        else if (descuento.Length > 11)
+        {
+            return "Comision debe tener como máximo 11 dígitos";
+        }
+
+        int resultadoInsercion = propuesta.crearPropuestaVenta(precio, descuento, comision);
+        switch (resultadoInsercion)
+        {
+            case PRODUCTOS_INSUFICIENTES:
+                return "Productos Insuficientes, Seleccione al menos un producto";
+
+            case FALLO_DE_INSERCION:
+                return "Falló la inserción";
+            default:
+                return "Éxito";
+        }
+   }
 
     public List<PropuestasVenta> obtenerPropuestasVenta()
     {
@@ -257,12 +323,48 @@ public class Controlador{
         return propuesta.cambiarRespuesta(idPropuesta, respuesta);
     }
 
-    public int crearVenta(string nombre, string descripcion, string precio)
+    public string crearVenta(string precio, string descuento, string comision)
     {
         //Validando los parámetros
 
-        int resultadoInsercion = venta.crearVenta(nombre, descripcion, precio);
-        return resultadoInsercion;
+        if (!IsNumeric(precio))
+        {
+            return "Precio debe ser numérico";
+        }
+        else if (precio.Length > 11)
+        {
+            return "Precio debe tener como máximo 11 dígitos";
+        }
+        if (!IsNumeric(descuento))
+        {
+            return "Descuento debe ser numérico";
+        }
+        else if (descuento.Length > 11)
+        {
+            return "Descuento debe tener como máximo 11 dígitos";
+        }
+
+        if (!IsNumeric(comision))
+        {
+            return "Comision debe ser numérico";
+        }
+        else if (descuento.Length > 11)
+        {
+            return "Comision debe tener como máximo 11 dígitos";
+        }
+
+        //Query
+        int resultadoInsercion = venta.crearVenta(precio, descuento, comision);
+        switch (resultadoInsercion)
+        {
+            case PRODUCTOS_INSUFICIENTES:
+                return "Productos Insuficientes, Seleccione al menos un producto";
+
+            case FALLO_DE_INSERCION:
+                return "Falló la inserción";
+            default:
+                return "Éxito";
+        }
     }
 
     public List<Producto> verProductosVenta(int idVenta)

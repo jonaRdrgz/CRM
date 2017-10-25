@@ -370,8 +370,7 @@ function crearPropuesta() {
     }).done(function (info) {
         //Respuesta del servidor
         console.log(info);
-        //alert(info.d)
-        alert("exito");
+        alert(info.d);
     });
 }
 
@@ -394,10 +393,8 @@ function agregarProducto() {
         dataType: "json"
 
     }).done(function (info) {
-        //Respuesta del servidor
         console.log(info);
-        //alert(info.d)
-        //alert("exito");
+        alert(info.d);
     });
 }
 
@@ -706,7 +703,7 @@ function crearVenta() {
     }).done(function (info) {
         //Respuesta del servidor
         console.log(info);
-        //alert(info.d)
+        alert(info.d)
         //alert("exito");
     });
 }

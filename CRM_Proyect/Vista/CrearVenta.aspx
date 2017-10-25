@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
             <div class="col-md-3 col-sm-3 col-xs-3">
-                <h2 class="text-center">Crear Propuesta de Venta</h2>                
+                <h2 class="text-center">Crear Venta</h2>                
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <button type="button" id="botonProductosDisponibles" class="btn btn-success">

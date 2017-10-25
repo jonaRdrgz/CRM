@@ -11,9 +11,7 @@ namespace CRM_Proyect
 {
     public partial class CrearVenta : System.Web.UI.Page
     {
-        const int PRODUCTOS_INSUFICIENTES = -2;
-        const int EXITO_DE_INSERCION = 0;
-        const int FALLO_DE_INSERCION = -1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -68,20 +66,9 @@ namespace CRM_Proyect
         [WebMethod]
         public static string crearPropuesta(string precio, string descuento, string comision )
         {
-
             Controlador controlador = Controlador.getInstance();
-            int respuestaControlador = controlador.crearPropuestaVenta(precio, descuento, comision);
-            switch (respuestaControlador) {
-                case PRODUCTOS_INSUFICIENTES:               
-                    return "Producto Insu";
-
-                case FALLO_DE_INSERCION:
-                    return "false";
-                default:
-
-                   return "true";
-
-            }
+            return controlador.crearPropuestaVenta(precio, descuento, comision);
+            
         }
 
     }
