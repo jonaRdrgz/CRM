@@ -27,7 +27,7 @@ namespace CRM_Proyect
     {
         /*Pruebas para Manejo de Acceso y Usuarios*/
 
-        [TestCase]
+        [Test]
         public void Prueba_Usuario_Contraseña_Validos()
         {
             var instancia = new Consulta();
@@ -36,7 +36,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Usuario_Registrado_Contraseña_Incorrecta()
         {
             var instancia = new Consulta();
@@ -45,7 +45,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Usuario_Invalido_Contraseña_Correcta()
         {
             var instancia = new Consulta();
@@ -54,7 +54,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Verificar_Correo()
         {
             var instancia = new InsertarUsuario();
@@ -64,7 +64,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Verificar_Usuario_Existente()
         {
             var instancia = new InsertarUsuario();
@@ -73,7 +73,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Registrar_Usuario()
         {
             var instancia = new InsertarUsuario();
@@ -81,7 +81,7 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, 0);
 
         }
-        [TestCase]
+        [Test]
         public void Prueba_Contraseña_Corta()
         {
             var instancia = new Controlador();
@@ -90,7 +90,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Contraseña_Muy_Larga()
         {
             var instancia = new Controlador();
@@ -99,7 +99,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Usuario_Muy_Corto()
         {
             var instancia = new Controlador();
@@ -108,7 +108,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Usuario_Muy_Largo()
         {
             var instancia = new Controlador();
@@ -117,7 +117,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Verificar_Telefono()
         {
             var instancia = new Controlador();
@@ -126,7 +126,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Contraseña_Sin_Letras()
         {
             var instancia = new Controlador();
@@ -135,7 +135,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Contraseña_Con_Numeros()
         {
             var instancia = new Controlador();
@@ -144,7 +144,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Espacios_Vacios()
         {
             var instancia = new Controlador();
@@ -156,7 +156,7 @@ namespace CRM_Proyect
 
         /*Pruebas para el manejo de contactos*/
 
-        [TestCase]
+        [Test]
         public void Prueba_Agregar_Contacto()
         {
             var instancia = new Consulta();
@@ -166,7 +166,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
         public void Prueba_Agregar_Empresa()
         {
             var instancia = new Consulta();
@@ -175,7 +175,7 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, true);
 
         }
-        [TestCase]
+        [Test]
         public void Prueba_Borrar_Contacto()
         {
             var instancia = new Consulta();
@@ -185,8 +185,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
-
+        [Test]
         public void Prueba_Borrar_Contacto_Empresas()
         {
             var instancia = new Consulta();
@@ -196,7 +195,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_ObtenerContactosPersonas()
         {
@@ -208,7 +207,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_ObtenerContactosEmpresas()
         {
@@ -254,7 +253,7 @@ namespace CRM_Proyect
 
         /*Pruebas para Productos*/
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Agregar_Producto()
         {
@@ -264,7 +263,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Verificar_Precio()
         {
@@ -275,7 +274,7 @@ namespace CRM_Proyect
         }
 
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Obtener_Productos()
         {
@@ -286,7 +285,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Borrar_Producto()
         {
@@ -297,7 +296,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Obtener_Productos_Disponibles()
         {
@@ -308,7 +307,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Agregar_Al_Carrito()
         {
@@ -318,7 +317,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Obtener_Productos_Carrito()
         {
@@ -329,7 +328,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Eliminar_Del_Carrito()
         {
@@ -341,7 +340,7 @@ namespace CRM_Proyect
 
         /*Pruebas para Propuestas de Ventas*/
 
-        [TestCase]
+        [Test]
 
         public void Prueba_InsertarProductoAPropuesta()
         {
@@ -350,7 +349,7 @@ namespace CRM_Proyect
             Assert.AreEqual(resultado1, 0);
 
         }
-        [TestCase]
+        [Test]
 
         public void Prueba_Crear_Propuesta_De_Venta()
         {
@@ -360,7 +359,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_VerificarNumeroProductosCarrito()
         {
@@ -370,7 +369,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Obtener_Propuestas_Venta()
         {
@@ -381,7 +380,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Ver_Productos_Propuesta()
         {
@@ -394,7 +393,7 @@ namespace CRM_Proyect
 
         /*Pruebas comentarios de propuestas de ventas*/
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Ver_Comentarios_Propuesta()
         {
@@ -405,7 +404,7 @@ namespace CRM_Proyect
 
         }
 
-        [TestCase]
+        [Test]
 
         public void Prueba_Ver_Comentarios_Empresas_Propuesta()
         {
