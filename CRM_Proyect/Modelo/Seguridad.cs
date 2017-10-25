@@ -39,9 +39,9 @@ namespace CRM_Proyect.Modelo
                 result = Convert.ToBase64String(encryted);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return "No se pudo encriptar la contraseña"+ ex.Message;
+                return "No se pudo encriptar la contraseña";
 
             }
            
@@ -58,9 +58,9 @@ namespace CRM_Proyect.Modelo
                 result = System.Text.Encoding.Unicode.GetString(decryted);
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return "No se puedo desencriptar la contraseña" + ex.Message;
+                return "No se puedo desencriptar la contraseña";
 
             }
             
