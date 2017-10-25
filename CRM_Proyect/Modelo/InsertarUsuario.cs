@@ -1,4 +1,15 @@
-﻿using System;
+﻿/**
+ *	Clase InsertarUsuario
+ *	
+ *	Version 1.0
+ *	
+ *	26/09/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

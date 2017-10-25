@@ -6,6 +6,8 @@
  *	24/09/2017
  *
  *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
  */
 
 using System;
@@ -27,6 +29,7 @@ public class Controlador{
     private int NO_CONTIENE_NUMEROS = -6;
     private int DATO_NO_NUMERICO = -7;
     private int USUARIO_MUY_LARGO = -8;
+    private int ESPACIO_VACIO = -9;
 
     private static Controlador instancia = null;
     private Consulta consultas = new Consulta();
@@ -120,6 +123,13 @@ public class Controlador{
         if (usuario.Length > 20)
         {
             return USUARIO_MUY_LARGO;
+        }
+
+        if (nombre.Length.Equals(0) || primerApellido.Length.Equals(0) || segundoApellido.Length.Equals(0) || correo.Length.Equals(0)
+            || direccion.Length.Equals(0) || usuario.Length.Equals(0) || contrasena.Length.Equals(0) || telefono.Length.Equals(0))
+        {
+
+            return ESPACIO_VACIO;
         }
 
         if (!IsNumeric(telefono)) {
