@@ -32,20 +32,38 @@ namespace CRM_Proyect.Modelo
         /// Encripta una cadena
         public static string encriptar(this string cadenaAencriptar)
         {
-            string result = string.Empty;
-            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(cadenaAencriptar);
-            result = Convert.ToBase64String(encryted);
-            return result;
+            try
+            {
+                string result = string.Empty;
+                byte[] encryted = System.Text.Encoding.Unicode.GetBytes(cadenaAencriptar);
+                result = Convert.ToBase64String(encryted);
+                return result;
+            }
+            catch (Exception)
+            {
+                return "No se pudo encriptar la contraseña";
+
+            }
+           
         }
 
         /// Esta función desencripta la cadena que le envíamos en el parámentro de entrada.
         public static string desEncriptar(this string cadenaAdesencriptar)
         {
-            string result = string.Empty;
-            byte[] decryted = Convert.FromBase64String(cadenaAdesencriptar);
-            //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
-            result = System.Text.Encoding.Unicode.GetString(decryted);
-            return result;
+            try
+            {
+                string result = string.Empty;
+                byte[] decryted = Convert.FromBase64String(cadenaAdesencriptar);
+                //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
+                result = System.Text.Encoding.Unicode.GetString(decryted);
+                return result;
+            }
+            catch (Exception)
+            {
+                return "No se puedo desencriptar la contraseña";
+
+            }
+            
         }
     }
 }
