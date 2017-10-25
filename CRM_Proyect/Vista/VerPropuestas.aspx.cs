@@ -45,5 +45,18 @@ namespace CRM_Proyect
             return json;
         }
 
+        [WebMethod]
+        public static string cambiarRespuesta(int idPropuesta, string respuesta)
+        {
+
+            Controlador controlador = Controlador.getInstance();
+
+            if (controlador.cambiarRespuesta(idPropuesta, respuesta))
+            {
+                return "true";
+            }
+            return "false";
+        }
+
     }
 }

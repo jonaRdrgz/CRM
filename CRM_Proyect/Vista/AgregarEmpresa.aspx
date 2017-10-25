@@ -64,8 +64,8 @@
         'ordering': true,
         'info': true,
         'autoWidth': true,
-        destroy: true,
-        responsive: true,
+        'destroy': true,
+        'responsive': true,
     });
     mostrarEmpresasLibre();
 

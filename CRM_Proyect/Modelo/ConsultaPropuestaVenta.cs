@@ -43,7 +43,10 @@ namespace CRM_Proyect.Modelo
            
             iniciarConexion();
             MySqlCommand instruccion = conexion.CreateCommand();
-            instruccion.CommandText = "call registarPropuestaVenta('" + precio + "', '" + descuento + "', '" + comision + "', '" + Consulta.idUsuarioActual + "')";
+            DateTime fechaHora = DateTime.Now;
+            string date = fechaHora.ToString("yyyy-MM-dd H:mm:ss");
+            instruccion.CommandText = "call registarPropuestaVenta('" + precio + "', '" + descuento + "', '" 
+                + comision + "', '"+ date + "', '" + Consulta.idUsuarioActual + "')";
             int idPropuesta;
             // La consulta podría generar errores
             try
@@ -159,7 +162,10 @@ namespace CRM_Proyect.Modelo
                 {
                     listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "<a href='#' onclick='verComentarios(" + reader["id"] +
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["fecha"].ToString(), reader["respuesta"].ToString() +" "+
+                        "<a href='#' onclick='cambiarRespuesta(" + reader["id"] +
+                        ")'><span class='glyphicon -class'>Cambiar</span></a>",
+                        "<a href='#' onclick='verComentarios(" + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Ver</span></a>", "<a href='#' onclick='borrarPropuesta(" 
                         + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
@@ -221,7 +227,8 @@ namespace CRM_Proyect.Modelo
                 {
                     listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "", "<a href='#' onclick='comprar("
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["fecha"].ToString(), reader["respuesta"].ToString(),
+                        "", "<a href='#' onclick='comprar("
                         + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comprar</span></a>"));
                 }
@@ -279,7 +286,7 @@ namespace CRM_Proyect.Modelo
                 {
                     listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "", "<a href='#' onclick='comentar("
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "","","", "<a href='#' onclick='comentar("
                         + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comentar</span></a>"));
                 }
@@ -302,6 +309,29 @@ namespace CRM_Proyect.Modelo
             MySqlCommand instruccion = conexion.CreateCommand();
             instruccion.CommandText = "call comentarPropuesta('"  + idPropuesta + "', '" + comentario +
                 "', '" + Consulta.idUsuarioActual + "')";
+
+            // La consulta podría generar errores
+            try
+            {
+                if (instruccion.ExecuteNonQuery() == 1)
+                {
+                    cerrarConexion();
+                    return true;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+            }
+            cerrarConexion();
+            return false;
+        }
+        public Boolean cambiarRespuesta(int idPropuesta, string respuesta)
+        {
+
+            iniciarConexion();
+            MySqlCommand instruccion = conexion.CreateCommand();
+            instruccion.CommandText = "call actualizarRespuesta('" + idPropuesta + "', '" + respuesta +"')";
 
             // La consulta podría generar errores
             try

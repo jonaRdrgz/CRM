@@ -160,11 +160,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Vista\CrearVenta.aspx" />
     <Content Include="Vista\ComentarPropuesta.aspx" />
     <Content Include="Vista\VerVentas.aspx" />
     <Content Include="Vista\Compras.aspx" />
     <Content Include="Vista\VerPropuestas.aspx" />
-    <Content Include="Vista\CrearVenta.aspx" />
+    <Content Include="Vista\CrearPropuesta.aspx" />
     <Content Include="Vista\EliminarProducto.aspx" />
     <Content Include="Vista\AgregarProducto.aspx" />
     <Content Include="Vista\AgregarEmpresa.aspx" />
@@ -12754,7 +12755,6 @@
     <Content Include="Vista\Contactos.aspx" />
     <Content Include="Gruntfile.js" />
     <AdditionalFiles Include="Vista\pages\examples\login.aspx" />
-    <Content Include="Vista\PropuestaDeVentas.aspx" />
     <Content Include="starter.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -12762,6 +12762,13 @@
     <Content Include="Vista\index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vista\CrearVenta.aspx.cs">
+      <DependentUpon>CrearVenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vista\CrearVenta.aspx.designer.cs">
+      <DependentUpon>CrearVenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Vista\ComentarPropuesta.aspx.cs">
       <DependentUpon>ComentarPropuesta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -12796,12 +12803,12 @@
     <Compile Include="Vista\VerPropuestas.aspx.designer.cs">
       <DependentUpon>VerPropuestas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vista\CrearVenta.aspx.cs">
-      <DependentUpon>CrearVenta.aspx</DependentUpon>
+    <Compile Include="Vista\CrearPropuesta.aspx.cs">
+      <DependentUpon>CrearPropuesta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vista\CrearVenta.aspx.designer.cs">
-      <DependentUpon>CrearVenta.aspx</DependentUpon>
+    <Compile Include="Vista\CrearPropuesta.aspx.designer.cs">
+      <DependentUpon>CrearPropuesta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelo\ConsultaProducto.cs" />
     <Compile Include="Vista\EliminarProducto.aspx.cs">
@@ -12893,13 +12900,6 @@
     </Compile>
     <Compile Include="Vista\index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Vista\PropuestaDeVentas.aspx.cs">
-      <DependentUpon>PropuestaDeVentas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Vista\PropuestaDeVentas.aspx.designer.cs">
-      <DependentUpon>PropuestaDeVentas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>

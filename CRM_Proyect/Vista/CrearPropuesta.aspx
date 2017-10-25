@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Home.Master" AutoEventWireup="true" CodeBehind="CrearVenta.aspx.cs" Inherits="CRM_Proyect.CrearVenta1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vista/Home.Master" AutoEventWireup="true" CodeBehind="CrearPropuesta.aspx.cs" Inherits="CRM_Proyect.CrearVenta" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -112,7 +112,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="button" onclick='crearVenta()' class="btn btn-primary" >Agregar</button>
+                <button type="button" onclick='crearPropuesta()' class="btn btn-primary" >Agregar</button>
               </div>
             </form>
           </div>
@@ -120,7 +120,7 @@
        </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
-    <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
@@ -148,7 +148,7 @@
           'responsive': true,
       });
       mostrarProductosDisponibles();
-      mostrarProductosCarrito();
+      //mostrarProductosCarrito();
   })
 </script>
 </asp:Content>

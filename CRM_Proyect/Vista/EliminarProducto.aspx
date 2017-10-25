@@ -56,14 +56,14 @@
 <script>
   $(function () {
       $('#tablaProductos').DataTable({
-        'paging': true,
-        'lengthChange': true,
-        'searching': true,
-        'ordering': true,
-        'info': true,
-        'autoWidth': true,
-        destroy: true,
-        responsive: true,
+          'paging': true,
+          'lengthChange': true,
+          'searching': true,
+          'ordering': true,
+          'info': true,
+          'autoWidth': true,
+          'destroy': true,
+          'responsive': true,
     });
     mostrarProductos();
 

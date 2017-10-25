@@ -10,6 +10,6 @@
 namespace CRM_Proyect {
     
     
-    public partial class PropuestaDeVentas {
+    public partial class CrearVenta {
     }
 }

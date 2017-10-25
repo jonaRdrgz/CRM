@@ -242,6 +242,24 @@ public class Controlador{
         return propuesta.comentarPropuesta(idPropuesta, comentario);
     }
 
+    public Boolean cambiarRespuesta(int idPropuesta, string respuesta)
+    {
+        return propuesta.cambiarRespuesta(idPropuesta, respuesta);
+    }
+
+    public int crearVenta(string nombre, string descripcion, string precio)
+    {
+        //Validando los parámetros
+
+        int resultadoInsercion = venta.crearVenta(nombre, descripcion, precio);
+        return resultadoInsercion;
+    }
+
+    public List<Producto> verProductosVenta(int idVenta)
+    {
+        return venta.verProductosVenta(idVenta);
+    }
+
 
 
 }

@@ -260,7 +260,6 @@ function eliminarProducto(id) {
 function mostrarProductosDisponibles() {
     $("#botonProductosDisponibles").on("click", function () {
         tablaProductosDisponibles();
-
     });
 }
 function mostrarProductosCarrito() {
@@ -274,7 +273,7 @@ function tablaProductosDisponibles() {
         responsive: true,
         ajax: {
             method: "POST",
-            url: "/Vista/CrearVenta.aspx/mostrarProductosDisponibles",
+            url: "/Vista/CrearPropuesta.aspx/mostrarProductosDisponibles",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: function (d) {
@@ -297,7 +296,7 @@ function tablaProductosCarrito() {
         responsive: true,
         ajax: {
             method: "POST",
-            url: "/Vista/CrearVenta.aspx/mostrarProductosCarrito",
+            url: "/Vista/CrearPropuesta.aspx/mostrarProductosCarrito",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             data: function (d) {
@@ -319,7 +318,7 @@ function agregarAlCarrito(id) {
     $.ajax({
 
         method: "POST",
-        url: "/Vista/CrearVenta.aspx/agregarAlCarrito",
+        url: "/Vista/CrearPropuesta.aspx/agregarAlCarrito",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -338,7 +337,7 @@ function eliminarDelCarrito(id) {
     $.ajax({
 
         method: "POST",
-        url: "/Vista/CrearVenta.aspx/eliminarDelCarrito",
+        url: "/Vista/CrearPropuesta.aspx/eliminarDelCarrito",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -363,7 +362,7 @@ function crearPropuesta() {
     $.ajax({
 
         method: "POST",
-        url: "/Vista/CrearVenta.aspx/crearPropuesta",
+        url: "/Vista/CrearPropuesta.aspx/crearPropuesta",
         data: JSON.stringify(data),
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -372,7 +371,7 @@ function crearPropuesta() {
         //Respuesta del servidor
         console.log(info);
         //alert(info.d)
-        //alert("exito");
+        alert("exito");
     });
 }
 
@@ -429,6 +428,8 @@ function tablaPropuestaDeVenta() {
             { "data": "precio" },
             { "data": "descuento" },
             { "data": "comision" },
+            { "data": "fecha" },
+            { "data": "respuesta" },
             { "data": "comentarios" }
         ]
     });
@@ -623,7 +624,7 @@ function tablaPropuestaDeVentaCompraUsuario() {
         ]
     });
 }
-tablaProductoPropuesta
+
 function actualizarTablaProductoPropuestaCompraUsuario() {
     $("#tablaProductoPropuesta tr>td").remove();
 }
@@ -635,7 +636,6 @@ function comentar(id) {
 
 function agregarComentario() {
     $comentario = $('#comentario').val();
-    alert(comentario);
     $id = document.getElementById("botonComentar").value;
     var data = {
         idPropuesta: $id,
@@ -654,5 +654,77 @@ function agregarComentario() {
         console.log(info);
         document.getElementById("botonComentar").disabled = true;
         $('#comentario').val('');
+    });
+}
+
+function cambiarRespuesta(id) {
+    document.getElementById("botonRespuesta").disabled = false;
+    document.getElementById("botonRespuesta").value = id;
+}
+
+function actualizarRespuesta() {
+    $respuesta = $('#respuesta').val();
+    $id = document.getElementById("botonRespuesta").value;
+    var data = {
+        idPropuesta: $id,
+        respuesta: $respuesta
+    }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/VerPropuestas.aspx/cambiarRespuesta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        document.getElementById("botonRespuesta").disabled = true;
+        $('#respuesta').val('');
+    });
+}
+
+
+function crearVenta() {
+    $precio = $("#precio").val();
+    $descuento = $("#descuento").val();
+    $comision = $("#comision").val();
+    var data = {
+        precio: $precio,
+        descuento: $descuento,
+        comision: $comision
+    }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/CrearVenta.aspx/crearVenta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        //Respuesta del servidor
+        console.log(info);
+        //alert(info.d)
+        //alert("exito");
+    });
+}
+
+function verProductosVenta(id) {
+    actualizarTablaProductoPropuesta();
+    var data = { idVenta: id }
+    $.ajax({
+
+        method: "POST",
+        url: "/Vista/VerVentas.aspx/verProductosVenta",
+        data: JSON.stringify(data),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+
+    }).done(function (info) {
+        $.each(info.d.data, function (index, value) {
+            llenarTablaProductoPropuesta(info.d.data, index, value);
+        });
     });
 }

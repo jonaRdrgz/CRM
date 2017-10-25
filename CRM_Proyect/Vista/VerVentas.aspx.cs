@@ -23,5 +23,15 @@ namespace CRM_Proyect
             object json = new { data = ventas };
             return json;
         }
+
+        [WebMethod]
+        public static object verProductosVenta(int idVenta)
+        {
+
+            Controlador controlador = Controlador.getInstance();
+            List<Producto> productos = controlador.verProductosVenta(idVenta);
+            object json = new { data = productos };
+            return json;
+        }
     }
 }

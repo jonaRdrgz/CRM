@@ -86,14 +86,14 @@
 <script>
   $(function () {
       $('#tablaPropuestasVenta').DataTable({
-        'paging': true,
-        'lengthChange': true,
-        'searching': true,
-        'ordering': true,
-        'info': true,
-        'autoWidth': true,
-        destroy: true,
-        responsive: true,
+          'paging': true,
+          'lengthChange': true,
+          'searching': true,
+          'ordering': true,
+          'info': true,
+          'autoWidth': true,
+          'destroy': true,
+          'responsive': true,
       });
       $('#tablaProductoPropuesta').DataTable({
           'paging': true,
@@ -102,8 +102,8 @@
           'ordering': true,
           'info': true,
           'autoWidth': true,
-          destroy: true,
-          responsive: true,
+          'destroy': true,
+          'responsive': true,
       });
       mostrarPropuestasVentaCompras();
   })
