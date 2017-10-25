@@ -97,11 +97,11 @@ namespace CRM_Proyect
         }
 
         [Test]
-        public void InsertarUsuarioBD_RegistrarUsuarioCorrecto_Returns0()
+        public void InsertarUsuarioBD_RegistrarUsuarioCorrecto_ReturnsEXITO_DE_INSERCION()
         {
             var instancia = new InsertarUsuario();
             var resultado = instancia.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez", "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
-            Assert.AreEqual(resultado, 0);
+            Assert.AreEqual(resultado, EXITO_DE_INSERCION);
 
         }
 
@@ -121,7 +121,7 @@ namespace CRM_Proyect
         	
             var instancia = new InsertarUsuario();
             var resultado = instancia.insertarEmpresa("Samsung", "samsungcr@gmail.com", "Sabana Oeste", "22288929", "samsungcr", "samsung2510");
-            Assert.AreEqual(resultado, 0);
+            Assert.AreEqual(resultado, EXITO_DE_INSERCION);
 
         }
 
@@ -131,7 +131,7 @@ namespace CRM_Proyect
         	    //Poner nombre de usuario que ya existe en la base
                 var instancia = new InsertarUsuario();
                 var resultado = instancia.insertarEmpresa("Digitel", "digitelcr@gmail.com", "San Pedro", "22482879", "intelcr", "samsung2510");
-                Assert.AreEqual(resultado, -1);
+                Assert.AreEqual(resultado, FALLO_DE_INSERCION);
 
             }
 
@@ -140,7 +140,7 @@ namespace CRM_Proyect
           {
                  var instancia = new Controlador();
                  var resultado = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "gab13", "84167767");
-                 Assert.AreEqual(resultado, -2);
+                 Assert.AreEqual(resultado, CONTRASEÑA_MUY_CORTA);
 
         }
 
@@ -149,7 +149,7 @@ namespace CRM_Proyect
         {
                   var instancia = new Controlador();
                   var resultado = instancia.insertarUsuario("Alejandra", "Carranza", "Chaves", "alecarranza04@gmail.com", "San Antonio,Escazú", "ale56cc", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "85169767");
-                  Assert.AreEqual(resultado, -4);
+                  Assert.AreEqual(resultado, CONTRASEÑA_MUY_LARGA);
 
         }
 
@@ -158,7 +158,7 @@ namespace CRM_Proyect
         {
                 var instancia = new Controlador();
                 var resultado = instancia.insertarUsuario("Jonnathan", "Perez", "Picado", "jonapicado@gmail.com", "San Rafael Arriba, Desamparados", "Jona", "jona45pp", "82145767");
-                Assert.AreEqual(resultado, -3);
+                Assert.AreEqual(resultado, USUARIO_MUY_CORTO);
 
                 }
 
@@ -167,7 +167,7 @@ namespace CRM_Proyect
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
-            Assert.AreEqual(resultado, -8);
+            Assert.AreEqual(resultado, USUARIO_MUY_LARGO);
 
         }
 
@@ -176,7 +176,7 @@ namespace CRM_Proyect
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "sandra15cc", "sandra15hp", "2a2b8h2o");
-            Assert.AreEqual(resultado, -7);
+            Assert.AreEqual(resultado, DATO_NO_NUMERICO);
 
         }
 
@@ -185,7 +185,7 @@ namespace CRM_Proyect
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("Liza", "Fernández", "Parajeles", "lizach07@gmail.com", "Sabanilla, San Pedro", "lizchv07", "987987904", "85187797");
-            Assert.AreEqual(resultado, -5);
+            Assert.AreEqual(resultado, NO_CONTIENE_LETRAS);
 
         }
 
@@ -194,7 +194,7 @@ namespace CRM_Proyect
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("María", "Arce", "Montoya", "maria78am@gmail.com", "San Joaquín de Flores, Heredia", "maria78am", "PassWord", "86225767");
-            Assert.AreEqual(resultado, -6);
+            Assert.AreEqual(resultado, NO_CONTIENE_NUMEROS);
 
         }
 
@@ -203,7 +203,7 @@ namespace CRM_Proyect
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("Daniel", "", "Mendez", "", "Santo Domingo, Heredia", "daniel79m", "", "81245767");
-            Assert.AreEqual(resultado, -9);
+            Assert.AreEqual(resultado, ESPACIO_VACIO);
 
         }
       /*Pruebas para seguridad*/
@@ -335,11 +335,11 @@ namespace CRM_Proyect
 
         [Test]
 
-        public void agregarProducto_AgregarProducto_Returns0()
+        public void agregarProducto_AgregarProducto_ReturnsEXITO_DE_INSERCION()
         {
             var instancia = new ConsultaProducto();
             var resultado = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "300000");
-            Assert.AreEqual(resultado, 0);
+            Assert.AreEqual(resultado, EXITO_DE_INSERCION);
 
         }
 
@@ -349,7 +349,7 @@ namespace CRM_Proyect
          {
              var instancia = new Controlador();
              var resultado = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "30a00o");
-             Assert.AreEqual(resultado, -7);
+             Assert.AreEqual(resultado, DATO_NO_NUMERICO);
 
          }
 
@@ -420,21 +420,21 @@ namespace CRM_Proyect
 
         [Test]
 
-        public void insertarProductoAPropuesta_InsertarProductoAPropuesta_Returns0()
+        public void insertarProductoAPropuesta_InsertarProductoAPropuesta_ReturnsEXITO_DE_INSERCION()
         {
             var instancia = new ConsultaPropuestaVenta();
             var resultado = instancia.insertarProductoAPropuesta(2);
-            Assert.AreEqual(resultado, 0);
+            Assert.AreEqual(resultado, EXITO_DE_INSERCION);
 
         }
 
         [Test]
 
-        public void crearPropuestaVenta_CrearPropuestaDeVenta_Returns0()
+        public void crearPropuestaVenta_CrearPropuestaDeVenta_ReturnsEXITO_DE_INSERCION()
         {
             var instancia = new ConsultaPropuestaVenta();
             var resultado = instancia.crearPropuestaVenta("5500", "25%", "6%");
-            Assert.AreEqual(resultado, 0);
+            Assert.AreEqual(resultado, EXITO_DE_INSERCION);
 
         }
 
