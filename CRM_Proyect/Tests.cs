@@ -25,393 +25,472 @@ namespace CRM_Proyect
     [TestFixture]
     public class Tests
     {
+        private int EXITO_DE_INSERCION = 0;
+        private int FALLO_DE_INSERCION = -1;
+        private int USUARIO_INVALIDO = 1;
+        private int CORREO_INVALIDO = 2;
+        private int CONTRASEÑA_MUY_CORTA = -2;
+        private int CONTRASEÑA_MUY_LARGA = -4;
+        private int USUARIO_MUY_CORTO = -3;
+        private int NO_CONTIENE_LETRAS = -5;
+        private int NO_CONTIENE_NUMEROS = -6;
+        private int DATO_NO_NUMERICO = -7;
+        private int USUARIO_MUY_LARGO = -8;
+        private int ESPACIO_VACIO = -9;
+
         /*Pruebas para Manejo de Acceso y Usuarios*/
 
         [Test]
-        public void Prueba_Usuario_Contraseña_Validos()
+        public void validarUsuario_UsuarioyContraseñaValidos_ReturnsTrue()
         {
             var instancia = new Consulta();
-            var resultado1 = instancia.validarUsuario("JonaRdrgz", "PassWord123");
-            Assert.AreEqual(resultado1, true);
+            var resultado = instancia.validarUsuario("JonaRdrgz", "PassWord123");
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
-        public void Prueba_Usuario_Registrado_Contraseña_Incorrecta()
+        public void validarUsuario_UsuarioValidoyContraseñaIncorrecta_ReturnsFalse()
         {
             var instancia = new Consulta();
-            var resultado1 = instancia.validarUsuario("JonaRdrgz", "PassIncorrecta");
-            Assert.AreEqual(resultado1, false);
+            var resultado = instancia.validarUsuario("JonaRdrgz", "PassIncorrecta");
+            Assert.AreEqual(resultado, false);
 
         }
 
         [Test]
-        public void Prueba_Usuario_Invalido_Contraseña_Correcta()
+        public void validarUsuario_UsuarioInvalidoyContraseñaCorrecta_ReturnsFalse()
         {
             var instancia = new Consulta();
-            var resultado1 = instancia.validarUsuario("Jona", "PassWord123");
-            Assert.AreEqual(resultado1, false);
+            var resultado = instancia.validarUsuario("Jona", "PassWord123");
+            Assert.AreEqual(resultado, false);
 
         }
 
         [Test]
-        public void Prueba_Verificar_Correo()
+        public void validarCorreo_VerificarCorreoExistente_ReturnsTrue()
         {
             var instancia = new InsertarUsuario();
-            // var resultado1 = instancia.validarCorreo("rocio.com");
-            var resultado1 = instancia.InsertarUsuarioBD("Rocío", "Hidalgo", "Rodríguez", "rocio.com", "Bebedero 400 oeste del Restaurante Tiquicia", "rociohr", "rociohr1308g", "88197746");
-            Assert.AreEqual(resultado1, false);
+            var resultado = instancia.validarCorreo("francAlv@gmail.com");
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
-        public void Prueba_Verificar_Usuario_Existente()
+        public void validarCorreo_VerificarCorreoNoExistente_ReturnsFalse()
         {
             var instancia = new InsertarUsuario();
-            var resultado1 = instancia.validarUsuario("JonaRdrgz");
-            Assert.AreEqual(resultado1, true);
+
+            var resultado = instancia.validarCorreo("rocio1308@gmail.com");
+            Assert.AreEqual(resultado, false);
 
         }
 
+
         [Test]
-        public void Prueba_Registrar_Usuario()
+        public void validarUsuario_VerificarUsuarioExistente_ReturnsTrue()
         {
             var instancia = new InsertarUsuario();
-            var resultado1 = instancia.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez", "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
-            Assert.AreEqual(resultado1, 0);
-
-        }
-        [Test]
-        public void Prueba_Contraseña_Corta()
-        {
-            var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "gab13", "84167767");
-            Assert.AreEqual(resultado1, -2);
+            var resultado = instancia.validarUsuario("JonaRdrgz");
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
-        public void Prueba_Contraseña_Muy_Larga()
+        public void InsertarUsuarioBD_RegistrarUsuarioCorrecto_Returns0()
         {
-            var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Alejandra", "Carranza", "Chaves", "alecarranza04@gmail.com", "San Antonio,Escazú", "ale56cc", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "85169767");
-            Assert.AreEqual(resultado1, -4);
+            var instancia = new InsertarUsuario();
+            var resultado = instancia.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez", "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
+            Assert.AreEqual(resultado, 0);
 
         }
 
         [Test]
-        public void Prueba_Usuario_Muy_Corto()
+        public void InsertarUsuarioBD_RegistrarUsuarioIncorrecto_ReturnsFALLO_DE_INSERCION(){
+        	//Usuario no deberia poder registrarse con un nombre de usuario que ya existe: "JonaRdrgz"
+            var instancia = new InsertarUsuario();
+            var resultado = instancia.InsertarUsuarioBD("Andrés", "Jiménez", "Molina", "andresjm@gmail.com", "San Rafael Abajo, Desamparados", "JonaRdrgz", "andresjm0508jt", "87137547");
+            Assert.AreEqual(resultado, FALLO_DE_INSERCION);
+
+        }
+
+
+    [Test]
+    public void insertarEmpresa_RegistrarEmpresaCorrecto_ReturnsEXITO_DE_INSERCION()
         {
-            var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Jonnathan", "Perez", "Picado", "jonapicado@gmail.com", "San Rafael Arriba, Desamparados", "Jona", "jona45pp", "82145767");
-            Assert.AreEqual(resultado1, -3);
+        	
+            var instancia = new InsertarUsuario();
+            var resultado = instancia.insertarEmpresa("Samsung", "samsungcr@gmail.com", "Sabana Oeste", "22288929", "samsungcr", "samsung2510");
+            Assert.AreEqual(resultado, 0);
+
+        }
+
+    [Test]
+    public void InsertarEmpresa_RegistrarEmpresaIncorrecto_ReturnsFALLO_DE_INSERCION()
+            {
+        	    //Poner nombre de usuario que ya existe en la base
+                var instancia = new InsertarUsuario();
+                var resultado = instancia.insertarEmpresa("Digitel", "digitelcr@gmail.com", "San Pedro", "22482879", "intelcr", "samsung2510");
+                Assert.AreEqual(resultado, -1);
+
+            }
+
+        [Test]
+        public void insertarUsuario_ContraseñaMuyCorta_ReturnsCONTRASEÑA_MUY_CORTA()
+          {
+                 var instancia = new Controlador();
+                 var resultado = instancia.insertarUsuario("Gabriel", "Hernández", "Picado", "gabrielhp@gmail.com", "San Rafael Abajo, Desamparados", "gabo13hp", "gab13", "84167767");
+                 Assert.AreEqual(resultado, -2);
 
         }
 
         [Test]
-        public void Prueba_Usuario_Muy_Largo()
+        public void insertarUsuario_ContraseñaMuyLarga_ReturnsCONTRASEÑA_MUY_LARGA()
         {
-            var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
-            Assert.AreEqual(resultado1, -8);
+                  var instancia = new Controlador();
+                  var resultado = instancia.insertarUsuario("Alejandra", "Carranza", "Chaves", "alecarranza04@gmail.com", "San Antonio,Escazú", "ale56cc", "Esta_es_una_contraseña_muy_larga_para_pruebas_solamente", "85169767");
+                  Assert.AreEqual(resultado, -4);
 
         }
 
         [Test]
-        public void Prueba_Verificar_Telefono()
+        public void insertarUsuario_UsuarioMuyCorto_ReturnsUSUARIO_MUY_CORTO()
+        {
+                var instancia = new Controlador();
+                var resultado = instancia.insertarUsuario("Jonnathan", "Perez", "Picado", "jonapicado@gmail.com", "San Rafael Arriba, Desamparados", "Jona", "jona45pp", "82145767");
+                Assert.AreEqual(resultado, -3);
+
+                }
+
+        [Test]
+        public void insertarUsuario_UsuarioMuyLargo_ReturnsUSUARIO_MUY_LARGO()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "sandra15cc", "sandra15hp", "2a2b8h2o");
-            Assert.AreEqual(resultado1, -7);
+            var resultado = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
+            Assert.AreEqual(resultado, -8);
 
         }
 
         [Test]
-        public void Prueba_Contraseña_Sin_Letras()
+        public void insertarUsuario_FormatoTelefonoNoNumerico_ReturnsDATO_NO_NUMERICO()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Liza", "Fernández", "Parajeles", "lizach07@gmail.com", "Sabanilla, San Pedro", "lizchv07", "987987904", "85187797");
-            Assert.AreEqual(resultado1, -5);
+            var resultado = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "sandra15cc", "sandra15hp", "2a2b8h2o");
+            Assert.AreEqual(resultado, -7);
 
         }
 
         [Test]
-        public void Prueba_Contraseña_Con_Numeros()
+        public void insertarUsuario_ContraseñaNoTieneLetras_ReturnsNO_CONTIENE_LETRAS()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("María", "Arce", "Montoya", "maria78am@gmail.com", "San Joaquín de Flores, Heredia", "maria78am", "PassWord", "86225767");
-            Assert.AreEqual(resultado1, -6);
+            var resultado = instancia.insertarUsuario("Liza", "Fernández", "Parajeles", "lizach07@gmail.com", "Sabanilla, San Pedro", "lizchv07", "987987904", "85187797");
+            Assert.AreEqual(resultado, -5);
 
         }
 
         [Test]
-        public void Prueba_Espacios_Vacios()
+        public void insertarUsuario_ContraseñaNoTieneNumeros_ReturnsNO_CONTIENE_NUMEROS()
         {
             var instancia = new Controlador();
-            var resultado1 = instancia.insertarUsuario("Daniel", "", "Mendez", " ", "Santo Domingo, Heredia", "daniel79m", "", "81245767");
-            Assert.AreEqual(resultado1, -9);
+            var resultado = instancia.insertarUsuario("María", "Arce", "Montoya", "maria78am@gmail.com", "San Joaquín de Flores, Heredia", "maria78am", "PassWord", "86225767");
+            Assert.AreEqual(resultado, -6);
 
         }
 
+        [Test]
+        public void insertarUsuario_VerificarEspaciosVacios_ReturnsESPACIO_VACIO()
+        {
+            var instancia = new Controlador();
+            var resultado = instancia.insertarUsuario("Daniel", "", "Mendez", "", "Santo Domingo, Heredia", "daniel79m", "", "81245767");
+            Assert.AreEqual(resultado, -9);
+
+        }
+      /*Pruebas para seguridad*/
+
+     	/*[Test]
+        public void encriptar_EncriptarContraseñaCorrecto_()
+        {
+            var instancia = new Seguridad();
+            var resultado = instancia.encriptar("steven22mc");
+
+            Assert.AreEqual(resultado,);
+
+        }
+
+        [Test]
+        public void Encriptar_Contraseña_Incorrecto()
+        {
+            var instancia = new Seguridad();
+            var resultado = instancia.encriptar("");
+            Assert.AreEqual(resultado, "No se pudo encriptar la contraseña");
+
+        }
+
+        [Test]
+        public void Desencriptar_Contraseña()
+        {
+            var instancia = new Consulta();
+            instancia.setIdUsuarioActual(1);
+            var resultado = instancia.registarContactoPersona(1);
+            Assert.AreEqual(resultado, true);
+
+        }*/
 
         /*Pruebas para el manejo de contactos*/
 
         [Test]
-        public void Prueba_Agregar_Contacto()
+        public void registrarContactoPersona_AgregarContactoPersona_ReturnsTrue()
         {
             var instancia = new Consulta();
             instancia.setIdUsuarioActual(1);
-            var resultado1 = instancia.registarContactoPersona(1);
-            Assert.AreEqual(resultado1, true);
+            var resultado = instancia.registarContactoPersona(1);
+            Assert.AreEqual(resultado, true);
+        }
+
+        [Test]
+        public void registrarContactoEmpresa_AgregarContactoEmpresa_ReturnsTrue()
+        {
+            var instancia = new Consulta();
+            instancia.setIdUsuarioActual(1);
+            var resultado = instancia.registarContactoEmpresa(2);
+            Assert.AreEqual(resultado, true);
+
+        }
+        [Test]
+        public void borrarContacto_BorrarContactoPersona_ReturnsTrue()
+        {
+            var instancia = new Consulta();
+            instancia.setIdUsuarioActual(1);
+            var resultado = instancia.borrarContacto(2);
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
-        public void Prueba_Agregar_Empresa()
+        public void borrarContactoEmpresa_BorrarContactoEmpresas_ReturnsTrue()
         {
             var instancia = new Consulta();
             instancia.setIdUsuarioActual(1);
-            var resultado1 = instancia.registarContactoEmpresa(2);
-            Assert.AreEqual(resultado1, true);
-
-        }
-        [Test]
-        public void Prueba_Borrar_Contacto()
-        {
-            var instancia = new Consulta();
-            instancia.setIdUsuarioActual(1);
-            var resultado1 = instancia.borrarContacto(2);
-            Assert.AreEqual(resultado1, true);
-
-        }
-
-        [Test]
-        public void Prueba_Borrar_Contacto_Empresas()
-        {
-            var instancia = new Consulta();
-            instancia.setIdUsuarioActual(1);
-            var resultado1 = instancia.borrarContactoEmpresa(2);
-            Assert.AreEqual(resultado1, true);
+            var resultado = instancia.borrarContactoEmpresa(2);
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
 
-        public void Prueba_ObtenerContactosPersonas()
+        public void obtenerContactoPersonas_ObtenerContactosPersonas_ReturnsList<Usuario>()
         {
             var instancia = new Consulta();
-
-            var resultado1 = instancia.obtenerContactoPersonas();
+            var resultado = instancia.obtenerContactoPersonas();
             List<Usuario> lista = new List<Usuario>();
-            Assert.AreEqual(resultado1, lista);
+            Assert.AreEqual(resultado, lista);
 
         }
 
         [Test]
 
-        public void Prueba_ObtenerContactosEmpresas()
+        public void obtenerContactoEmpresas_ObtenerContactosEmpresas_ReturnsList<Empresa>()
         {
             var instancia = new Consulta();
-
-            var resultado1 = instancia.obtenerContactoEmpresas();
+            var resultado = instancia.obtenerContactoEmpresas();
             List<Empresa> lista = new List<Empresa>();
-            Assert.AreEqual(resultado1, lista);
+            Assert.AreEqual(resultado, lista);
 
         }
 
-        /*Pruebas de portabilidad*/
+/*Pruebas de portabilidad*/
 
-        /* [Test]
-         public void Inicializar_Firefox() {
-             FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"C:\Users\Administrador\Desktop\geckodriver-v0.18.0-win64", "geckodriver.exe");
+/* [Test]
+ public void Inicializar_Firefox() {
+     FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(@"C:\Users\Administrador\Desktop\geckodriver-v0.18.0-win64", "geckodriver.exe");
 
-             //Give the path of the Firefox Browser        
-             service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+     //Give the path of the Firefox Browser        
+     service.FirefoxBinaryPath = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
 
-             IWebDriver driver = new FirefoxDriver(service);
+     IWebDriver driver = new FirefoxDriver(service);
 
-             var instancia = new Consulta();
-             instancia.iniciarConexion();
-             driver.Navigate().GoToUrl("http://localhost:56374/pages/examples/login.aspx");
+     var instancia = new Consulta();
+     instancia.iniciarConexion();
+     driver.Navigate().GoToUrl("http://localhost:56374/pages/examples/login.aspx");
 
-         }*/
+ }*/
 
-        /*[Test]
-         public void Inicializar_Chrome()
-        {
-            ChromeDriverService service = ChromeDriverService.CreateDefaultService(@"C:\Users\Administrador\Desktop\geckodriver-v0.18.0-win64", "geckodriver.exe");
+/*[Test]
+ public void Inicializar_Chrome()
+{
+    ChromeDriverService service = ChromeDriverService.CreateDefaultService(@"C:\Users\Administrador\Desktop\geckodriver-v0.18.0-win64", "geckodriver.exe");
 
-            //Give the path of the Firefox Browser        
-            service. = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
+    //Give the path of the Firefox Browser        
+    service. = @"C:\Program Files (x86)\Mozilla Firefox\firefox.exe";
 
-            IWebDriver driver = new FirefoxDriver(service);
+    IWebDriver driver = new FirefoxDriver(service);
 
-            driver.Navigate().GoToUrl("http://localhost:56374/pages/examples/login.aspx");
+    driver.Navigate().GoToUrl("http://localhost:56374/pages/examples/login.aspx");
 
-        }*/
+}*/
 
 
-        /*Pruebas para Productos*/
-
-        [Test]
-
-        public void Prueba_Agregar_Producto()
-        {
-            var instancia = new ConsultaProducto();
-            var resultado1 = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "300000");
-            Assert.AreEqual(resultado1, 0);
-
-        }
+/*Pruebas para Productos*/
 
         [Test]
 
-        public void Prueba_Verificar_Precio()
+        public void agregarProducto_AgregarProducto_Returns0()
         {
             var instancia = new ConsultaProducto();
-            var resultado1 = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "30a00o");
-            Assert.AreEqual(resultado1, -7);
-
-        }
-
-
-        [Test]
-
-        public void Prueba_Obtener_Productos()
-        {
-            var instancia = new ConsultaProducto();
-            List<Producto> lista = new List<Producto>();
-            var resultado1 = instancia.obtenerProductos();
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "300000");
+            Assert.AreEqual(resultado, 0);
 
         }
 
         [Test]
 
-        public void Prueba_Borrar_Producto()
-        {
-            var instancia = new ConsultaProducto();
+        public void agregarProducto_FormatoPrecioNoNumerico_ReturnsDATO_NO_NUMERICO()
+         {
+             var instancia = new Controlador();
+             var resultado = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "30a00o");
+             Assert.AreEqual(resultado, -7);
 
-            var resultado1 = instancia.borrarProducto(2);
-            Assert.AreEqual(resultado1, true);
+         }
 
-        }
 
         [Test]
 
-        public void Prueba_Obtener_Productos_Disponibles()
+        public void obtenerProductos_ObtenerProductos_ReturnsList<Producto>()
         {
             var instancia = new ConsultaProducto();
             List<Producto> lista = new List<Producto>();
-            var resultado1 = instancia.obtenerProductosDisponibles();
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.obtenerProductos();
+            Assert.AreEqual(resultado, lista);
 
         }
 
         [Test]
 
-        public void Prueba_Agregar_Al_Carrito()
+        public void borrarProducto_BorrarProducto_ReturnsTrue()
         {
             var instancia = new ConsultaProducto();
-            var resultado1 = instancia.agregarAlCarrito(3);
-            Assert.AreEqual(resultado1, true);
+            var resultado = instancia.borrarProducto(2);
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
 
-        public void Prueba_Obtener_Productos_Carrito()
+        public void obtenerProductosDisponibles_ObtenerProductosDisponibles_ReturnsList<Producto>()
         {
             var instancia = new ConsultaProducto();
             List<Producto> lista = new List<Producto>();
-            var resultado1 = instancia.obtenerProductosCarrito();
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.obtenerProductosDisponibles();
+            Assert.AreEqual(resultado, lista);
 
         }
 
         [Test]
 
-        public void Prueba_Eliminar_Del_Carrito()
+        public void agregarAlCarrito_AgregarAlCarritoDeVentas_ReturnsTrue()
         {
             var instancia = new ConsultaProducto();
-            var resultado1 = instancia.eliminarDelCarrito(3);
-            Assert.AreEqual(resultado1, true);
-
+            var resultado = instancia.agregarAlCarrito(3);
+            Assert.AreEqual(resultado, true);
         }
-
-        /*Pruebas para Propuestas de Ventas*/
 
         [Test]
 
-        public void Prueba_InsertarProductoAPropuesta()
+        public void obtenerProductosCarrito_ObtenerProductosDeCarritoDeVentas_ReturnsList<Producto>()
+        {
+            var instancia = new ConsultaProducto();
+            List<Producto> lista = new List<Producto>();
+            var resultado = instancia.obtenerProductosCarrito();
+            Assert.AreEqual(resultado, lista);
+
+        }
+
+        [Test]
+
+        public void eliminarDelCarrito_EliminarDelCarritoDeVentas_ReturnsTrue()
+        {
+            var instancia = new ConsultaProducto();
+            var resultado = instancia.eliminarDelCarrito(3);
+            Assert.AreEqual(resultado, true);
+
+        }
+
+/*Pruebas para Propuestas de Ventas*/
+
+        [Test]
+
+        public void insertarProductoAPropuesta_InsertarProductoAPropuesta_Returns0()
         {
             var instancia = new ConsultaPropuestaVenta();
-            var resultado1 = instancia.insertarProductoAPropuesta(2);
-            Assert.AreEqual(resultado1, 0);
+            var resultado = instancia.insertarProductoAPropuesta(2);
+            Assert.AreEqual(resultado, 0);
 
         }
+
         [Test]
 
-        public void Prueba_Crear_Propuesta_De_Venta()
+        public void crearPropuestaVenta_CrearPropuestaDeVenta_Returns0()
         {
             var instancia = new ConsultaPropuestaVenta();
-            var resultado1 = instancia.crearPropuestaVenta("5500", "25%", "6%");
-            Assert.AreEqual(resultado1, 0);
+            var resultado = instancia.crearPropuestaVenta("5500", "25%", "6%");
+            Assert.AreEqual(resultado, 0);
 
         }
 
         [Test]
 
-        public void Prueba_VerificarNumeroProductosCarrito()
+        public void verificarNumeroProductosCarrito_VerificarNumeroProductosCarrito_ReturnsTrue()
         {
             var instancia = new ConsultaPropuestaVenta();
-            var resultado1 = instancia.verificarNumeroProductosCarrito();
-            Assert.AreEqual(resultado1, true);
+            var resultado = instancia.verificarNumeroProductosCarrito();
+            Assert.AreEqual(resultado, true);
 
         }
 
         [Test]
 
-        public void Prueba_Obtener_Propuestas_Venta()
+        public void obtenerPropuestasVenta_ObtenerPropuestasDeVenta_ReturnsList<PropuestasVenta>()
         {
             var instancia = new ConsultaPropuestaVenta();
             List<PropuestasVenta> lista = new List<PropuestasVenta>();
-            var resultado1 = instancia.obtenerPropuestasVenta();
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.obtenerPropuestasVenta();
+            Assert.AreEqual(resultado, lista);
 
         }
 
         [Test]
 
-        public void Prueba_Ver_Productos_Propuesta()
+        public void verProductosPropuesta_VerProductosPropuesta_ReturnsList<Producto>()
         {
             var instancia = new ConsultaPropuestaVenta();
             List<Producto> lista = new List<Producto>();
-            var resultado1 = instancia.verProductosPropuesta(3);
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.verProductosPropuesta(3);
+            Assert.AreEqual(resultado, lista);
 
         }
 
-        /*Pruebas comentarios de propuestas de ventas*/
+/*Pruebas comentarios de propuestas de ventas*/
 
         [Test]
 
-        public void Prueba_Ver_Comentarios_Propuesta()
+        public void verComentariosPropuesta_VerComentariosPropuesta_ReturnsList<Comentario>()
         {
             var instancia = new ConsultaComentario();
             List<Comentario> lista = new List<Comentario>();
-            var resultado1 = instancia.verComentariosPropuesta(1);
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.verComentariosPropuesta(1);
+            Assert.AreEqual(resultado, lista);
 
         }
 
         [Test]
 
-        public void Prueba_Ver_Comentarios_Empresas_Propuesta()
+        public void verComentariosEmpresasPropuesta_VerComentariosEmpresasPropuesta_ReturnsList<Comentario>()
         {
             var instancia = new ConsultaComentario();
             List<Comentario> lista = new List<Comentario>();
-            var resultado1 = instancia.verComentariosEmpresasPropuesta(2);
-            Assert.AreEqual(resultado1, lista);
+            var resultado = instancia.verComentariosEmpresasPropuesta(2);
+            Assert.AreEqual(resultado, lista);
 
         }
 
