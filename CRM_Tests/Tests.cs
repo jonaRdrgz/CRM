@@ -205,47 +205,49 @@ namespace CRM_Tests
                 Assert.AreEqual(resultado, ESPACIO_VACIO);
 
             }
-            /*Pruebas para seguridad*/
+        /*Pruebas para seguridad*/
 
-            /*[Test]
-            public void encriptar_EncriptarContraseñaCorrecto_()
+            [Test]
+             public void encriptar_EncriptarContraseñaCadenaNoNula_ReturnsContraseñaEncriptada()
+             {
+                    var resultado = Seguridad.encriptar("950904mc");
+                    Assert.AreEqual(resultado, "OQA1ADAAOQAwADQAbQBjAA==");
+            
+             }
+
+            [Test]
+            public void encriptar_EncriptarContraseñaCadenaNula_ReturnsCadenaNula()
             {
-                var instancia = new Seguridad();
-                var resultado = instancia.encriptar("steven22mc");
-
-                Assert.AreEqual(resultado,);
+                var resultado = Seguridad.encriptar("");
+                Assert.AreEqual(resultado, "");
 
             }
 
             [Test]
-            public void Encriptar_Contraseña_Incorrecto()
-            {
-                var instancia = new Seguridad();
-                var resultado = instancia.encriptar("");
-                Assert.AreEqual(resultado, "No se pudo encriptar la contraseña");
-
-            }
-
-            [Test]
-            public void Desencriptar_Contraseña()
-            {
-                var instancia = new Consulta();
-                instancia.setIdUsuarioActual(1);
-                var resultado = instancia.registarContactoPersona(1);
-                Assert.AreEqual(resultado, true);
-
-            }*/
+                public void desEncriptar_DesencriptarContraseñaCadenaNoNula_ReturnsContraseñaDesencriptada()
+                {
+                
+                     var resultado = Seguridad.desEncriptar("OQA1ADAAOQAwADQAbQBjAA==");
+                     Assert.AreEqual(resultado,"950904mc");
+                }
+        
+                [Test]
+                public void desEncriptar_DesencriptarContraseñaCadenaNula_ReturnsCadenaNula()
+                {
+                    var resultado = Seguridad.desEncriptar("");
+                    Assert.AreEqual(resultado, "");
+                }
 
             /*Pruebas para el manejo de contactos*/
 
             [Test]
-            public void registrarContactoPersona_AgregarContactoPersona_ReturnsTrue()
-            {
-                var instancia = new Consulta();
-                instancia.setIdUsuarioActual(1);
-                var resultado = instancia.registarContactoPersona(1);
-                Assert.AreEqual(resultado, true);
-            }
+                public void registrarContactoPersona_AgregarContactoPersona_ReturnsTrue()
+                {
+                    var instancia = new Consulta();
+                    instancia.setIdUsuarioActual(1);
+                    var resultado = instancia.registarContactoPersona(1);
+                    Assert.AreEqual(resultado, true);
+                }
 
             [Test]
             public void registrarContactoEmpresa_AgregarContactoEmpresa_ReturnsTrue()
