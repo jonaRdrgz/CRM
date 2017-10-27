@@ -57,8 +57,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests_Manejo_Contactos.cs" />
+    <Compile Include="Tests_Manejo_Usuarios.cs" />
+    <Compile Include="Tests_Productos.cs" />
+    <Compile Include="Tests_Propuestas_Venta.cs" />
+    <Compile Include="Tests_Respuestas_Propuestas_Ventas.cs" />
+    <Compile Include="Tests_Seguridad.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM_Proyect\CRM_Proyect.csproj">
