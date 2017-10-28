@@ -96,9 +96,9 @@ namespace CRM_Tests
         }
 
         [Test]
-        public void InsertarUsuarioBD_RegistrarUsuarioIncorrecto_ReturnsFallo_De_Insercion()
+        public void InsertarUsuarioBD_RegistrarUsuarioConUsuarioExistente_ReturnsFallo_De_Insercion()
         {
-            //Usuario no deberia poder registrarse con un nombre de usuario que ya existe: "JonaRdrgz"
+            
             var instancia = new InsertarUsuario();
             var resultado = instancia.InsertarUsuarioBD("Andrés", "Jiménez", "Molina", "andresjm@gmail.com", "San Rafael Abajo, Desamparados", "JonaRdrgz", "andresjm0508jt", "87137547");
             Assert.AreEqual(resultado, Fallo_De_Insercion);
@@ -117,9 +117,9 @@ namespace CRM_Tests
         }
 
         [Test]
-        public void InsertarEmpresa_RegistrarEmpresaIncorrecto_ReturnsFallo_De_Insercion()
+        public void InsertarEmpresa_RegistrarEmpresaConNombreDeUsuarioExistente_ReturnsFallo_De_Insercion()
         {
-            //Poner nombre de usuario que ya existe en la base
+            
             var instancia = new InsertarUsuario();
             var resultado = instancia.insertarEmpresa("Digitel", "digitelcr@gmail.com", "San Pedro", "22482879", "intelcr", "samsung2510");
             Assert.AreEqual(resultado, Fallo_De_Insercion);
@@ -163,7 +163,7 @@ namespace CRM_Tests
         }
 
         [Test]
-        public void insertarUsuario_FormatoTelefonoNoNumerico_ReturnsDato_No_Numerico()
+        public void insertarUsuario_TelefonoNoNumerico_ReturnsDato_No_Numerico()
         {
             var instancia = new Controlador();
             var resultado = instancia.insertarUsuario("Sandra", "Hernández", "Pizarro", "sandrahp05@gmail.com", "El Carmen, Escazú", "sandra15cc", "sandra15hp", "2a2b8h2o");
