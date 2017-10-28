@@ -201,7 +201,7 @@ public class Controlador{
             return DESCRIPCION_MUY_LARGO;
 
         }
-        else if (precio.Length == 0 && descripcion.Length == 0 && precio.Length ==0) {
+        else if (precio.Length == 0 || descripcion.Length == 0 || precio.Length ==0) {
             return DATO_VACIO;
 
         }

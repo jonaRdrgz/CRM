@@ -12769,6 +12769,13 @@
     <Content Include="Vista\index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\ClassTest\IConexion.cs" />
+    <Compile Include="Modelo\ClassTest\IConsulta.cs" />
+    <Compile Include="Modelo\ClassTest\IConsultaProducto.cs" />
+    <Compile Include="Modelo\ClassTest\IInsertarUsuario.cs" />
+    <Compile Include="Modelo\ClassTest\IPropuestaVenta.cs" />
+    <Compile Include="Modelo\ClassTest\IVenta.cs" />
+    <Compile Include="Modelo\Conexion.cs" />
     <Compile Include="Vista\CrearVenta.aspx.cs">
       <DependentUpon>CrearVenta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

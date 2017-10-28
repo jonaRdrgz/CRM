@@ -16,9 +16,11 @@ using System.Linq;
 using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using CRM_Proyect.Modelo.ClassTest;
+
 namespace CRM_Proyect.Modelo
 {
-    public class ConsultaPropuestaVenta
+    public class ConsultaPropuestaVenta : IPropuestaVenta
     {
 
         private int EXITO_DE_INSERCION = 0;

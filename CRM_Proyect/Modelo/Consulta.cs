@@ -17,13 +17,12 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo;
-using System.Web.SessionState;
 
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-public class Consulta
+public class Consulta: IConsulta
 
 {
 
@@ -79,7 +78,7 @@ public class Consulta
         MySqlCommand instruccion = conexion.CreateCommand();
         string contrasenaDb = null;
         instruccion.CommandText = "call obtenerContrasena('" + usuario + "')";
-
+   
         try {
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())

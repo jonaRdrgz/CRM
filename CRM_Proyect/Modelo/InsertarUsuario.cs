@@ -16,10 +16,11 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo;
+using CRM_Proyect.Modelo.ClassTest;
 
 
 
-public class InsertarUsuario
+public class InsertarUsuario : IInsertarUsuario
     {
         private int EXITO_DE_INSERCION = 0;
         private int FALLO_DE_INSERCION = -1;

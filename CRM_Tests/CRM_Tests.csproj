@@ -38,11 +38,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +64,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Fakes\FakeConsulta.cs" />
+    <Compile Include="Fakes\FakeConsultaProducto.cs" />
+    <Compile Include="Fakes\FakeInsertarUsuario.cs" />
+    <Compile Include="Fakes\FakePropuestaVenta.cs" />
+    <Compile Include="Fakes\FakeVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests_Manejo_Contactos.cs" />
     <Compile Include="Tests_Manejo_Usuarios.cs" />
@@ -65,6 +77,11 @@
     <Compile Include="Tests_Respuestas_Propuestas_Ventas.cs" />
     <Compile Include="Tests_Seguridad.cs" />
     <Compile Include="Tests_Ventas.cs" />
+    <Compile Include="Test_Conexion.cs" />
+    <Compile Include="ValidadorDatosUsuario.cs" />
+    <Compile Include="ValidadorProductos.cs" />
+    <Compile Include="ValidadorPropuestaVenta.cs" />
+    <Compile Include="ValidadorVenta.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM_Proyect\CRM_Proyect.csproj">

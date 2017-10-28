@@ -10,9 +10,13 @@
  *	Edwin Cen Xu
  */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using MySql.Data.MySqlClient;
 using NUnit.Framework;
-
-
+using CRM_Tests.Fakes;
 namespace CRM_Tests
 {
     [TestFixture]
@@ -34,8 +38,8 @@ namespace CRM_Tests
         [Test]
         public void validarUsuario_UsuarioyContraseñaValidos_ReturnsTrue()
         {
-            var instancia = new Consulta();
-            var resultado = instancia.validarUsuario("JonaRdrgz", "PassWord123");
+            FakeConsulta instancia = new FakeConsulta();
+            var resultado = instancia.validarUsuario("JonaRdrgz", "1234567p");
             Assert.AreEqual(resultado, true);
 
         }
@@ -43,7 +47,7 @@ namespace CRM_Tests
         [Test]
         public void validarUsuario_UsuarioValidoyContraseñaIncorrecta_ReturnsFalse()
         {
-            var instancia = new Consulta();
+            var instancia = new FakeConsulta();
             var resultado = instancia.validarUsuario("JonaRdrgz", "PassIncorrecta");
             Assert.AreEqual(resultado, false);
 
@@ -52,7 +56,7 @@ namespace CRM_Tests
         [Test]
         public void validarUsuario_UsuarioInvalidoyContraseñaCorrecta_ReturnsFalse()
         {
-            var instancia = new Consulta();
+            var instancia = new FakeConsulta();
             var resultado = instancia.validarUsuario("Jona", "PassWord123");
             Assert.AreEqual(resultado, false);
 
@@ -61,8 +65,10 @@ namespace CRM_Tests
         [Test]
         public void validarCorreo_VerificarCorreoExistente_ReturnsTrue()
         {
-            var instancia = new InsertarUsuario();
-            var resultado = instancia.validarCorreo("melimolinacorrales@gmail.com");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.debeResponder = true;
+            ValidadorDatosUsuario correo = new ValidadorDatosUsuario(fakeManager);
+            Boolean resultado = correo.validarCorreo("melimolinacorrales@gmail.com");
             Assert.AreEqual(resultado, true);
 
         }
@@ -70,9 +76,10 @@ namespace CRM_Tests
         [Test]
         public void validarCorreo_VerificarCorreoNoExistente_ReturnsFalse()
         {
-            var instancia = new InsertarUsuario();
-
-            var resultado = instancia.validarCorreo("rocio1308@gmail.com");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.debeResponder = false;
+            ValidadorDatosUsuario correo = new ValidadorDatosUsuario(fakeManager);
+            Boolean resultado = correo.validarCorreo("maria@gmail.com");
             Assert.AreEqual(resultado, false);
 
         }
@@ -80,8 +87,10 @@ namespace CRM_Tests
         [Test]
         public void validarUsuario_VerificarUsuarioExistente_ReturnsTrue()
         {
-            var instancia = new InsertarUsuario();
-            var resultado = instancia.validarUsuario("JonaRdrgz");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.debeResponder = true;
+            ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
+            Boolean resultado = usuario.validarUsuario("JonaRdrgz");
             Assert.AreEqual(resultado, true);
 
         }
@@ -89,18 +98,23 @@ namespace CRM_Tests
         [Test]
         public void InsertarUsuarioBD_RegistrarUsuarioCorrecto_ReturnsExito_De_Insercion()
         {
-            var instancia = new InsertarUsuario();
-            var resultado = instancia.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez", "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.resultadoExitoso = 0;
+            ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
+            int  resultado = usuario.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez",
+                "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
             Assert.AreEqual(resultado, Exito_De_Insercion);
-
         }
 
         [Test]
         public void InsertarUsuarioBD_RegistrarUsuarioConUsuarioExistente_ReturnsFallo_De_Insercion()
         {
-            
-            var instancia = new InsertarUsuario();
-            var resultado = instancia.InsertarUsuarioBD("Andrés", "Jiménez", "Molina", "andresjm@gmail.com", "San Rafael Abajo, Desamparados", "JonaRdrgz", "andresjm0508jt", "87137547");
+
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.resultadoExitoso = -1;
+            ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
+            int resultado = usuario.InsertarUsuarioBD("Carlos", "Gutierrez", "Rodríguez",
+                "carlosgr@gmail.com", "San Rafael Abajo, Desamparados", "carlosgr", "carlosgr0508jt", "85167747");
             Assert.AreEqual(resultado, Fallo_De_Insercion);
 
         }
@@ -110,8 +124,11 @@ namespace CRM_Tests
         public void insertarEmpresa_RegistrarEmpresaCorrecto_ReturnsExito_De_Insercion()
         {
 
-            var instancia = new InsertarUsuario();
-            var resultado = instancia.insertarEmpresa("Samsung", "samsungcr@gmail.com", "Sabana Oeste", "22288929", "samsungcr", "samsung2510");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.resultadoExitoso = 0;
+            ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
+            int resultado = usuario.insertarEmpresa("Samsung", "samsungcr@gmail.com", "Sabana Oeste", "22288929", 
+                "samsungcr", "samsung2510");
             Assert.AreEqual(resultado, Exito_De_Insercion);
 
         }
@@ -121,7 +138,11 @@ namespace CRM_Tests
         {
             
             var instancia = new InsertarUsuario();
-            var resultado = instancia.insertarEmpresa("Digitel", "digitelcr@gmail.com", "San Pedro", "22482879", "intelcr", "samsung2510");
+            FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
+            fakeManager.resultadoExitoso = -1;
+            ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
+            int resultado = usuario.insertarEmpresa("Digitel", "digitelcr@gmail.com", "San Pedro", "22482879", 
+                "intelcr", "samsung2510");
             Assert.AreEqual(resultado, Fallo_De_Insercion);
 
         }
@@ -193,7 +214,7 @@ namespace CRM_Tests
         public void insertarUsuario_VerificarEspaciosVacios_ReturnsEspacio_Vacio()
         {
             var instancia = new Controlador();
-            var resultado = instancia.insertarUsuario("Daniel", "", "Mendez", "", "Santo Domingo, Heredia", "daniel79m", "", "81245767");
+            var resultado = instancia.insertarUsuario("Daniel", "", "", "", "Santo Domingo, Heredia", "daniel79m", "daniel79m", "81245767");
             Assert.AreEqual(resultado, Espacio_Vacio);
 
         }
