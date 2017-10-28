@@ -64,6 +64,7 @@
     <Compile Include="Tests_Propuestas_Venta.cs" />
     <Compile Include="Tests_Respuestas_Propuestas_Ventas.cs" />
     <Compile Include="Tests_Seguridad.cs" />
+    <Compile Include="Tests_Ventas.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CRM_Proyect\CRM_Proyect.csproj">

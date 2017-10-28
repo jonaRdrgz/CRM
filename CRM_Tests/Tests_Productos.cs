@@ -16,7 +16,7 @@ namespace CRM_Tests
 
         [Test]
 
-        public void agregarProducto_AgregarProducto_ReturnsExito_De_Insercion()
+        public void agregarProducto_AgregarProductoCorrecto_ReturnsExito_De_Insercion()
         {
             var instancia = new ConsultaProducto();
             var resultado = instancia.agregarProducto("Computadora DELL", "Computadora DELL LATITUDE E6410", "300000");
