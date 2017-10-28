@@ -264,7 +264,7 @@ public class Controlador{
         {
             return "Comision debe ser numérico";
         }
-        else if (descuento.Length > 11)
+        else if (comision.Length > 11)
         {
             return "Comision debe tener como máximo 11 dígitos";
         }
