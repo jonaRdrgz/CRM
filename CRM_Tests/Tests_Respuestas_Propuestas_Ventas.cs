@@ -1,4 +1,14 @@
-﻿
+﻿/**
+ *	Clase Tests_Respuestas_Propuestas_Ventas
+ *	
+ *	Version 1.0
+ *	
+ *	26/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
 using System.Collections.Generic;
 using NUnit.Framework;
 using CRM_Proyect.Modelo;

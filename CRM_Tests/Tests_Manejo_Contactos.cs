@@ -1,4 +1,16 @@
-﻿using System.Collections.Generic;
+﻿/**
+ *	Clase Tests_Manejo_Contactos
+ *	
+ *	Version 1.0
+ *	
+ *	22/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using System.Collections.Generic;
 using NUnit.Framework;
 
 

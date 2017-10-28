@@ -1,4 +1,14 @@
-﻿
+﻿/**
+ *	Clase Tests_Seguridad
+ *	
+ *	Version 1.0
+ *	
+ *	25/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
 using NUnit.Framework;
 using CRM_Proyect.Modelo;
 

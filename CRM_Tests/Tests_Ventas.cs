@@ -1,8 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+ *	Clase Tests_Ventas
+ *	
+ *	Version 1.0
+ *	
+ *	27/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
 using NUnit.Framework;
 using CRM_Proyect.Modelo;
 
