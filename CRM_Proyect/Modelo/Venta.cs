@@ -20,7 +20,7 @@ namespace CRM_Proyect.Modelo
     public class Venta
     {
         public Venta(String productos, String fecha, String precio, String descuento, String comision,
-            String vendedor ,  String accion)
+            String vendedor ,String comprador,   String accion)
         {
             this.productos = productos;
             this.fecha = fecha;
@@ -29,6 +29,7 @@ namespace CRM_Proyect.Modelo
             this.comision = comision;
             this.accion = accion;
             this.vendedor = vendedor;
+            this.comprador = comprador;
         }
         public String productos { get; set; }
         public String fecha { get; set; }
@@ -36,6 +37,7 @@ namespace CRM_Proyect.Modelo
         public String descuento { get; set; }
         public String comision { get; set; }
         public String vendedor { get; set; }
+        public String comprador { get; set; }
         public String accion { get; set; }
     }
 }

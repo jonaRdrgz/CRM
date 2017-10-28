@@ -21,8 +21,6 @@ namespace CRM_Proyect.Modelo
 {
     public class ConsultaComentario
     {
-        private int EXITO_DE_INSERCION = 0;
-        private int FALLO_DE_INSERCION = -1;
         private MySqlConnection conexion;
         String cadenaDeConexion;
 

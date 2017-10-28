@@ -108,6 +108,15 @@
                   <label for="comision">Comisión</label>
                   <input class="form-control" id="comision">
                 </div> 
+                  <div class="form-group ">
+                    <label class="control-label col-lg-4">Empresa</label>
+                     <div class="col-lg-8">
+                     <select id = "empresa" name = "style" class="form-control m-bot15">
+                     <%obtenerEmpresas(); %> 
+                     </select>
+                     </div>
+
+                    </div>
               </div>
               <!-- /.box-body -->
 

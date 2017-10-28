@@ -58,6 +58,7 @@ public class Controlador{
         }
         return instancia;
     }
+
     public int getTipoCuenta()
     {
         return consultas.getTipoCuenta();
@@ -213,10 +214,12 @@ public class Controlador{
     {
         return producto.obtenerProductos();
     }
+
     public Boolean borrarProducto(int idProducto)
     {
         return producto.borrarProducto(idProducto);
     }
+
     public List<Producto> obtenerProductosDisponibles()
     {
         return producto.obtenerProductosDisponibles();
@@ -226,10 +229,12 @@ public class Controlador{
     {
         return producto.agregarAlCarrito(idProducto);
     }
+
     public List<Producto> obtenerProductosCarrito()
     {
         return producto.obtenerProductosCarrito();
     }
+
     public Boolean eliminarDelCarrito(int idProducto)
     {
         return producto.eliminarDelCarrito(idProducto);
@@ -240,7 +245,7 @@ public class Controlador{
         return Regex.IsMatch(sValue, "^[0-9]+$");
     }
 
-    public string  crearPropuestaVenta(string precio, string descuento, string comision)
+    public string  crearPropuestaVenta(string precio, string descuento, string comision, int idComprador)
     {
         //Validando los parámetros
         if (!IsNumeric(precio))
@@ -269,7 +274,7 @@ public class Controlador{
             return "Comision debe tener como máximo 11 dígitos";
         }
 
-        int resultadoInsercion = propuesta.crearPropuestaVenta(precio, descuento, comision);
+        int resultadoInsercion = propuesta.crearPropuestaVenta(precio, descuento, comision, idComprador);
         switch (resultadoInsercion)
         {
             case PRODUCTOS_INSUFICIENTES:
@@ -286,14 +291,17 @@ public class Controlador{
     {
         return propuesta.obtenerPropuestasVenta();
     }
+
     public List<Producto> verProductosPropuesta(int idPropuesta)
     {
         return propuesta.verProductosPropuesta(idPropuesta);
     }
+
     public List<Comentario> verComentariosPropuesta(int idPropuesta)
     {
         return comentario.verComentariosPropuesta(idPropuesta);
     }
+
     public List<PropuestasVenta> obtenerPropuestasVentaCompra()
     {
         return propuesta.obtenerPropuestasVentaCompra();
@@ -308,6 +316,7 @@ public class Controlador{
     {
         return venta.obtenerVentas();
     }
+
     public List<PropuestasVenta> obtenerPropuestasDeVentaUsuario()
     {
         return propuesta.obtenerPropuestasDeVentaUsuario();
@@ -323,7 +332,7 @@ public class Controlador{
         return propuesta.cambiarRespuesta(idPropuesta, respuesta);
     }
 
-    public string crearVenta(string precio, string descuento, string comision)
+    public string crearVenta(string precio, string descuento, string comision, int idComprador)
     {
         //Validando los parámetros
 
@@ -354,7 +363,7 @@ public class Controlador{
         }
 
         //Query
-        int resultadoInsercion = venta.crearVenta(precio, descuento, comision);
+        int resultadoInsercion = venta.crearVenta(precio, descuento, comision, idComprador);
         switch (resultadoInsercion)
         {
             case PRODUCTOS_INSUFICIENTES:

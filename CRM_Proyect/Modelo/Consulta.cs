@@ -153,7 +153,7 @@ public class Consulta
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                listaEmpresas.Add(new Empresa(reader["Nombre"].ToString(),  reader["Direccion"].ToString(), reader["correo"].ToString(),
+                listaEmpresas.Add(new Empresa((int)reader["id"],reader["Nombre"].ToString(),  reader["Direccion"].ToString(), reader["correo"].ToString(),
                     reader["Telefono"].ToString(),
                     "<a href='#' onclick='borrarContactoEmpresa(" + reader["id"]
                     + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
@@ -265,7 +265,7 @@ public class Consulta
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                listaEmpresas.Add(new Empresa(reader["Nombre"].ToString(), reader["Direccion"].ToString(), reader["correo"].ToString(),
+                listaEmpresas.Add(new Empresa((int)reader["id"], reader["Nombre"].ToString(), reader["Direccion"].ToString(), reader["correo"].ToString(),
                     reader["Telefono"].ToString(),
                     "<a href='#' onclick='agregarContactoEmpresa(" + reader["id"]
                     + ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Agregar</span></a>"));

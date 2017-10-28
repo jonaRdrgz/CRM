@@ -48,7 +48,7 @@ namespace CRM_Proyect.Modelo
         {
             conexion.Close();
         }
-        public int crearPropuestaVenta(String precio, String descuento, String comision) {
+        public int crearPropuestaVenta(String precio, String descuento, String comision, int idComprador) {
             if (!verificarNumeroProductosCarrito()) {
                 return PRODUCTOS_INSUFICIENTES;
             }
@@ -58,7 +58,7 @@ namespace CRM_Proyect.Modelo
             DateTime fechaHora = DateTime.Now;
             string date = fechaHora.ToString("yyyy-MM-dd H:mm:ss");
             instruccion.CommandText = "call registarPropuestaVenta('" + precio + "', '" + descuento + "', '" 
-                + comision + "', '"+ date + "', '" + Consulta.idUsuarioActual + "')";
+                + comision + "', '"+ date + "', '" + Consulta.idUsuarioActual + "', '" + idComprador + "')";
             int idPropuesta;
             // La consulta podría generar errores
             try
@@ -172,15 +172,16 @@ namespace CRM_Proyect.Modelo
                 MySqlDataReader reader = instruccion.ExecuteReader();
                 while (reader.Read())
                 {
-                    listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["fecha"].ToString(), reader["respuesta"].ToString() +" "+
-                        "<a href='#' onclick='cambiarRespuesta(" + reader["id"] +
-                        ")'><span class='glyphicon -class'>Cambiar</span></a>",
+                    listaPropuestas.Add(new PropuestasVenta(
+                        "<a href='#' onclick='verProductos(" + reader["id"] +")'><span>Productos</span></a>",
+                        reader["Precio"].ToString(),   reader["Descuento"].ToString(),
+                        reader["Comision"].ToString(), reader["fecha"].ToString(),
+                        reader["respuesta"].ToString()+" "+ "<a href='#' onclick='cambiarRespuesta(" + reader["id"] +
+                                ")'><span class='glyphicon -class'>Cambiar</span></a>",
+                        reader["comprador"].ToString(),
                         "<a href='#' onclick='verComentarios(" + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Ver</span></a>", "<a href='#' onclick='borrarPropuesta(" 
-                        + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Borrar</span></a>"));
+                        ")'><span>Ver</span></a>", 
+                        "<a href='#' onclick='borrarPropuesta(" + reader["id"] +")'><span>Borrar</span></a>"));
                 }
 
                 reader.Dispose();
@@ -238,11 +239,10 @@ namespace CRM_Proyect.Modelo
                 while (reader.Read())
                 {
                     listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["fecha"].ToString(), reader["respuesta"].ToString(),
-                        "", "<a href='#' onclick='comprar("
-                        + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comprar</span></a>"));
+                        ")'><span>Productos</span></a>", reader["Precio"].ToString(),
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["fecha"].ToString(),
+                        reader["respuesta"].ToString(), reader["comprador"].ToString(),
+                        "", "<a href='#' onclick='comprar("+ reader["id"] + ")'><span>Comprar</span></a>"));
                 }
 
                 reader.Dispose();
@@ -296,11 +296,11 @@ namespace CRM_Proyect.Modelo
                 MySqlDataReader reader = instruccion.ExecuteReader();
                 while (reader.Read())
                 {
-                    listaPropuestas.Add(new PropuestasVenta("<a href='#' onclick='verProductos(" + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), "","","", "<a href='#' onclick='comentar("
-                        + reader["id"] +
-                        ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Comentar</span></a>"));
+                    listaPropuestas.Add(new PropuestasVenta(
+                        "<a href='#' onclick='verProductos(" + reader["id"] + ")'><span>Productos</span></a>",
+                        reader["Precio"].ToString(), reader["Descuento"].ToString(),
+                        reader["Comision"].ToString(), "","","","",
+                        "<a href='#' onclick='comentar(" + reader["id"] +")'><span>Comentar</span></a>"));
                 }
 
                 reader.Dispose();

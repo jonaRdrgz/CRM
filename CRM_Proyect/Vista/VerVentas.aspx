@@ -29,6 +29,7 @@
                   <th>Descuento</th>
                   <th>Comisión</th>
                   <th>Vendido Por</th>
+                  <th>Comprado Por</th>
                 </tr>
                 </thead>
                 
@@ -40,6 +41,7 @@
                   <th>Descuento</th>
                   <th>Comisión</th>
                   <th>Vendido Por</th>
+                  <th>Comprado Por</th>
                 </tr>
                 </tfoot>
               </table>

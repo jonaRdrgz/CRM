@@ -66,7 +66,7 @@ namespace CRM_Proyect.Modelo
                     listaVentas.Add(new Venta("<a href='#' onclick='verProductosVenta(" + reader["id"] +
                         ")'><span class='glyphicon glyphicon - remove'></span><span class='glyphicon -class'>Productos</span></a>", reader["fecha"].ToString(),
                         reader["Precio"].ToString(),
-                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["Nombre"].ToString(), ""));
+                        reader["Descuento"].ToString(), reader["Comision"].ToString(), reader["Vendedor"].ToString(),reader["Comprador"].ToString(), ""));
                 }
                 reader.Dispose();
                 cerrarConexion();
@@ -79,7 +79,7 @@ namespace CRM_Proyect.Modelo
             return listaVentas;
         }
 
-        public int crearVenta(String precio, String descuento, String comision)
+        public int crearVenta(String precio, String descuento, String comision, int idComprador)
         {
             if (!verificarNumeroProductosCarrito())
             {
@@ -91,7 +91,7 @@ namespace CRM_Proyect.Modelo
             DateTime fechaHora = DateTime.Now;
             string date = fechaHora.ToString("yyyy-MM-dd H:mm:ss");
             instruccion.CommandText = "call registarVenta('" + precio + "', '" + descuento + "', '"
-                + comision + "', '" + date + "', '" + Consulta.idUsuarioActual + "')";
+                + comision + "', '" + date + "', '" + Consulta.idUsuarioActual + "', '" + idComprador + "')";
             int idVenta;
             // La consulta podría generar errores
             try

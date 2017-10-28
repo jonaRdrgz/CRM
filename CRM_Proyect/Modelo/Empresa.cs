@@ -19,15 +19,17 @@ namespace CRM_Proyect.Modelo
 {
     public class Empresa
     {
-        public Empresa(String nombre, String direccion,
+        public Empresa(int id, String nombre, String direccion,
                 String correo, String telefono, String accion)
         {
+            this.id = id;
             this.nombre = nombre;
             this.direccion = direccion;
             this.correo = correo;
             this.telefono = telefono;
             this.accion = accion;
         }
+        public int id { get; set; }
         public String nombre { get; set; }
         public String direccion { get; set; }
         public String correo { get; set; }

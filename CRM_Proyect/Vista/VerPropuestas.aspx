@@ -8,7 +8,7 @@
             </div>
             <div class="col-md-4 col-sm-4 col-xs-4">
                 <button type="button" id="botonVerPropuestaVenta" class="btn btn-success">
-                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Propuestas de Venta
+                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span> Listar
                 </button>
             </div>
         </div>
@@ -29,7 +29,7 @@
                   <th>Comisión</th>
                    <th>Fecha</th>
                    <th>Respuesta</th>
-                  <th>Comentarios</th>
+                    <th>Comprador</th>
                 </tr>
                 </thead>
                 
@@ -39,9 +39,9 @@
                   <th>Precio</th>
                   <th>Descuento</th>
                   <th>Comisión</th>
-                   <th>Fecha</th>
+                   <th>Fecha</th>                   
                    <th>Respuesta</th>
-                  <th>Comentarios</th>
+                    <th>Comprador</th>
                 </tr>
                 </tfoot>
               </table>
@@ -73,39 +73,6 @@
                   <th>Nombre</th>
                   <th>Descripción</th>
                   <th >Precio</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-       </div>
-       </div>
-    <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Tabla Comentarios</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="tablaComentarios" class="table table-responsive  table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Nombre</th>
-                    <th>Apellido 1</th>
-                    <th>Apellido 2</th>
-                  <th>Comentario</th>
-                </tr>
-                </thead>
-                
-                <tfoot>
-                <tr>
-                 <th>Nombre</th>
-                    <th>Apellido 1</th>
-                    <th>Apellido 2</th>
-                  <th>Comentario</th>
                 </tr>
                 </tfoot>
               </table>
@@ -154,17 +121,6 @@
           'responsive': true,
       });
       $('#tablaProductoPropuesta').DataTable({
-          'paging': true,
-          'lengthChange': true,
-          'searching': true,
-          'ordering': true,
-          'info': true,
-          'autoWidth': true,
-          'destroy': true,
-          'responsive': true,
-      });
-
-      $('#tablaComentarios').DataTable({
           'paging': true,
           'lengthChange': true,
           'searching': true,

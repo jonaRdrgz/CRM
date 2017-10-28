@@ -354,10 +354,12 @@ function crearPropuesta() {
     $precio = $("#precio").val();
     $descuento = $("#descuento").val();
     $comision = $("#comision").val();
+    $idComprador = $("#empresa").val();
     var data = {
         precio: $precio,
         descuento: $descuento,
-        comision: $comision
+        comision: $comision,
+        idComprador : $idComprador
     }
     $.ajax({
 
@@ -402,7 +404,6 @@ function mostrarPropuestasVenta() {
     $("#botonVerPropuestaVenta").on("click", function () {
         tablaPropuestaDeVenta();
         actualizarTablaProductoPropuesta();
-        actualizarTablaComentariosPropuesta();
     });
 }
 
@@ -427,7 +428,7 @@ function tablaPropuestaDeVenta() {
             { "data": "comision" },
             { "data": "fecha" },
             { "data": "respuesta" },
-            { "data": "comentarios" }
+            { "data": "comprador" }
         ]
     });
 }
@@ -581,7 +582,8 @@ function tablaVentas() {
             { "data": "precio" },
             { "data": "descuento" },
             { "data": "comision" },
-            { "data": "vendedor" }
+            { "data": "vendedor" },
+            { "data": "comprador" }
         ]
     });
 }
@@ -687,10 +689,13 @@ function crearVenta() {
     $precio = $("#precio").val();
     $descuento = $("#descuento").val();
     $comision = $("#comision").val();
+    $idComprador = $("#empresa").val();
+    
     var data = {
         precio: $precio,
         descuento: $descuento,
-        comision: $comision
+        comision: $comision,
+        idComprador : $idComprador
     }
     $.ajax({
 

@@ -64,11 +64,24 @@ namespace CRM_Proyect
         }
 
         [WebMethod]
-        public static string crearPropuesta(string precio, string descuento, string comision )
+        public static string crearPropuesta(string precio, string descuento, string comision, int idComprador)
         {
             Controlador controlador = Controlador.getInstance();
-            return controlador.crearPropuestaVenta(precio, descuento, comision);
-            
+            return controlador.crearPropuestaVenta(precio, descuento, comision, idComprador);
+
+        }
+        public void obtenerEmpresas()
+        {
+            String options = "";
+            Controlador controlador = Controlador.getInstance();
+            List<Empresa> empresas = controlador.obtenerContactoEmpresas();
+
+            foreach (Empresa empresa in empresas)
+            {
+                options += "<option value=" + empresa.id + ">" + empresa.nombre + "</option>";
+            }
+
+            Response.Write(options);
         }
 
     }
