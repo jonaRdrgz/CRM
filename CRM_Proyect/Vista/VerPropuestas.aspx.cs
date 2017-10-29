@@ -1,4 +1,17 @@
-﻿using System;
+﻿/**
+ *	Clase VerPropuestas
+ *	
+ *	Version 1.0
+ *	
+ *	24/09/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

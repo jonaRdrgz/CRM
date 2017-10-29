@@ -1,10 +1,15 @@
-﻿function mostrarContactos() {
+﻿//Scripts de la comunicacion de la interfaz al servidor.
+// Jonthan Rodríguez
+
+// Evento del boton contactos
+function mostrarContactos() {
     $("#botonContactos").on("click", function () {
-        dtUsers();
+        tablaContactos();
     });
 }
 
-function dtUsers() {
+//Actualiza la tabla de contactos
+function tablaContactos() {
     var table = $("#tablaContactos").DataTable({
         destroy: true,
         responsive: true,
@@ -30,12 +35,14 @@ function dtUsers() {
     });
 }
 
+//Evento del boton empresas
 function mostrarEmpresas() {
     $("#botonEmpresa").on("click", function () {
         deplegarTablaEmpresa();
     });
 }
 
+//Actualiza la tabla empresas
 function deplegarTablaEmpresa() {
     var table = $("#tablaEmpresa").DataTable({
         destroy: true,
@@ -61,13 +68,14 @@ function deplegarTablaEmpresa() {
     });
 }
 
-
+//Evento del boton listar personas
 function mostrarPersonas() {
     $("#botonListarPersonas").on("click", function () {
         desplagarTablaPersonas();
     });
 }
 
+//Actualiza la tabla de personas
 function desplagarTablaPersonas() {
     var table = $("#tablaAgregarPersonas").DataTable({
         destroy: true,
@@ -95,6 +103,8 @@ function desplagarTablaPersonas() {
     });
 }
 
+// Se comunica con el servidor para agregar a contactos la persona con
+// el el id que recibe 
 function agregarContacto(id) {
     var data = {user : id}
     $.ajax({
@@ -112,6 +122,8 @@ function agregarContacto(id) {
     });
 }
 
+//  Se comunica con el servidor para eliminar un contacto persona, 
+//  toma como parametro el id de la persona a eliminar  de contactos
 function borrarContacto(id) {
     var data = { user: id }
     $.ajax({
@@ -125,16 +137,18 @@ function borrarContacto(id) {
     }).done(function (info) {
         //Respuesta del servidor
         console.log(info);
-        dtUsers();
+        tablaContactos();
     });
 }
 
+//Evento del boton listar empresas
 function mostrarEmpresasLibre() {
     $("#botonEmpresaLibre").on("click", function () {
         deplegarTablaEmpresaLibre();
     });
 }
 
+//Actualiza la tabla de empresas que no estan en mis contactos
 function deplegarTablaEmpresaLibre() {
     var table = $("#tablaEmpresaLibre").DataTable({
         destroy: true,
@@ -160,6 +174,7 @@ function deplegarTablaEmpresaLibre() {
     });
 }
 
+// Se comunica con el servisdor para agregar una empresa a contactos
 function agregarContactoEmpresa(id) {
     var data = { user: id }
     $.ajax({
@@ -177,6 +192,7 @@ function agregarContactoEmpresa(id) {
     });
 }
 
+//Elimina el una empresa de contacto
 function borrarContactoEmpresa(id) {
     var data = { idEmpresa: id }
     $.ajax({
@@ -194,6 +210,7 @@ function borrarContactoEmpresa(id) {
     });
 }
 
+// Reinicia la sesión
 function cerrarSesion() {
     $.ajax({
 
@@ -210,13 +227,14 @@ function cerrarSesion() {
 }
 
 
-
+//Evento del botón productos
 function mostrarProductos() {
     $("#botonProductos").on("click", function () {
         tablaProductos();
     });
 }
 
+//Actualiza la tabla productos
 function tablaProductos() {
     var table = $("#tablaProductos").DataTable({
         destroy: true,
@@ -240,6 +258,7 @@ function tablaProductos() {
     });
 }
 
+// Elimina un  producto
 function eliminarProducto(id) {
     var data = { idProducto: id }
     $.ajax({
@@ -257,16 +276,21 @@ function eliminarProducto(id) {
     });
 }
 
+// Evento del boton listar productos
 function mostrarProductosDisponibles() {
     $("#botonProductosDisponibles").on("click", function () {
         tablaProductosDisponibles();
     });
 }
+
+//Actualiza la tabla de carrito
 function mostrarProductosCarrito() {
     $("#botonProductosCarrito").on("click", function () {
         tablaProductosCarrito();
     });
 }
+
+//Muestra los productos que no esta en ventas, ni en propuetas de venta
 function tablaProductosDisponibles() {
     var table = $("#tablaProductosDisponibles").DataTable({
         destroy: true,
@@ -290,6 +314,7 @@ function tablaProductosDisponibles() {
     });
 }
 
+//Muestra los productos seleccionados para crear venta o propuesta de venta.
 function tablaProductosCarrito() {
     var table = $("#tablaProductosCarrito").DataTable({
         destroy: true,
@@ -313,6 +338,7 @@ function tablaProductosCarrito() {
     });
 }
 
+//Agrega un producto a la tabla temporal carrito
 function agregarAlCarrito(id) {
     var data = { idProducto: id }
     $.ajax({
@@ -332,6 +358,7 @@ function agregarAlCarrito(id) {
 
 }
 
+//Elimina un producto de la tabla temporal carrito
 function eliminarDelCarrito(id) {
     var data = { idProducto: id }
     $.ajax({
@@ -349,6 +376,9 @@ function eliminarDelCarrito(id) {
         tablaProductosCarrito();
     });
 }
+
+//Se comunica con el servidor para crear una propuesta
+//Toma los valores del form
 function crearPropuesta() {
 
     $precio = $("#precio").val();
@@ -376,6 +406,8 @@ function crearPropuesta() {
     });
 }
 
+//Se comunica con el servidor para insertar a la base de datos
+// un nuevo producto
 function agregarProducto() {
 
     $nombre = $("#nombre").val();
@@ -400,6 +432,7 @@ function agregarProducto() {
     });
 }
 
+//Evento del boton ver propuetas de venta
 function mostrarPropuestasVenta() {
     $("#botonVerPropuestaVenta").on("click", function () {
         tablaPropuestaDeVenta();
@@ -407,6 +440,7 @@ function mostrarPropuestasVenta() {
     });
 }
 
+//Actualiza la tabla propuestas de venta
 function tablaPropuestaDeVenta() {
     var table = $("#tablaPropuestasVenta").DataTable({
         destroy: true,
@@ -433,6 +467,8 @@ function tablaPropuestaDeVenta() {
     });
 }
 
+// Muestra la tabla de productos de una propuesta que se da
+// por parámetro
 function verProductos(id) {
     actualizarTablaProductoPropuesta();
     var data = { idPropuesta: id }
@@ -451,6 +487,7 @@ function verProductos(id) {
     });
 }
 
+//Llena la tabla de productos
 function llenarTablaProductoPropuesta(response, index, value)
 {
     $('#tablaProductoPropuesta').DataTable({
@@ -464,6 +501,7 @@ function llenarTablaProductoPropuesta(response, index, value)
     });
 }
 
+//Permite ver comentarios de una propuesta
 function verComentarios(id) {
     actualizarTablaComentariosPropuesta();
     var data = { idPropuesta: id }
@@ -495,10 +533,12 @@ function llenarTablaComentariosPropuesta(response, index, value) {
     });
 }
 
+// Limpia la tabla en cuestion
 function actualizarTablaProductoPropuesta() {
     $("#tablaProductoPropuesta tr>td").remove();
 }
 
+// Limpia la tabla en cuestion
 function actualizarTablaComentariosPropuesta() {
     $("#tablaComentarios tr>td").remove();
 }
@@ -533,6 +573,7 @@ function tablaPropuestaDeVentaCompra() {
     });
 }
 
+// Limpia la tabla en cuestion
 function actualizarTablaProductoPropuestaCompra() {
     $("#tablaProductoPropuesta tr>td").remove();
 }
@@ -555,6 +596,7 @@ function comprar(id) {
 
 }
 
+//Evento del boton ver ventas
 function mostrarVentas() {
     $("#botonVerPropuestaVenta").on("click", function () {
         tablaVentas();
@@ -562,6 +604,7 @@ function mostrarVentas() {
     });
 }
 
+//Actualiza la tabla de ventas
 function tablaVentas() {
     var table = $("#tablaPropuestasVenta").DataTable({
         destroy: true,
@@ -592,8 +635,7 @@ function actualizarTablaVentas() {
     $("#tablaProductoPropuesta tr>td").remove();
 }
 
-
-//
+// Evento del boton ver propuestasd de venta
 function mostrarPropuestasVentaComprasUsuario() {
     $("#botonVerPropuestaVenta").on("click", function () {
         tablaPropuestaDeVentaCompraUsuario();
@@ -661,6 +703,7 @@ function cambiarRespuesta(id) {
     document.getElementById("botonRespuesta").value = id;
 }
 
+// Cambia la respuesta de una propuesta de usuario
 function actualizarRespuesta() {
     $respuesta = $('#respuesta').val();
     $id = document.getElementById("botonRespuesta").value;
@@ -684,7 +727,8 @@ function actualizarRespuesta() {
     });
 }
 
-
+// Crea una nueva venta
+// Toma los valores del form
 function crearVenta() {
     $precio = $("#precio").val();
     $descuento = $("#descuento").val();
@@ -713,6 +757,8 @@ function crearVenta() {
     });
 }
 
+// Despliega los productos de una venta específica
+// que recive como parámetro
 function verProductosVenta(id) {
     actualizarTablaProductoPropuesta();
     var data = { idVenta: id }
