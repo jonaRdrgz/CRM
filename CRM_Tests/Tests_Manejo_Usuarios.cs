@@ -57,7 +57,25 @@ namespace CRM_Tests
         public void validarUsuario_UsuarioInvalidoyContraseñaCorrecta_ReturnsFalse()
         {
             var instancia = new FakeConsulta();
-            var resultado = instancia.validarUsuario("Jona", "PassWord123");
+            var resultado = instancia.validarUsuario("Jona", "1234567p");
+            Assert.AreEqual(resultado, false);
+
+        }
+
+        [Test]
+        public void validarUsuario_CampoContraseñaEnBlanco_ReturnsFalse()
+        {
+            var instancia = new FakeConsulta();
+            var resultado = instancia.validarUsuario("JonaRdrgz", "");
+            Assert.AreEqual(resultado, false);
+
+        }
+
+        [Test]
+        public void validarUsuario_CampoUsuarioEnBlanco_ReturnsFalse()
+        {
+            var instancia = new FakeConsulta();
+            var resultado = instancia.validarUsuario("", " 1234567p");
             Assert.AreEqual(resultado, false);
 
         }
@@ -178,7 +196,7 @@ namespace CRM_Tests
         public void insertarUsuario_UsuarioMuyLargo_ReturnsUsuario_Muy_Largo()
         {
             var instancia = new Controlador();
-            var resultado = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
+            var resultado = instancia.insertarUsuario("Marisol", "Carranza", "Lopez", "marisolcarranza@gmail.com", "Bebedero, Escazú", "Marisol_04_CarranzaLopez", "mari04cl", "83410868");
             Assert.AreEqual(resultado, Usuario_Muy_Largo);
 
         }

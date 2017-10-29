@@ -83,14 +83,14 @@ public class Consulta: IConsulta
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                contrasenaDb = reader["Contraseña"].ToString();
+                contrasenaDb = reader["contrasenia"].ToString();
                 if (contrasenaDb != null)
                 {
                     contrasenaDb = Seguridad.desEncriptar(contrasenaDb);
                     if (contrasenaDb.Equals(contrasena))
                     {
                         tipoCuenta = (int)reader["tipoCuenta"];
-                        idUsuarioActual = (int)reader["idUsuario"];
+                        idUsuarioActual = (int)reader["idusuario"];
                         reader.Dispose();
                         cerrarConexion();
                         session = true;
