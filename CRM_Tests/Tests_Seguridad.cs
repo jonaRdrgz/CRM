@@ -19,7 +19,7 @@ namespace CRM_Tests
     {
 
         [Test]
-        public void encriptar_EncriptarContraseñaCadenaNoNula_ReturnsContraseñaEncriptada()
+        public void encriptar_EncriptarContraseñaCorrecto_ReturnsContraseñaEncriptada()
         {
             var resultado = Seguridad.encriptar("950904mc");
             Assert.AreEqual(resultado, "OQA1ADAAOQAwADQAbQBjAA==");

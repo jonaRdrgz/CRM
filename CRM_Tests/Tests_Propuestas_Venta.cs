@@ -32,6 +32,18 @@ namespace CRM_Tests
         private string Comision_No_Numerico = "Comision debe ser numérico";
         private string Comision_Mayor_A_11_Digitos = "Comision debe tener como máximo 11 dígitos";
 
+
+        [Test]
+        public void crearPropuestaVenta_CrearPropuestaDeVentaCorrecto_ReturnsExito_De_Insercion()
+        {
+            FakePropuestaVenta fakeManager = new FakePropuestaVenta();
+            fakeManager.exitoRetorno = 0;
+            ValidadorPropuestaVenta instancia = new ValidadorPropuestaVenta(fakeManager);
+            var resultado = instancia.crearPropuestaVenta("5500", "200", "600", 2);
+            Assert.AreEqual(resultado, Exito_De_Insercion);
+
+        }
+
         [Test]
         public void crearPropuestaVenta_FormatoPrecioNoNumerico_ReturnsPrecio_No_Numerico()
         {
@@ -97,16 +109,6 @@ namespace CRM_Tests
 
         }
 
-        [Test]
-        public void crearPropuestaVenta_CrearPropuestaDeVentaCorrecto_ReturnsExito_De_Insercion()
-        {
-            FakePropuestaVenta fakeManager = new FakePropuestaVenta();
-            fakeManager.exitoRetorno = 0;
-            ValidadorPropuestaVenta instancia = new ValidadorPropuestaVenta(fakeManager);
-            var resultado = instancia.crearPropuestaVenta("5500", "200", "600", 2);
-            Assert.AreEqual(resultado, Exito_De_Insercion);
-
-        }
 
         [Test]
         

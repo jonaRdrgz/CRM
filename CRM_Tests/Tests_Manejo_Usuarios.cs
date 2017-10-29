@@ -57,7 +57,25 @@ namespace CRM_Tests
         public void validarUsuario_UsuarioInvalidoyContraseñaCorrecta_ReturnsFalse()
         {
             var instancia = new FakeConsulta();
-            var resultado = instancia.validarUsuario("Jona", "PassWord123");
+            var resultado = instancia.validarUsuario("Jona", "1234567p");
+            Assert.AreEqual(resultado, false);
+
+        }
+
+        [Test]
+        public void validarUsuario_CampoContraseñaEnBlanco_ReturnsFalse()
+        {
+            var instancia = new FakeConsulta();
+            var resultado = instancia.validarUsuario("JonaRdrgz", "");
+            Assert.AreEqual(resultado, false);
+
+        }
+
+        [Test]
+        public void validarUsuario_CampoUsuarioEnBlanco_ReturnsFalse()
+        {
+            var instancia = new FakeConsulta();
+            var resultado = instancia.validarUsuario("", " 1234567p");
             Assert.AreEqual(resultado, false);
 
         }
