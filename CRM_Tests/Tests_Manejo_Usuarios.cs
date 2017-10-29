@@ -178,7 +178,7 @@ namespace CRM_Tests
         public void insertarUsuario_UsuarioMuyLargo_ReturnsUsuario_Muy_Largo()
         {
             var instancia = new Controlador();
-            var resultado = instancia.insertarUsuario("Melissa", "Molina", "Corrales", "melimolinacorrales@gmail.com", "Bebedero, Escazú", "Melissa_04_MolinaCorrales", "meli04mc", "83410868");
+            var resultado = instancia.insertarUsuario("Marisol", "Carranza", "Lopez", "marisolcarranza@gmail.com", "Bebedero, Escazú", "Marisol_04_CarranzaLopez", "mari04cl", "83410868");
             Assert.AreEqual(resultado, Usuario_Muy_Largo);
 
         }
