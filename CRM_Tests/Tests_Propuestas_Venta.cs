@@ -109,6 +109,16 @@ namespace CRM_Tests
         }
 
         [Test]
+        
+        public void comprar_ComprarPropuestaVentaCorrecto_ReturnsTrue()
+        {
+            var instancia = new ConsultaPropuestaVenta();
+            var resultado = instancia.comprar(1);
+            Assert.AreEqual(resultado, true);
+
+        }
+
+        [Test]
         public void verificarNumeroProductosCarrito_VerificarNumeroProductosCarrito_ReturnsTrue()
         {
             FakePropuestaVenta fakeManager = new FakePropuestaVenta();

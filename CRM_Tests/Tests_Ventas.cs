@@ -99,7 +99,7 @@ namespace CRM_Tests
         }
 
         [Test]
-        public void crearVenta_CrearVentaCorrecto_ReturnsFalla_De_Insercion()
+        public void crearVenta_CrearVentaIncorrecto_ReturnsFalla_De_Insercion()
         {
             FakeVenta fakeManager = new FakeVenta();
             fakeManager.exitoConsulta = false;
