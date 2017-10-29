@@ -17,6 +17,10 @@ using System.Web;
 
 namespace CRM_Proyect.Modelo
 {
+	/**
+	*	Clase para crear objetos venta cuando se hace la consulta en la base de datos.
+	*
+	*/
     public class Venta
     {
         public Venta(String productos, String fecha, String precio, String descuento, String comision,
@@ -31,6 +35,7 @@ namespace CRM_Proyect.Modelo
             this.vendedor = vendedor;
             this.comprador = comprador;
         }
+
         public String productos { get; set; }
         public String fecha { get; set; }
         public String precio { get; set; }

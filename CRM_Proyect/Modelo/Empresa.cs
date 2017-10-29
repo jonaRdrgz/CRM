@@ -17,6 +17,10 @@ using System.Web;
 
 namespace CRM_Proyect.Modelo
 {
+	/**
+	*	Clase para crear objetos Empresa cuando se hace la consulta en la base de datos.
+	*
+	*/
     public class Empresa
     {
         public Empresa(int id, String nombre, String direccion,

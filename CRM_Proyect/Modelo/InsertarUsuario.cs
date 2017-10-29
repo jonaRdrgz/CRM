@@ -19,9 +19,12 @@ using CRM_Proyect.Modelo;
 using CRM_Proyect.Modelo.ClassTest;
 
 
-
+/**
+*	Clase para hacer la solicitud a la base de datos de los usuarios y empresas .
+*/
 public class InsertarUsuario : IInsertarUsuario
     {
+    	// Constantes de retorno de las consultas
         private int EXITO_DE_INSERCION = 0;
         private int FALLO_DE_INSERCION = -1;
         private int USUARIO_INVALIDO = 1;
@@ -30,10 +33,6 @@ public class InsertarUsuario : IInsertarUsuario
         private MySqlConnection conexion;
         String cadenaDeConexion;
 
-        public InsertarUsuario()
-        {
-
-        }
         private void iniciarConexion()
         {
             try
@@ -55,6 +54,10 @@ public class InsertarUsuario : IInsertarUsuario
             conexion.Close();
         }
 
+        /*	
+        	Inserta los datos de un nuevo usuario en la base.
+
+        */
         public int InsertarUsuarioBD(string nombre, string primerApellido, string segundoApellido, string correo,
                         string direccion, string usuario, string contrasena, string telefono)
         {
@@ -90,6 +93,9 @@ public class InsertarUsuario : IInsertarUsuario
             return FALLO_DE_INSERCION;
         }
 
+        /*
+			Valida que el usuario no este regisstrado en la base de datos
+        */
         public Boolean validarUsuario(string usuario) {
             iniciarConexion();
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
@@ -117,6 +123,9 @@ public class InsertarUsuario : IInsertarUsuario
             return false;
         }
 
+        /*
+        	Valida que el correo del usuario no este registrado en la base de datos.
+        */
         public Boolean validarCorreo(string correo)
         {
             iniciarConexion();
@@ -146,7 +155,11 @@ public class InsertarUsuario : IInsertarUsuario
             return false;
         }
 
-        public int insertarEmpresa(string nombre,  string correo, string direccion, string telefono, string usuario, string contrasena)
+        /*
+        	Inserta una empresa en la base de datos
+        */
+        public int insertarEmpresa(string nombre,  string correo, string direccion, string telefono, 
+        	string usuario, string contrasena)
         {
             if (validarUsuario(usuario))
             {
@@ -161,7 +174,7 @@ public class InsertarUsuario : IInsertarUsuario
             iniciarConexion();
             MySqlCommand instruccion = conexion.CreateCommand();
             contrasena = Seguridad.encriptar(contrasena);   
-        instruccion.CommandText = "call insertarEmpresa('" + nombre + "', '" + direccion + "', '" + correo + "', '"  +
+        	instruccion.CommandText = "call insertarEmpresa('" + nombre + "', '" + direccion + "', '" + correo + "', '"  +
                 telefono + "', '" + usuario + "', '" + contrasena + "')";
 
             // La consulta podría generar errores

@@ -19,6 +19,10 @@ namespace CRM_Proyect.Modelo
 {
     public class PropuestasVenta
     {
+    	/**
+		*	Clase para crear objetos PropuestaVenta cuando se hace la consulta en la base de datos.
+		*
+		*/
         public PropuestasVenta(String productos, String precio, String descuento, String comision, String fecha, String respuesta,
             String comprador,  String comentarios,  String accion)
         {

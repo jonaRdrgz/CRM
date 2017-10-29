@@ -18,6 +18,10 @@ using System.Web;
 
 namespace CRM_Proyect.Modelo
 {
+	/**
+	*	Clase para crear objetos producto cuando se hace la consulta en la base de datos.
+	*/
+
     public class Producto
     {
         

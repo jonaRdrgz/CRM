@@ -17,6 +17,10 @@ using System.Web;
 
 public class Usuario
 {
+	/**
+	* Clase para crear objetos usuario cuando se hace la consulta en la base de datos.
+	*/
+
     public Usuario(String nombre, String primerApellido, String segundoApellido, String direccion,
                 String correo, String telefono, String accion)
     {

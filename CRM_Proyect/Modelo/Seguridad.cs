@@ -9,6 +9,7 @@
  *	Melissa Molina Corrales
  *	Edwin Cen Xu
  */
+ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,6 @@ namespace CRM_Proyect.Modelo
             
                 string result = string.Empty;
                 byte[] decryted = Convert.FromBase64String(cadenaAdesencriptar);
-                //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
                 result = System.Text.Encoding.Unicode.GetString(decryted);
                 return result;
             
