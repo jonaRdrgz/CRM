@@ -13,13 +13,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo.ClassTest;
 
 namespace CRM_Proyect.Modelo
 {
+
+     /**
+     *	Clase que contiene los métodos necesarios para realizar consultas a la base de datos relacionadas con las ventas.
+     *
+     */
     public class ConsultaVenta : IVenta
     {
         private int EXITO_DE_INSERCION = 0;
@@ -94,6 +98,7 @@ namespace CRM_Proyect.Modelo
             instruccion.CommandText = "call registarVenta('" + precio + "', '" + descuento + "', '"
                 + comision + "', '" + date + "', '" + Consulta.idUsuarioActual + "', '" + idComprador + "')";
             int idVenta;
+
             // La consulta podría generar errores
             try
             {
@@ -120,6 +125,7 @@ namespace CRM_Proyect.Modelo
             MySqlCommand instruccionVerificarUsuario = conexion.CreateCommand();
             instruccionVerificarUsuario.CommandText = "call verificarNumeroProductosCarrito()";
             indicesCarrito = new List<int>();
+
             // La consulta podría generar errores
             try
             {

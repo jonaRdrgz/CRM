@@ -13,12 +13,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+
 namespace CRM_Proyect.Modelo
 {
+    /**
+     *	Clase que contiene los metodos necesarios para realizar consultas a la base de datos relacionadas con comentarios.
+    *
+    */
     public class ConsultaComentario
     {
         private MySqlConnection conexion;

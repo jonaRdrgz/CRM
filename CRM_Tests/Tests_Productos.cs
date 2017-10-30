@@ -13,9 +13,6 @@
 using NUnit.Framework;
 using CRM_Proyect.Modelo;
 using System;
-using System.Linq;
-using System.Web;
-using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using CRM_Tests.Fakes;
 
@@ -23,6 +20,11 @@ using CRM_Tests.Fakes;
 namespace CRM_Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de manejo de productos en el sistema.
+    *
+    */
     class Tests_Productos
     {
         private int Exito_De_Insercion = 0;

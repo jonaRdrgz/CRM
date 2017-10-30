@@ -11,12 +11,14 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace CRM_Proyect.Modelo
 {
+
+    /**
+	*	Clase para crear objetos Comentarios cuando se hace la consulta en la base de datos.
+	*
+	*/
     public class Comentario
     {
         public Comentario(String nombre, String apellidoUno, String apellidoDos, String comentario)
