@@ -83,7 +83,7 @@ public class Consulta: IConsulta
             MySqlDataReader reader = instruccion.ExecuteReader();
             while (reader.Read())
             {
-                contrasenaDb = reader["contrasenia"].ToString();
+                contrasenaDb = reader["contraseña"].ToString();
                 if (contrasenaDb != null)
                 {
                     contrasenaDb = Seguridad.desEncriptar(contrasenaDb);

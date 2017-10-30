@@ -39,7 +39,7 @@ namespace CRM_Tests
         public void validarUsuario_UsuarioyContraseñaValidos_ReturnsTrue()
         {
             FakeConsulta instancia = new FakeConsulta();
-            var resultado = instancia.validarUsuario("JonaRdrgz", "1234567p");
+            var resultado = instancia.validarUsuario("Admin", "1234567p");
             Assert.AreEqual(resultado, true);
 
         }
@@ -48,7 +48,7 @@ namespace CRM_Tests
         public void validarUsuario_UsuarioValidoyContraseñaIncorrecta_ReturnsFalse()
         {
             var instancia = new FakeConsulta();
-            var resultado = instancia.validarUsuario("JonaRdrgz", "PassIncorrecta");
+            var resultado = instancia.validarUsuario("Admin", "PassIncorrecta");
             Assert.AreEqual(resultado, false);
 
         }
@@ -66,7 +66,7 @@ namespace CRM_Tests
         public void validarUsuario_CampoContraseñaEnBlanco_ReturnsFalse()
         {
             var instancia = new FakeConsulta();
-            var resultado = instancia.validarUsuario("JonaRdrgz", "");
+            var resultado = instancia.validarUsuario("Admin", "");
             Assert.AreEqual(resultado, false);
 
         }
@@ -108,7 +108,7 @@ namespace CRM_Tests
             FakeInsertarUsuario fakeManager = new FakeInsertarUsuario();
             fakeManager.debeResponder = true;
             ValidadorDatosUsuario usuario = new ValidadorDatosUsuario(fakeManager);
-            Boolean resultado = usuario.validarUsuario("JonaRdrgz");
+            Boolean resultado = usuario.validarUsuario("Admin");
             Assert.AreEqual(resultado, true);
 
         }

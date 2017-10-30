@@ -23,7 +23,7 @@ namespace CRM_Tests.Fakes
     public class FakeConsulta : IConsulta
     {
         private int idUsuarioActual = -1;
-        private String usuarioValido = "JonaRdrgz";
+        private String usuarioValido = "Admin";
         private String contraseñaValida = "1234567p";
         public int idContacto = 1;
         public int idEmpresa = 1;
