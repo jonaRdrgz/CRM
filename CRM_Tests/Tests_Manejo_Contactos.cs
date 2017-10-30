@@ -13,12 +13,16 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using CRM_Tests.Fakes;
-using CRM_Proyect.Modelo.ClassTest;
 using CRM_Proyect.Modelo;
 
 namespace CRM_Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas del manejo de contactos en el sistema.
+    *
+    */
     class Tests_Manejo_Contactos
     {
         [Test]

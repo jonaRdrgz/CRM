@@ -12,14 +12,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CRM_Proyect.Modelo.ClassTest;
 using CRM_Proyect.Modelo;
 
 namespace CRM_Tests
 {
+    /**
+    *	Clase para validar las ventas en el sistema.
+    *
+    */
     class ValidadorVenta
     {
         private IVenta manager;

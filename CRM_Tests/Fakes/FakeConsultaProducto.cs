@@ -3,7 +3,7 @@
  *	
  *	Version 1.0
  *	
- *	24/10/2017
+ *	26/10/2017
  *
  *	Jonathan Rodríguez
  *	Melissa Molina Corrales
@@ -12,9 +12,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CRM_Proyect.Modelo.ClassTest;
 using CRM_Proyect.Modelo;
 

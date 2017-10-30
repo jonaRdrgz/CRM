@@ -11,21 +11,14 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 
 namespace CRM_Proyect.Modelo
 {
 	/**
 	*	Clase para crear objetos producto cuando se hace la consulta en la base de datos.
 	*/
-
     public class Producto
     {
-        
-
         public Producto(String nombre, String descripcion, String precio, String accion)
         {
             this.nombre = nombre;

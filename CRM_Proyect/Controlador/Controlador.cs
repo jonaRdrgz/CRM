@@ -17,11 +17,13 @@ using System.Web;
 using CRM_Proyect.Modelo;
 using System.Text.RegularExpressions;
 
-/**
- *  Clase Controlador, con el patron Singleton
- *  */
+    /**
+     *  Clase Controlador, con el patron Singleton
+     * 
+     */
 
 public class Controlador{
+
     private int CONTRASEÑA_MUY_CORTA = -2;
     const int PRODUCTOS_INSUFICIENTES = -2;
     const int EXITO_DE_INSERCION = 0;
@@ -36,8 +38,6 @@ public class Controlador{
     private int NOMBRE_MUY_LARGO = -10;
     private int DESCRIPCION_MUY_LARGO = -11;
     private int DATO_VACIO = -12;
-
-
 
     private static Controlador instancia = null;
     private Consulta consultas = new Consulta();
@@ -117,6 +117,7 @@ public class Controlador{
 
     public int insertarUsuario(string nombre, string primerApellido, string segundoApellido, string correo,
                         string direccion, string usuario, string contrasena, string telefono) {
+
         //Validando los parámetros
         if (contrasena.Length < 7) {
             return CONTRASEÑA_MUY_CORTA;

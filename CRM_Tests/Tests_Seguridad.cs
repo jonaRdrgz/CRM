@@ -15,6 +15,11 @@ using CRM_Proyect.Modelo;
 namespace CRM_Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de seguridad del sistema como encriptar y desencriptar la contraseña de un usuario.
+    *
+    */
     class Tests_Seguridad
     {
 

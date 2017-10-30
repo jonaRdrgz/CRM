@@ -3,7 +3,7 @@
  *	
  *	Version 1.0
  *	
- *	22/10/2017
+ *	27/10/2017
  *
  *	Jonathan Rodríguez
  *	Melissa Molina Corrales
@@ -12,13 +12,13 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRM_Proyect.Modelo
 {
+    /**
+    *	Interface que contiene los métodos necesarios para probar el manejo de usuarios.
+    *
+    */
     public interface  IConsulta
     {
         Boolean validarUsuario(string usuario, string contrasena);

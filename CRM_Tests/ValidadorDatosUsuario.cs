@@ -1,11 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/**
+ *	Clase ValidadorDatosUsuario
+ *	
+ *	Version 1.0
+ *	
+ *	27/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+using System;
 using CRM_Proyect.Modelo.ClassTest;
+
 namespace CRM_Tests
 {
+
+    /**
+    *	Clase para validar los datos del usuario ingresados.
+    *
+    */
     class ValidadorDatosUsuario
     {
         private IInsertarUsuario manager;

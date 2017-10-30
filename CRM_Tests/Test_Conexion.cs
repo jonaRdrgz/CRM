@@ -1,15 +1,27 @@
-﻿using MySql.Data.MySqlClient;
+﻿/**
+ *	Clase Test_Conexion
+ *	
+ *	Version 1.0
+ *	
+ *	27/10/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-
 using CRM_Proyect.Modelo;
+
 namespace CRM_Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de la conexión a la base de datos.
+    *
+    */
     class Test_Conexion
     {
         [TestCase]

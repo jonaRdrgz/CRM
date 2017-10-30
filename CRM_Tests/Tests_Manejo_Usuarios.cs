@@ -11,15 +11,18 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MySql.Data.MySqlClient;
 using NUnit.Framework;
 using CRM_Tests.Fakes;
+
 namespace CRM_Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas para el manejo de usuarios que incluye ingreso de usuarios registrados
+    *	y registro de usuarios y empresas en el sistema.
+    *
+    */
     class Tests_Manejo_Usuarios
     {
 

@@ -12,20 +12,17 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo;
 
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-
+   /**
+   *	Clase que contiene los métodos necesarios para el manejo de usuarios y empresas cuando se realiza alguna consulta en la base de datos.
+   *
+   */
 public class Consulta: IConsulta
 
 {
-
     private MySqlConnection conexion;
     String cadenaDeConexion; 
     public static int idUsuarioActual ;

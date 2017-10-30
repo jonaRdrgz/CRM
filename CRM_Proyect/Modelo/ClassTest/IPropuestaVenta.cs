@@ -12,12 +12,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CRM_Proyect.Modelo.ClassTest
 {
+
+    /**
+    *	Interface que contiene los métodos necesarios para probar el manejo de propuestas de venta.
+    *
+    */
     public interface IPropuestaVenta
     {
         int crearPropuestaVenta(String precio, String descuento, String comision, int idComprador);

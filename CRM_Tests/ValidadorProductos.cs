@@ -3,7 +3,7 @@
  *	
  *	Version 1.0
  *	
- *	24/10/2017
+ *	27/10/2017
  *
  *	Jonathan Rodríguez
  *	Melissa Molina Corrales
@@ -12,14 +12,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CRM_Proyect.Modelo.ClassTest;
 using CRM_Proyect.Modelo;
 
 namespace CRM_Tests
 {
+
+    /**
+    *	Clase para validar los productos ingresados en el sistema.
+    *
+    */
     class ValidadorProductos
     {
         private IConsultaProducto manager;

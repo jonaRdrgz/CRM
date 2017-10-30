@@ -12,14 +12,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using CRM_Proyect.Modelo.ClassTest;
 
 namespace CRM_Proyect.Modelo
 {
+    /**
+    *	Clase que contiene los métodos necesarios para realizar consultas a la base de datos relacionadas con los productos.
+    *
+    */
     public class ConsultaProducto:IConsultaProducto
     {
         private int EXITO_DE_INSERCION = 0;

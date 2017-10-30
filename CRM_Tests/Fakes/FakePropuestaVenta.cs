@@ -3,7 +3,7 @@
  *	
  *	Version 1.0
  *	
- *	24/10/2017
+ *	26/10/2017
  *
  *	Jonathan Rodríguez
  *	Melissa Molina Corrales

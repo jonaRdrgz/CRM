@@ -11,22 +11,14 @@
  */
  
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 
 namespace CRM_Proyect.Modelo
 {
   /**
   *	Clase Seguridad, para encriptar y desencriptar la contraseña del usuario
   *	
-  *	Version 1.0
-  *	
-  *	24/09/2017
-  *
-  *	Jonathan Rodríguez
   */
-
     public static class Seguridad
     {
 

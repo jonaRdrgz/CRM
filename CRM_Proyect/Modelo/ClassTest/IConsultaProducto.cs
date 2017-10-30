@@ -12,12 +12,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CRM_Proyect.Modelo.ClassTest
 {
+    /**
+    *	Interface que contiene los métodos necesarios para probar el manejo de productos.
+    *
+    */
     public interface IConsultaProducto
     {
          int agregarProducto(String nombre, String descripcion, String precio);
