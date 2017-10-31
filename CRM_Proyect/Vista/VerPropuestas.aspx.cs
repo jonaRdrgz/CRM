@@ -63,12 +63,14 @@ namespace CRM_Proyect
         {
 
             Controlador controlador = Controlador.getInstance();
-
+            if (respuesta.Equals("")) {
+                return "La respuesta no puede ser vacía ";
+            }
             if (controlador.cambiarRespuesta(idPropuesta, respuesta))
             {
-                return "true";
+                return "Se cambió con éxito";
             }
-            return "false";
+            return "No se realizó la operación";
         }
 
     }

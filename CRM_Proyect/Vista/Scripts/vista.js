@@ -724,6 +724,8 @@ function actualizarRespuesta() {
         console.log(info);
         document.getElementById("botonRespuesta").disabled = true;
         $('#respuesta').val('');
+        tablaPropuestaDeVenta();
+        alert(info.d);
     });
 }
 
