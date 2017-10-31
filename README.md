@@ -17,6 +17,8 @@ Estos usted los puede configurar de acuerdo a lo que haya puesto al configurar l
 
 Una vez que se haya conectado a la base de datos, para entrar al sistema, los credenciales son usuario: Admin, contraseña: 1234567p
 
+El archivo de Javascript para conectar la interfaz al servidor esta en la ruta: CRM_PROYECT -> Vista -> Scripts -> vista.js
+
 Para usar el sistema puede consultar el manual de usuario adjunto en la documentación.
 
 Cualquier duda puede mandar un correo a jonastu.9@gmail.com
