@@ -17,8 +17,8 @@ namespace ProyectoQA
 
         public Autenticacion()
         {
-            conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
-            //conexion = new Conexion("localhost", "mydb", "root", "", "3306");
+            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public Autenticacion(IConexion pConexion)
         {

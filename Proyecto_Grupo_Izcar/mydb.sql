@@ -251,7 +251,8 @@ RETURN @precio;
 END$$
 
 DROP FUNCTION IF EXISTS `insertEntidad`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `insertEntidad` (`pIdUsuario` INT(11)) RETURNS INT(255) BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `insertEntidad` (`pIdUsuario` INT(11)) RETURNS INT(255) NO SQL
+BEGIN
 insert into entidad(idEntidad, idUsuarioEntidad) values (null, pIdUsuario);
 RETURN LAST_INSERT_ID();
 END$$
