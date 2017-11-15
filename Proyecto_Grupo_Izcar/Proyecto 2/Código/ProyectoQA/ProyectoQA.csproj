@@ -184,6 +184,7 @@
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="RegistroRespuestas.aspx" />
     <Content Include="RegistroVentas.aspx" />
+    <Content Include="ReporteErrores.aspx" />
     <Content Include="scripts\mostrarPropuestaVenta.js" />
     <Content Include="scripts\jquery-3.2.1.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
@@ -662,6 +663,13 @@
     <Compile Include="Classes\FakeConexion.cs" />
     <Compile Include="Classes\GUIBuilder.cs" />
     <Compile Include="Classes\IConexion.cs" />
+    <Compile Include="ReporteErrores.aspx.cs">
+      <DependentUpon>ReporteErrores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteErrores.aspx.designer.cs">
+      <DependentUpon>ReporteErrores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\TestAutenticacion.cs" />
     <Compile Include="Tests\TestConexion.cs" />
     <Compile Include="Tests\TestContactoPersona.cs" />
