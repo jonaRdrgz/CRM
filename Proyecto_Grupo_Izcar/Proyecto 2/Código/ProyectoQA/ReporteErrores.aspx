@@ -93,8 +93,6 @@
                         <th>Producto</th>
                         <th>Descripción del error</th>
                         <th>Fecha del reporte</th>
-                        <th>Respuesta</th>
-                        <th>Usuario</th>
                         <th>Correo Electrónico</th>
                     </tr>
                     </thead>
