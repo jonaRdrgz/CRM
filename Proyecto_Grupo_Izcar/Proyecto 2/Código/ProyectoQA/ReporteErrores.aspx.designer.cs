@@ -7,11 +7,13 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ProyectoQA {
-    
-    
-    public partial class ReporteErrores {
-        
+namespace ProyectoQA
+{
+
+
+    public partial class ReporteErrores
+    {
+
         /// <summary>
         /// Control ddIdProducto.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddIdProducto;
-        
+
         /// <summary>
         /// Control fecha.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fecha;
-        
+
         /// <summary>
         /// Control descripcionError.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descripcionError;
-        
+
         /// <summary>
         /// Control correoUsuario.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox correoUsuario;
-        
+
         /// <summary>
         /// Control registrarErrorButton.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button registrarErrorButton;
-        
+
         /// <summary>
         /// Control cancelarRegistroError.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ProyectoQA {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cancelarRegistroError;
-        
+
         /// <summary>
         /// Control vistaReporteErrores.
         /// </summary>

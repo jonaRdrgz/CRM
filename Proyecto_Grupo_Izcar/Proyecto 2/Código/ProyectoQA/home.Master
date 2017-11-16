@@ -110,6 +110,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="ContactoPersona.aspx">Personas</a></li>
                     <li><a href="ContactoEmpresa.aspx">Empresa</a></li>
+
                 </ul>
             </li>
 
@@ -118,7 +119,16 @@
                 <ul class="nav nav-second-level">
                     <li><a href="RegistroVentas.aspx">Seguimiento de ventas</a></li>
                     <li><a href="PropuestaVentas.aspx">Propuestas</a></li>
-                     <li><a href="ReporteErrores.aspx">Reportes</a></li>
+                    
+                </ul>
+            </li>
+
+            <li>
+             <a href="#"><span class="nav-label">Reportes de Errores</span><span class="fa arrow"></span> </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="ReporteErrores.aspx">Reportar Errores</a></li>
+                    
+                    
                 </ul>
             </li>
 

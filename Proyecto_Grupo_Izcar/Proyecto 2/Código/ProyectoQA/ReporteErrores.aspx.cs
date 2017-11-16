@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MySql.Data.MySqlClient;
 using ProyectoQA.Classes;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
+
 
 namespace ProyectoQA
 {
@@ -14,13 +17,13 @@ namespace ProyectoQA
     {
         private IConexion conexion;
 
-        public void RegistroErrores()
+        public ReporteErrores()
         {
             //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
 
-        public void RegistroErrores(IConexion pConexion)
+        public ReporteErrores(IConexion pConexion)
         {
             conexion = pConexion;
         }
@@ -40,7 +43,7 @@ namespace ProyectoQA
                 Verificador.mostrarMensaje("Producto inválido", Page);
                 return false;
             }
-           
+
             else if (String.IsNullOrEmpty(pDescripcion))
             {
                 Verificador.mostrarMensaje("Descripción inválida, no puede estar vacía", Page);
@@ -66,8 +69,7 @@ namespace ProyectoQA
             try
             {
                 conexion.AbrirConexion();
-                conexion.setCommandText("call insertReporteError('" + pDescripcion + "','" + pFecha + "','" + pIdProducto +
-                                        "','" + pIdCliente + "','" + pCorreo + "');");
+                conexion.setCommandText("call insertReporteError('" + pDescripcion + "','" + pFecha + "','" + pIdProducto + "','" + pIdCliente + "','" + pCorreo + "');");         
                 conexion.getResultados();
                 conexion.CerrarConexion();
                 return true;
@@ -86,11 +88,13 @@ namespace ProyectoQA
             String idCliente = Session["idUsuario"].ToString();
 
             if (verificarDatosReporte(idProducto, descripcion, fecha, correo) &&
-                insertarReporteError(idProducto, descripcion, fecha,correo, idCliente))
+                insertarReporteError(idProducto, descripcion, fecha, correo, idCliente))
             {
                 Verificador.mostrarMensaje("El reporte de error fue registrado correctamente", Page);
                 Response.Redirect(url: "ReporteErrores.aspx");
             }
+
+
             else
             {
                 Verificador.mostrarMensaje(Page);
@@ -127,7 +131,7 @@ namespace ProyectoQA
             while (reader.Read())
             {
                 nombreProducto = reader[0].ToString();
-                descripcion= reader[1].ToString();
+                descripcion = reader[1].ToString();
                 fecha = reader[2].ToString();
                 correo = reader[3].ToString();
                 reporte += "<tr>" +
@@ -153,6 +157,7 @@ namespace ProyectoQA
             }
         }
 
+
         //SelectBox (Probado)
         public void popularProductos(object sender, EventArgs e)
         {
@@ -170,9 +175,7 @@ namespace ProyectoQA
                 Verificador.mostrarMensaje(Page);
             }
         }
-       
     }
-
 
 }
 
