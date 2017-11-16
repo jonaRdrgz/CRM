@@ -61,11 +61,6 @@
         <div class="small-logo">
             <span class="text-primary">CRM</span>
         </div>
-        <form role="search" class="navbar-form-custom" method="post" action="#">
-            <div class="form-group">
-                <input type="text" placeholder="Buscar Persona o Empresa..." class="form-control" name="search">
-            </div>
-        </form>
         <div class="mobile-menu" runat ="server">
             <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse" data-target="#mobile-collapse">
                 <i class="fa fa-chevron-down"></i>
@@ -105,18 +100,15 @@
         <ul class="nav" id="side-menu">
             
             <li>
-             <a href="#"><span class="nav-label">Contactos</span><span class="fa arrow"></span> </a>
+             <a href="#"><span class="nav-label">Compras</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="ContactoPersona.aspx">Personas</a></li>
-                    <li><a href="ContactoEmpresa.aspx">Empresa</a></li>
+                    <li><a href="#">Comprar</a></li>
+                    <li><a href="ProductosRelacionados.aspx">Productos Relacionados</a></li>
                 </ul>
             </li>
 
             <li>
-             <a href="#"><span class="nav-label">Ventas</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                     <li><a href="ReporteErrores.aspx">Reportes de Errores</a></li>
-                </ul>
+             <a href="ReporteErrores.aspx"><span class="nav-label">Reportes de Errores</span></a>
             </li>
 
         </ul>

@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace ProyectoQA
 {
@@ -142,6 +143,7 @@ namespace ProyectoQA
             }
             return propuestaVenta;
         }
+
         public void verPropuestaVentas(object sender, EventArgs e)
         {
             String idUsuario = Session["idUsuario"].ToString();

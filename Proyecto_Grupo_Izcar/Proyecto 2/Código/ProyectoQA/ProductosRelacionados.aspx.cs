@@ -9,41 +9,70 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace ProyectoQA
 {
     public partial class ProductosRelacionados : System.Web.UI.Page
     {
         private IConexion conexion;
+        public ProductosRelacionados()
+        {
+            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
+        }
+        public ProductosRelacionados(IConexion pConexion)
+        {
+            conexion = pConexion;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
+            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
         }
-        public Boolean consultarPropuestaVenta(String pIdUsuario, HtmlGenericControl etiqueta)
+
+        public Boolean consultarProductosRelacionados(String pIdUsuario, HtmlGenericControl etiqueta)
         {
-            String propuestaVentas = "";
+            String productosRelacionados = "";
             try
             {
-                //conexion.AbrirConexion();
-                //conexion.setCommandText("call getPropuestaVenta('" + pIdUsuario + "');");
-                //IDataReader resultadosQuery = conexion.getResultados();
-                //propuestaVentas = crearVistaPropuestaVenta(resultadosQuery);
-                //conexion.CerrarConexion();
-                //GUIBuilder.inyectarHTML(propuestaVentas, etiqueta);
+                conexion.AbrirConexion();
+                conexion.setCommandText("call getProductosRelacionados();");
+                IDataReader resultadosQuery = conexion.getResultados();
+                productosRelacionados = crearVistaProductosRelacionados(resultadosQuery);
+                conexion.CerrarConexion();
+                GUIBuilder.inyectarHTML(productosRelacionados, etiqueta);
                 return true;
             }
             catch (MySqlException ex)
             {
-
+                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
+        public String crearVistaProductosRelacionados(IDataReader reader)
+        {
+            String nombre;
+            String precio;
+            String idProducto;
 
+            String productoRelacionado = "";
+            while (reader.Read())
+            {
+                nombre = reader[1].ToString();
+                precio = reader[2].ToString();
+                idProducto = reader[0].ToString();
+                productoRelacionado += "<tr>" +
+                            "<td>" + nombre + "</td>" +
+                            "<td>" + precio + "$ </td>";
+            }
+            return productoRelacionado;
+        }
         public void verProductosRelacionados(object sender, EventArgs e)
         {
             String idUsuario = Session["idUsuario"].ToString();
 
-            if (consultarPropuestaVenta(idUsuario, vistaProductosRelacionados))
+            if (consultarProductosRelacionados(idUsuario, vistaProductosRelacionados))
             {
                 Page_Load(sender, e);
             }

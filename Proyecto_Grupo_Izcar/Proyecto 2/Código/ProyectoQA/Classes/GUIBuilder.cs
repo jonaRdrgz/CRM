@@ -21,7 +21,7 @@ namespace ProyectoQA.Classes
         {
             List<KeyValuePair<String, String>> resultado = new List<KeyValuePair<String, String>>();
             pConexion.AbrirConexion();
-            pConexion.setCommandText("call getProductos();");
+            pConexion.setCommandText("call getProductosRelacionados();");
             IDataReader resultadosQuery = pConexion.getResultados();
             while (resultadosQuery.Read())
             {
@@ -67,6 +67,7 @@ namespace ProyectoQA.Classes
             contactos = contactos.OrderBy(x => x.Key).ToList();
             return contactos;
         }
+
         public static String crearVistaPropuestaVentaXContacto(IDataReader reader)
         {
             String nombre;
@@ -91,6 +92,7 @@ namespace ProyectoQA.Classes
             }
             return propuestaVentaXContacto;
         }
+
         public static String crearVistaVentaXContacto(IDataReader reader)
         {
             String nombre;
