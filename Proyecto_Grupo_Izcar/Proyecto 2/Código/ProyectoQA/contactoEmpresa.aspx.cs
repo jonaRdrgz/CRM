@@ -147,6 +147,7 @@ namespace ProyectoQA
             }
             return contactoEmpresa;
         }
+
         public void verContactoEmpresa(object sender, EventArgs e)
         {
             String idUsuario = Session["idUsuario"].ToString();
@@ -157,6 +158,7 @@ namespace ProyectoQA
             }
             else
             {
+
                 Verificador.mostrarMensaje(Page);
             }
         }

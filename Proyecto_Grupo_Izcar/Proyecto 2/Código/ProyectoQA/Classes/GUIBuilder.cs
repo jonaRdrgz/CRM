@@ -138,5 +138,7 @@ namespace ProyectoQA.Classes
             pConexion.CerrarConexion();
             return ventaXContacto;
         }
+
+        //Nuevo
     }
 }
