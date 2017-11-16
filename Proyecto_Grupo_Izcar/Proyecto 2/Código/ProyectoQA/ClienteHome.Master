@@ -102,7 +102,6 @@
             <li>
              <a href="#"><span class="nav-label">Compras</span><span class="fa arrow"></span> </a>
                 <ul class="nav nav-second-level">
-                    <li><a href="#">Comprar</a></li>
                     <li><a href="ProductosRelacionados.aspx">Productos Relacionados</a></li>
                 </ul>
             </li>
