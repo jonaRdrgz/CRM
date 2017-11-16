@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoQA {
-    
-    
-    public partial class ReporteErrores {
-        
+namespace ProyectoQA
+{
+
+
+    public partial class ReporteErrores
+    {
+
         /// <summary>
         /// ddIdProducto control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddIdProducto;
-        
+
         /// <summary>
         /// fecha control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox fecha;
-        
+
         /// <summary>
         /// descripcionError control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descripcionError;
-        
+
         /// <summary>
         /// correoUsuario control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox correoUsuario;
-        
+
         /// <summary>
         /// registrarErrorButton control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button registrarErrorButton;
-        
+
         /// <summary>
         /// cancelarRegistroError control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ProyectoQA {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cancelarRegistroError;
-        
+
         /// <summary>
         /// vistaReporteErrores control.
         /// </summary>

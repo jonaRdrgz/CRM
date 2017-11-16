@@ -14,7 +14,7 @@
                     <div class="modal-body">
                         <form method="post" class="form-horizontal" runat ="server" display="Dynamic">
 
-                        <div class="form-group">
+                         <div class="form-group">
                             <label class="control-label">Producto</label>
                             <asp:DropDownList ID="ddIdProducto" CssClass ="form-control" runat="server" required="" onload ="popularProductos">
                             </asp:DropDownList>
@@ -32,17 +32,16 @@
                             <asp:TextBox ID="descripcionError" CssClass ="form-control" runat="server" required="" value="Sin descripcion"></asp:TextBox>
                         </div>
 
-                        <div class="form-group col-lg-12">
-                          <label>Correo Electrónico</label>
-                          <asp:TextBox ID="correoUsuario" type ="email" CssClass ="form-control" runat = "server" required ="" ></asp:TextBox>
-                                     
+                        <div class="hr-line-dashed"></div>                        
+                        <div class="form-group">
+                            <label class="control-label" >Correo Electrónico</label>
+                            <asp:TextBox ID="correoUsuario" type ="email" CssClass ="form-control" runat="server" required="" value="Correo electrónico"></asp:TextBox>
                         </div>
-                      
 
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-8">
-                                <asp:Button ID="registrarErrorButton" type ="submit" Onclick ="registrarErrorProducto" href ="ReporteErrores.aspx" CssClass ="btn btn-primary" runat="server" Text ="Reportar Error" />
+                                <asp:Button ID="registrarErrorButton" type ="submit" Onclick ="registrarReporteError" href ="ReporteErrores.aspx" CssClass ="btn btn-primary" runat="server" Text ="Reportar Error" />
                                 <asp:Button ID="cancelarRegistroError" CssClass ="btn btn-default" data-dismiss="modal" href="ReporteErrores.aspx"  runat="server" Text="Cancelar" />   
                             </div>
                         </div>
