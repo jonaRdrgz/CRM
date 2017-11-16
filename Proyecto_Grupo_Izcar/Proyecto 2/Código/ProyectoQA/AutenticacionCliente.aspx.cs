@@ -63,8 +63,9 @@ namespace ProyectoQA
             {
                 autenticar(username, pass);
             }
-            catch
+            catch (MySqlException ex)
             {
+                MessageBox.Show("Falló la operación " + ex.Message);
                 Verificador.mostrarMensaje(Page);
             }
 
