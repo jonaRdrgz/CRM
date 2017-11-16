@@ -118,6 +118,7 @@
                 <ul class="nav nav-second-level">
                     <li><a href="RegistroVentas.aspx">Seguimiento de ventas</a></li>
                     <li><a href="PropuestaVentas.aspx">Propuestas</a></li>
+                     <li><a href="ReporteErrores.aspx">Reportes</a></li>
                 </ul>
             </li>
 
