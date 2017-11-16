@@ -11,26 +11,26 @@ using System.Data;
 
 namespace ProyectoQA
 {
-    public partial class Registro : System.Web.UI.Page
+    public partial class RegistroCliente : System.Web.UI.Page
     {
         private IConexion conexion;
-        public Registro()
+        public RegistroCliente()
         {
             //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
-        public Registro(IConexion pConexion)
+        public RegistroCliente(IConexion pConexion)
         {
             conexion = pConexion;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
             //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
         }
         public void loginRef(object sender, EventArgs e)
         {
-            Response.Redirect(url: "Autenticacion.aspx");
+            Response.Redirect(url: "AutenticacionCliente.aspx");
         }
 
         //Registro
@@ -38,11 +38,11 @@ namespace ProyectoQA
         {
             Boolean resultado;
             if (conexion.AbrirConexion() &&
-               conexion.setCommandText("call getUsuario('" + correoUsuario + "');"))
+               conexion.setCommandText("call getUsuarioCliente('" + correoUsuario + "');"))
             {
                 IDataReader resultadosQuery = conexion.getResultados();
 
-                if (resultadosQuery != null 
+                if (resultadosQuery != null
                     && resultadosQuery.Read())
                 {
                     resultado = false;
@@ -52,6 +52,7 @@ namespace ProyectoQA
                     resultado = true;
                 }
                 conexion.CerrarConexion();
+               
                 return resultado;
             }
             else
@@ -60,6 +61,7 @@ namespace ProyectoQA
                 return false;
             }
         }
+
         public Boolean verificarDatosUsuario(String pCorreoUsuario, String pContrasena, String pContrasenaAux)
         {
             if (!Verificador.verificarCorreo(pCorreoUsuario))
@@ -97,15 +99,15 @@ namespace ProyectoQA
             try
             {
                 conexion.AbrirConexion();
-                conexion.setCommandText("call insertUsuario('" + pCorreoUsuario + "','" + pContrasena + "');");
+                conexion.setCommandText("call insertUsuarioCliente('" + pCorreoUsuario + "','" + pContrasena + "');");
                 conexion.getResultados();
                 conexion.CerrarConexion();
                 return true;
             }
-            catch
+            catch(Exception e)
             {
                 return false;
-            }            
+            }
         }
         public void registrarUsuario(object sender, EventArgs e)
         {
@@ -117,7 +119,7 @@ namespace ProyectoQA
                 insertarUsuario(correoUsuario, contrasena))
             {
                 MessageBox.Show("Se ha registrado con éxito");
-                Response.Redirect(url: "Autenticacion.aspx");
+                Response.Redirect(url: "AutenticacionCliente.aspx");
             }
             else
             {

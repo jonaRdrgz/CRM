@@ -11,34 +11,36 @@ using System.Web.SessionState;
 
 namespace ProyectoQA
 {
-    public partial class Autenticacion : System.Web.UI.Page
+    public partial class AutenticacionCliente : System.Web.UI.Page
     {
         public static IConexion conexion;
 
-        public Autenticacion()
+        public AutenticacionCliente()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
-        public Autenticacion(IConexion pConexion)
+
+        public AutenticacionCliente(IConexion pConexion)
         {
             conexion = pConexion;
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
         }
+
+
         public void registrarRef(object sender, EventArgs e)
         {
-            Response.Redirect(url: "Registro.aspx");
+            Response.Redirect(url: "RegistroCliente.aspx");
         }
 
         //Autenticación
         public void autenticar(String pUsername, String pPassword)
         {
             conexion.AbrirConexion();
-            conexion.setCommandText("call getIdUsuario('" + pUsername + "','" + pPassword + "');");
+            conexion.setCommandText("call getIdCliente('" + pUsername + "','" + pPassword + "');");
             IDataReader resultado = conexion.getResultados();
             if (resultado.Read())
             {
@@ -51,6 +53,7 @@ namespace ProyectoQA
             }
             conexion.CerrarConexion();
         }
+
         protected void ingresar(object sender, EventArgs e)
         {
             String username = textUsername.Text;
@@ -64,7 +67,7 @@ namespace ProyectoQA
             {
                 Verificador.mostrarMensaje(Page);
             }
-            
+
         }
     }
 }

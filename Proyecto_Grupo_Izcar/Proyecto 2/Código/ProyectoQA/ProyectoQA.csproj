@@ -82,6 +82,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AutenticacionCliente.aspx" />
     <Content Include="ContactoEmpresa.aspx" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokea93c.eot" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokea93c.ttf" />
@@ -182,6 +183,7 @@
     <Content Include="PropuestaVentas.aspx" />
     <Content Include="Registro.aspx" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="RegistroCliente.aspx" />
     <Content Include="RegistroRespuestas.aspx" />
     <Content Include="RegistroVentas.aspx" />
     <Content Include="scripts\mostrarPropuestaVenta.js" />
@@ -659,9 +661,23 @@
     <Content Include="ContactoPersona.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutenticacionCliente.aspx.cs">
+      <DependentUpon>AutenticacionCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AutenticacionCliente.aspx.designer.cs">
+      <DependentUpon>AutenticacionCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Classes\FakeConexion.cs" />
     <Compile Include="Classes\GUIBuilder.cs" />
     <Compile Include="Classes\IConexion.cs" />
+    <Compile Include="RegistroCliente.aspx.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroCliente.aspx.designer.cs">
+      <DependentUpon>RegistroCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\TestAutenticacion.cs" />
     <Compile Include="Tests\TestConexion.cs" />
     <Compile Include="Tests\TestContactoPersona.cs" />

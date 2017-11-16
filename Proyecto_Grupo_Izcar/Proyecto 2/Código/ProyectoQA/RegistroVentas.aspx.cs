@@ -18,10 +18,9 @@ namespace ProyectoQA
 
         public RegistroVentas()
         {
-            conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
-            //conexion = new Conexion("localhost", "mydb", "root", "", "3306");
+            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
-
         public RegistroVentas(IConexion pConexion)
         {
             conexion = pConexion;
@@ -29,7 +28,7 @@ namespace ProyectoQA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //conexion = new Conexion("localhost", "mydb", "root", "", "3306");
+            conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
             //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             //popularProductos();
         }
@@ -156,14 +155,9 @@ namespace ProyectoQA
         {
             String idUsuario = Session["idUsuario"].ToString();
 
-            if (consultarVentas(idUsuario, vistaVentas))
-            {
                 Page_Load(sender, e);
-            }
-            else
-            {
-                Verificador.mostrarMensaje(Page);
-            }
+
+
         }
 
         //SelectBox (Probado)

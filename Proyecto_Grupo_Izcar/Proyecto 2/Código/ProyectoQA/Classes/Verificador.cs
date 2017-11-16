@@ -22,6 +22,7 @@ namespace ProyectoQA
         {
             mostrarMensaje("El servicio no está disponible en este, inténtelo de nuevo más tarde", pagina);
         }
+
         public static Boolean verificarCorreo(String pCorreo)
         {
             String formato;
