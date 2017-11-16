@@ -45,7 +45,7 @@ namespace ProyectoQA
             if (resultado.Read())
             {
                 Session["idUsuario"] = resultado.GetInt64(0);
-                Response.Redirect("ContactoPersona.aspx");
+                Response.Redirect("ReporteErrores.aspx");
             }
             else
             {

@@ -111,6 +111,7 @@
     <Content Include="light-shadow\vendor\summernote\dist\font\summernotef534.ttf" />
     <Content Include="light-shadow\vendor\summernote\dist\font\summernotef534.woff" />
     <Content Include="home.Master" />
+    <Content Include="ClienteHome.Master" />
     <None Include="packages.config" />
     <Content Include="Autenticacion.aspx" />
     <Content Include="pages\alerts.html" />
@@ -186,6 +187,7 @@
     <Content Include="RegistroCliente.aspx" />
     <Content Include="RegistroRespuestas.aspx" />
     <Content Include="RegistroVentas.aspx" />
+    <Content Include="ReporteErrores.aspx" />
     <Content Include="scripts\mostrarPropuestaVenta.js" />
     <Content Include="scripts\jquery-3.2.1.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
@@ -671,12 +673,26 @@
     <Compile Include="Classes\FakeConexion.cs" />
     <Compile Include="Classes\GUIBuilder.cs" />
     <Compile Include="Classes\IConexion.cs" />
+    <Compile Include="ClienteHome.Master.cs">
+      <DependentUpon>ClienteHome.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteHome.Master.designer.cs">
+      <DependentUpon>ClienteHome.Master</DependentUpon>
+    </Compile>
     <Compile Include="RegistroCliente.aspx.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RegistroCliente.aspx.designer.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteErrores.aspx.cs">
+      <DependentUpon>ReporteErrores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteErrores.aspx.designer.cs">
+      <DependentUpon>ReporteErrores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tests\TestAutenticacion.cs" />
     <Compile Include="Tests\TestConexion.cs" />
