@@ -122,15 +122,7 @@
                     
                 </ul>
             </li>
-
-            <li>
-             <a href="#"><span class="nav-label">Reportes de Errores</span><span class="fa arrow"></span> </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="ReporteErrores.aspx">Reportar Errores</a></li>
-                    
-                    
-                </ul>
-            </li>
+       
 
         </ul>
     </div>
