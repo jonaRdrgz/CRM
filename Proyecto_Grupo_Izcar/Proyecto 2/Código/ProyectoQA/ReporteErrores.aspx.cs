@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-
+using System.Windows.Forms;
 
 namespace ProyectoQA
 {
@@ -74,8 +74,9 @@ namespace ProyectoQA
                 conexion.CerrarConexion();
                 return true;
             }
-            catch
+            catch(MySqlException ex)
             {
+                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
