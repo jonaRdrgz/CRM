@@ -66,5 +66,38 @@ namespace ProyectoQA
             }
             
         }
+        public void autenticarCliente(String pUsername, String pPassword)
+        {
+            conexion.AbrirConexion();
+            conexion.setCommandText("call getIdCliente('" + pUsername + "','" + pPassword + "');");
+            IDataReader resultado = conexion.getResultados();
+            if (resultado.Read())
+            {
+                Session["idUsuario"] = resultado.GetInt64(0);
+                Response.Redirect("ProductosRelacionados.aspx");
+            }
+            else
+            {
+                Verificador.mostrarMensaje("Acceso denegado", Page);
+            }
+            conexion.CerrarConexion();
+        }
+
+        protected void ingresarCliente(object sender, EventArgs e)
+        {
+            String username = textUsername.Text;
+            String pass = textPassword.Text;
+
+            try
+            {
+                autenticarCliente(username, pass);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Falló la operación " + ex.Message);
+                Verificador.mostrarMensaje(Page);
+            }
+
+        }
     }
 }

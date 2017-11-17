@@ -30,7 +30,7 @@ namespace ProyectoQA
         }
         public void loginRef(object sender, EventArgs e)
         {
-            Response.Redirect(url: "AutenticacionCliente.aspx");
+            Response.Redirect(url: "Autenticacion.aspx");
         }
 
         //Registro
@@ -119,7 +119,7 @@ namespace ProyectoQA
                 insertarUsuario(correoUsuario, contrasena))
             {
                 MessageBox.Show("Se ha registrado con éxito");
-                Response.Redirect(url: "AutenticacionCliente.aspx");
+                Response.Redirect(url: "Autenticacion.aspx");
             }
             else
             {

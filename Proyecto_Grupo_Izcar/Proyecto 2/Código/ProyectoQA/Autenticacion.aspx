@@ -34,7 +34,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center m-b-md">
-                <h3>...CRM...</h3>
+                <h3><b>...CRM...</b></h3>
                 <small>Su mejor opción!</small>
             </div>
             <div class="hpanel">
@@ -50,9 +50,14 @@
                                 
                             </div>
                             
-                            <asp:Button ID="Button1" runat="server" CssClass ="btn btn-success btn-block" Text="Ingresar al CRM" OnClick="ingresar" />
-                            <asp:Button ID="Button2" runat="server" CssClass ="btn btn-default btn-block" Text="Registrarse al CRM" href ="" OnClick="registrarRef" />
+                            <asp:Button ID="Button1" runat="server" CssClass ="btn btn-success btn-block" Font-Bold ="true"   Text="Ingresar al CRM como Vendedor" OnClick="ingresar" BackColor="#3366cc" BorderColor="#3366cc"/><br>
+                           <asp:Button ID="Button2" runat="server" CssClass ="btn btn-success btn-block" Font-Bold ="true"  Text="Ingresar al CRM como Cliente" OnClick="ingresarCliente" BackColor="Green" BorderColor="Green" /><br>
+                           
+                            <a href="RegistroCliente.aspx"  class="text-center" style="color:black" ><b>¿Aún no tiene cuenta? Regístrese aquí</b></a><br><br>
+                            <a href="RegistroCliente.aspx"  class="text-center" style="color:blue" ><b>Registrarse como Cliente</b></a><br>
+                            <a href="Registro.aspx" class="text-center" style="color:blue"><b>Registrarse como Vendedor</b></a>
                         </form>
+                      
                 </div>
             </div>
         </div>

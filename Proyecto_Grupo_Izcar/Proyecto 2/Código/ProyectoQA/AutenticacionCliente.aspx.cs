@@ -37,7 +37,7 @@ namespace ProyectoQA
         }
 
         //Autenticación
-        public void autenticar(String pUsername, String pPassword)
+        public void autenticarCliente(String pUsername, String pPassword)
         {
             conexion.AbrirConexion();
             conexion.setCommandText("call getIdCliente('" + pUsername + "','" + pPassword + "');");
@@ -54,14 +54,14 @@ namespace ProyectoQA
             conexion.CerrarConexion();
         }
 
-        protected void ingresar(object sender, EventArgs e)
+        protected void ingresarCliente(object sender, EventArgs e)
         {
             String username = textUsername.Text;
             String pass = textPassword.Text;
 
             try
             {
-                autenticar(username, pass);
+                autenticarCliente(username, pass);
             }
             catch (MySqlException ex)
             {
