@@ -29,13 +29,19 @@
                        <div class="hr-line-dashed"></div>                        
                         <div class="form-group">
                             <label class="control-label" >Descripción del error</label>
-                            <asp:TextBox ID="descripcionError" CssClass ="form-control" runat="server" required="" value="Sin descripcion"></asp:TextBox>
+                            <asp:TextBox ID="descripcionError" CssClass ="form-control" runat="server" required="" value=""></asp:TextBox>
                         </div>
 
                         <div class="hr-line-dashed"></div>                        
                         <div class="form-group">
-                            <label class="control-label" >Correo Electrónico</label>
-                            <asp:TextBox ID="correoUsuario" type ="email" CssClass ="form-control" runat="server" required="" value="Correo electrónico"></asp:TextBox>
+                            <label class="control-label" >Nombre de Usuario</label>
+                            <asp:TextBox ID="correoUsuario" type ="email" CssClass ="form-control" runat="server" required="" value=""></asp:TextBox>
+                        </div>
+
+                       <div class="form-group">
+                            <label class="control-label">Vendedor</label>
+                            <asp:DropDownList ID="ddIdContacto" CssClass ="form-control" runat="server" required="" onload ="popularVendedores">
+                            </asp:DropDownList>
                         </div>
 
                         <div class="hr-line-dashed"></div>
@@ -92,7 +98,8 @@
                         <th>Producto</th>
                         <th>Descripción del error</th>
                         <th>Fecha del reporte</th>
-                        <th>Correo Electrónico</th>
+                        <th>Cliente</th>
+                        <th>Vendedor</th>
                     </tr>
                     </thead>
                     <tbody id ="vistaReporteErrores"  runat ="server" onload ="verReporteErrores">

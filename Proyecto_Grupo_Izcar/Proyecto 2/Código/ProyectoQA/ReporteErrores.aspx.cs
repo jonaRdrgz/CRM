@@ -138,8 +138,8 @@ namespace ProyectoQA
                 reporte += "<tr>" +
                             "<td>" + nombreProducto + "</td>" +
                             "<td>" + descripcion + "</td>" +
-                            "<td>" + fecha + "% </td>" +
-                            "<td>" + correo + "$ </td>" +
+                            "<td>" + fecha + "</td>" +
+                            "<td>" + correo + "</td>" +
                         "</tr>";
             }
             return reporte;
@@ -161,6 +161,23 @@ namespace ProyectoQA
 
         //SelectBox (Probado)
         public void popularProductos(object sender, EventArgs e)
+        {
+            try
+            {
+                List<KeyValuePair<String, String>> productos = GUIBuilder.getProductos(conexion);
+                foreach (KeyValuePair<String, String> p in productos)
+                {
+                    ddIdProducto.Items.Add(new ListItem(p.Key, p.Value));
+                }
+                ddIdProducto.Items.Insert(0, new ListItem("Seleccione un producto", ""));
+            }
+            catch
+            {
+                Verificador.mostrarMensaje(Page);
+            }
+        }
+
+        public void popularVendedores(object sender, EventArgs e)
         {
             try
             {
