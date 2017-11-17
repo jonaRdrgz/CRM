@@ -109,6 +109,9 @@
             <li>
              <a href="ReporteErrores.aspx"><span class="nav-label">Reportes de Errores</span></a>
             </li>
+            <li>
+             <a href="Entrenamientos.aspx"><span class="nav-label">Entrenamientos</span></a>
+            </li>
 
         </ul>
     </div>

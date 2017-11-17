@@ -82,8 +82,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AgregarEntrenamiento.aspx" />
     <Content Include="AutenticacionCliente.aspx" />
     <Content Include="ContactoEmpresa.aspx" />
+    <Content Include="Entrenamientos.aspx" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokea93c.eot" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokea93c.ttf" />
     <Content Include="fonts\pe-icon-7-stroke\fonts\Pe-icon-7-strokea93c.woff" />
@@ -664,6 +666,13 @@
     <Content Include="ContactoPersona.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgregarEntrenamiento.aspx.cs">
+      <DependentUpon>AgregarEntrenamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarEntrenamiento.aspx.designer.cs">
+      <DependentUpon>AgregarEntrenamiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AutenticacionCliente.aspx.cs">
       <DependentUpon>AutenticacionCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -680,6 +689,13 @@
     </Compile>
     <Compile Include="ClienteHome.Master.designer.cs">
       <DependentUpon>ClienteHome.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Entrenamientos.aspx.cs">
+      <DependentUpon>Entrenamientos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Entrenamientos.aspx.designer.cs">
+      <DependentUpon>Entrenamientos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProductosRelacionados.aspx.cs">
       <DependentUpon>ProductosRelacionados.aspx</DependentUpon>
