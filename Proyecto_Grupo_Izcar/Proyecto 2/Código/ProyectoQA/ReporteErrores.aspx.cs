@@ -133,8 +133,10 @@ namespace ProyectoQA
             String fecha;
             String correo;
             String vendedor;
-           
-                String reporte = "";
+            String estado;
+            String diagnostico;
+
+            String reporte = "";
                 while (reader.Read())
                 {
                     nombreProducto = reader[0].ToString();
@@ -143,12 +145,17 @@ namespace ProyectoQA
                     fecha = reader[2].ToString();
                     correo = reader[3].ToString();
                     vendedor = reader[4].ToString();
-                    reporte += "<tr>" +
+                    estado = reader[5].ToString();
+                    diagnostico = reader[6].ToString();
+
+                reporte += "<tr>" +
                                 "<td>" + nombreProducto + "</td>" +
                                 "<td>" + descripcion + "</td>" +
                                 "<td>" + fecha + "</td>" +
                                 "<td>" + correo + "</td>" +
                                 "<td>" + vendedor + "</td>" +
+                                "<td>" + estado + "</td>" +
+                                "<td>" + diagnostico + "</td>" +
                             "</tr>";
                 }
                 return reporte;

@@ -100,6 +100,8 @@
                         <th>Fecha del reporte</th>
                         <th>Cliente</th>
                         <th>Vendedor</th>
+                        <th>Estado</th>
+                        <th>Diagnóstico</th>
                     </tr>
                     </thead>
                     <tbody id ="vistaReporteErrores"  runat ="server" onload ="verReporteErrores">
