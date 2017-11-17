@@ -125,6 +125,7 @@
             <li>
              <a href="AgregarEntrenamiento.aspx"><span class="nav-label">Entrenamientos</span></a>
             </li>
+          
         </ul>
     </div>
 </aside>

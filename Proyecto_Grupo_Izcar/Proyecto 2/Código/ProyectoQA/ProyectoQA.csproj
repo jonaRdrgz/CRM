@@ -185,6 +185,7 @@
     <Content Include="pages\wizard.html" />
     <Content Include="ProductosRelacionados.aspx" />
     <Content Include="PropuestaVentas.aspx" />
+    <Content Include="PuntosContacto.aspx" />
     <Content Include="Registro.aspx" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="RegistroCliente.aspx" />
@@ -703,6 +704,13 @@
     </Compile>
     <Compile Include="ProductosRelacionados.aspx.designer.cs">
       <DependentUpon>ProductosRelacionados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PuntosContacto.aspx.cs">
+      <DependentUpon>PuntosContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PuntosContacto.aspx.designer.cs">
+      <DependentUpon>PuntosContacto.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegistroCliente.aspx.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
