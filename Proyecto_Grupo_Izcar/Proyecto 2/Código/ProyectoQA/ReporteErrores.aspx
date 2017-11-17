@@ -40,7 +40,7 @@
 
                        <div class="form-group">
                             <label class="control-label">Vendedor</label>
-                            <asp:DropDownList ID="ddIdContacto" CssClass ="form-control" runat="server" required="" onload ="popularVendedores">
+                            <asp:DropDownList ID="ddIdVendedor" CssClass ="form-control" runat="server" required="" onload ="popularVendedores">
                             </asp:DropDownList>
                         </div>
 

@@ -64,12 +64,14 @@ namespace ProyectoQA
                 return true;
             }
         }
-        public Boolean insertarReporteError(String pIdProducto, String pDescripcion, String pFecha, String pCorreo, String pIdCliente)
+        public Boolean insertarReporteError(String pIdProducto, String pDescripcion, String pFecha, String pCorreo, String pIdCliente, String pIdVendedor)
         {
             try
             {
                 conexion.AbrirConexion();
-                conexion.setCommandText("call insertReporteError('" + pDescripcion + "','" + pFecha + "','" + pIdProducto + "','" + pIdCliente + "','" + pCorreo + "');");         
+                conexion.setCommandText("call insertReporteError('" + pDescripcion + "','" + pFecha + "','" + pIdProducto +
+                                        "','" + pIdCliente + "','" + pCorreo + "','" + pIdVendedor + "');");
+
                 conexion.getResultados();
                 conexion.CerrarConexion();
                 return true;
@@ -87,9 +89,10 @@ namespace ProyectoQA
             String fecha = this.fecha.Text.Trim();
             String correo = this.correoUsuario.Text.Trim();
             String idCliente = Session["idUsuario"].ToString();
+            String idVendedor = this.ddIdVendedor.Text.Trim();
 
             if (verificarDatosReporte(idProducto, descripcion, fecha, correo) &&
-                insertarReporteError(idProducto, descripcion, fecha, correo, idCliente))
+                insertarReporteError(idProducto, descripcion, fecha, correo, idCliente,idVendedor))
             {
                 Verificador.mostrarMensaje("El reporte de error fue registrado correctamente", Page);
                 Response.Redirect(url: "ReporteErrores.aspx");
@@ -116,8 +119,10 @@ namespace ProyectoQA
                 GUIBuilder.inyectarHTML(reportes, etiqueta);
                 return true;
             }
-            catch
+            catch(MySqlException ex)
+
             {
+                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
@@ -127,22 +132,28 @@ namespace ProyectoQA
             String descripcion;
             String fecha;
             String correo;
-
-            String reporte = "";
-            while (reader.Read())
-            {
-                nombreProducto = reader[0].ToString();
-                descripcion = reader[1].ToString();
-                fecha = reader[2].ToString();
-                correo = reader[3].ToString();
-                reporte += "<tr>" +
-                            "<td>" + nombreProducto + "</td>" +
-                            "<td>" + descripcion + "</td>" +
-                            "<td>" + fecha + "</td>" +
-                            "<td>" + correo + "</td>" +
-                        "</tr>";
-            }
-            return reporte;
+            String vendedor;
+           
+                String reporte = "";
+                while (reader.Read())
+                {
+                    nombreProducto = reader[0].ToString();
+                
+                    descripcion = reader[1].ToString();
+                    fecha = reader[2].ToString();
+                    correo = reader[3].ToString();
+                    vendedor = reader[4].ToString();
+                    reporte += "<tr>" +
+                                "<td>" + nombreProducto + "</td>" +
+                                "<td>" + descripcion + "</td>" +
+                                "<td>" + fecha + "</td>" +
+                                "<td>" + correo + "</td>" +
+                                "<td>" + vendedor + "</td>" +
+                            "</tr>";
+                }
+                return reporte;
+            
+           
         }
         public void verReporteErrores(object sender, EventArgs e)
         {
@@ -154,6 +165,7 @@ namespace ProyectoQA
             }
             else
             {
+            
                 Verificador.mostrarMensaje(Page);
             }
         }
@@ -181,12 +193,12 @@ namespace ProyectoQA
         {
             try
             {
-                List<KeyValuePair<String, String>> productos = GUIBuilder.getProductos(conexion);
-                foreach (KeyValuePair<String, String> p in productos)
+                List<KeyValuePair<String, String>> vendedores = GUIBuilder.getVendedores(conexion);
+                foreach (KeyValuePair<String, String> p in vendedores)
                 {
-                    ddIdProducto.Items.Add(new ListItem(p.Key, p.Value));
+                    ddIdVendedor.Items.Add(new ListItem(p.Key, p.Value));
                 }
-                ddIdProducto.Items.Insert(0, new ListItem("Seleccione un producto", ""));
+                ddIdVendedor.Items.Insert(0, new ListItem("Seleccione un vendedor", ""));
             }
             catch
             {

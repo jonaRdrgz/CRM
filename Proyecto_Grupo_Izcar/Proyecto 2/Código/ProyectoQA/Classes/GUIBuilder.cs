@@ -68,6 +68,21 @@ namespace ProyectoQA.Classes
             return contactos;
         }
 
+        public static List<KeyValuePair<String, String>> getVendedores(IConexion pConexion)
+        {
+            List<KeyValuePair<String, String>> resultado = new List<KeyValuePair<String, String>>();
+            pConexion.AbrirConexion();
+            pConexion.setCommandText("call getVendedores();");
+            IDataReader resultadosQuery = pConexion.getResultados();
+            while (resultadosQuery.Read())
+            {
+                resultado.Add(new KeyValuePair<String, String>(resultadosQuery[1].ToString(), resultadosQuery[0].ToString()));
+            }
+            pConexion.CerrarConexion();
+            resultado = resultado.OrderBy(x => x.Key).ToList();
+            return resultado;
+        }
+
         public static String crearVistaPropuestaVentaXContacto(IDataReader reader)
         {
             String nombre;

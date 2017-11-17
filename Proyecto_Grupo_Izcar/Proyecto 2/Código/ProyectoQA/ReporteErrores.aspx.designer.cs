@@ -49,13 +49,13 @@ namespace ProyectoQA {
         protected global::System.Web.UI.WebControls.TextBox correoUsuario;
         
         /// <summary>
-        /// ddIdContacto control.
+        /// ddIdVendedor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddIdContacto;
+        protected global::System.Web.UI.WebControls.DropDownList ddIdVendedor;
         
         /// <summary>
         /// registrarErrorButton control.
