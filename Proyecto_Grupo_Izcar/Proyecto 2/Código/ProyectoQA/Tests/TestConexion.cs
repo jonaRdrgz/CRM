@@ -20,20 +20,20 @@ namespace ProyectoQA.Tests
         [TestCase]
         public void AbrirConexion_CredencialesValidas_ReturnTrue()
         {
-            Conexion conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            Conexion conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
             Assert.AreEqual(true, conexion.AbrirConexion());
         }
         [TestCase]
         public void AbrirConexion_CredencialesValidas_OpenState()
         {
-            Conexion conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            Conexion conexion =   new Conexion("localhost", "mydb", "root", "root", "3306");
             conexion.AbrirConexion();
             Assert.AreEqual(ConnectionState.Open, conexion.getConexion().State);
         }
         [TestCase]
         public void CerrarConexion_CredencialesValidas_CloseState()
         {
-            Conexion conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            Conexion conexion = new   Conexion("localhost", "mydb", "root", "root", "3306");
             conexion.AbrirConexion();
             conexion.CerrarConexion();
             Assert.AreNotEqual(ConnectionState.Open, conexion.getConexion().State);
@@ -41,7 +41,7 @@ namespace ProyectoQA.Tests
         [TestCase]
         public void setCommandText_QueryValido_ReturnTrue()
         {
-            Conexion conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            Conexion conexion = new   Conexion("localhost", "mydb", "root", "root", "3306");
             conexion.AbrirConexion();
             Assert.AreEqual(true, conexion.setCommandText("call getUsuario('hola');"));
         }
@@ -56,9 +56,9 @@ namespace ProyectoQA.Tests
         [TestCase]
         public void getResultados_ConexionValida_ThrowsException()
         {
-            Conexion conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            Conexion conexion =   new Conexion("localhost", "mydb", "root", "root", "3306");
             conexion.AbrirConexion();
-            conexion.setCommandText("call getUsuario('jefalva@live.com');");
+            conexion.setCommandText("call getUsuario('jonastu.9@gmail.com');");
             Assert.AreEqual(true, conexion.getResultados().Read());
         }
     }

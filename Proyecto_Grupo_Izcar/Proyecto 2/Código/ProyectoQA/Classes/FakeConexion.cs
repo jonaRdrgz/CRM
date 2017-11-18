@@ -55,6 +55,7 @@ namespace ProyectoQA
             {
                 reader.Stub(x => x[i]).Return(i);
             }
+
             if (!throwException)
             {
                 if (resultResultados)

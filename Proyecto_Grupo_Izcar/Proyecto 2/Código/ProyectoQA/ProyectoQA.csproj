@@ -750,14 +750,20 @@
     <Compile Include="ReportesErroresVendedor.aspx.designer.cs">
       <DependentUpon>ReportesErroresVendedor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\TestAgregarEntrenamiento.cs" />
     <Compile Include="Tests\TestAutenticacion.cs" />
+    <Compile Include="Tests\TestAutenticacionCliente.cs" />
     <Compile Include="Tests\TestConexion.cs" />
     <Compile Include="Tests\TestContactoPersona.cs" />
+    <Compile Include="Tests\TestEntrenamientos.cs" />
     <Compile Include="Tests\TestGUIBuilder.cs" />
+    <Compile Include="Tests\TestProductosRelacionados.cs" />
     <Compile Include="Tests\TestPropuestaVentas.cs" />
     <Compile Include="Tests\TestRegistro.cs" />
     <Compile Include="Tests\TestRegistroRespuestas.cs" />
     <Compile Include="Tests\TestRegistroVentas.cs" />
+    <Compile Include="Tests\TestRegitroCliente.cs" />
+    <Compile Include="Tests\TestRespuestaEntrenamiento.cs" />
     <Compile Include="Tests\TestVerificador.cs" />
     <Compile Include="Classes\Verificador.cs" />
     <Compile Include="Classes\Conexion.cs" />

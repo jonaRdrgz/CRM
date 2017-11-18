@@ -44,32 +44,11 @@ namespace ProyectoQA
                 GUIBuilder.inyectarHTML(productosRelacionados, etiqueta);
                 return true;
             }
-            catch (MySqlException ex)
+            catch 
             {
-                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
-       /* public String crearVistaProductosRelacionados(IDataReader reader)
-        {
-            String nombre;
-            String precio;
-            String idProducto;
-
-            String productoRelacionado = "";
-            while (reader.Read())
-            {
-                nombre = reader[1].ToString();
-                precio = reader[2].ToString();
-                idProducto = reader[0].ToString();
-                productoRelacionado += "<tr>" +
-                            "<td>" + nombre + "</td>" +
-                            "<td>" + precio + "$ </td>";
-            }
-            return productoRelacionado;
-        }*/
-
-
 
         public String crearVistaProductosRelacionados(IDataReader reader)
         {
@@ -101,6 +80,7 @@ namespace ProyectoQA
             }
             return productoRelacionado;
         }
+
         public void verProductosRelacionados(object sender, EventArgs e)
         {
             String idUsuario = Session["idUsuario"].ToString();

@@ -111,9 +111,8 @@ namespace ProyectoQA
                 GUIBuilder.inyectarHTML(propuestaVentas, etiqueta);
                 return true;
             }
-            catch(MySqlException ex)
+            catch
             {
-                Verificador.mostrarMensaje(ex.Message, Page);
                 return false;
             }
         }

@@ -43,11 +43,6 @@ namespace ProyectoQA
                 Verificador.mostrarMensaje("Debe elegir un estado", Page);
                 return false;
             }
-            //else if (!Verificador.verificarEstado(pEstado))
-            //{
-            //    Verificador.mostrarMensaje("El estado no es válido", Page);
-            //    return false;
-            //}
             else if (String.IsNullOrEmpty(pFecha))
             {
                 Verificador.mostrarMensaje("La fecha no es válida", Page);
@@ -70,9 +65,8 @@ namespace ProyectoQA
                 conexion.CerrarConexion();
                 return true;
             }
-            catch (MySqlException ex)
+            catch 
             {
-                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }

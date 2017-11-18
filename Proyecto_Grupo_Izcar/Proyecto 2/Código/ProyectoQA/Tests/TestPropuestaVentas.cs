@@ -92,7 +92,7 @@ namespace ProyectoQA.Tests
             HtmlGenericControl fakeTag = MockRepository.GenerateStub<HtmlGenericControl>();
             IConexion fakeConexion = new FakeConexion(true, true, true, false, true);
             PropuestaVentas propuestaVentas = new PropuestaVentas(fakeConexion);
-            Assert.AreEqual(false, propuestaVentas.consultarPropuestaVenta("1", fakeTag));
+            Assert.AreEqual(false, propuestaVentas.consultarPropuestaVenta("22", fakeTag));
         }
     }
 }
