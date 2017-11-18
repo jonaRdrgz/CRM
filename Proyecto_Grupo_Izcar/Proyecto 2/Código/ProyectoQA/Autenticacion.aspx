@@ -53,7 +53,7 @@
                             <asp:Button ID="Button1" runat="server" CssClass ="btn btn-success btn-block" Font-Bold ="true"   Text="Ingresar al CRM como Vendedor" OnClick="ingresar" BackColor="#3366cc" BorderColor="#3366cc"/><br>
                            <asp:Button ID="Button2" runat="server" CssClass ="btn btn-success btn-block" Font-Bold ="true"  Text="Ingresar al CRM como Cliente" OnClick="ingresarCliente" BackColor="Green" BorderColor="Green" /><br>
                            
-                            <a href="RegistroCliente.aspx"  class="text-center" style="color:black" ><b>¿Aún no tiene cuenta? Regístrese aquí</b></a><br><br>
+                            <a <b>¿Aún no tiene cuenta? Regístrese aquí</b></a><br><br>
                             <a href="RegistroCliente.aspx"  class="text-center" style="color:blue" ><b>Registrarse como Cliente</b></a><br>
                             <a href="Registro.aspx" class="text-center" style="color:blue"><b>Registrarse como Vendedor</b></a>
                         </form>
