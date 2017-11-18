@@ -125,6 +125,10 @@
             <li>
              <a href="AgregarEntrenamiento.aspx"><span class="nav-label">Entrenamientos</span></a>
             </li>
+
+            <li>
+             <a href="ReportesErroresVendedor.aspx"><span class="nav-label">Reportes de Errroes de Productos</span></a>
+            </li>
           
         </ul>
     </div>
