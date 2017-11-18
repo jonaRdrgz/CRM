@@ -39,11 +39,7 @@ namespace ProyectoQA
                 Verificador.mostrarMensaje("Debe elegir un estado", Page);
                 return false;
             }
-            else if (!Verificador.verificarEstado(pEstado))
-            {
-                Verificador.mostrarMensaje("El estado no es válido", Page);
-                return false;
-            }
+            
             else if (String.IsNullOrEmpty(pFecha))
             {
                 Verificador.mostrarMensaje("La fecha no es válida", Page);
@@ -73,13 +69,14 @@ namespace ProyectoQA
         }
         public void registrarEstadoReporte(object sender, EventArgs e)
         {
-            String estado = this.ddEstado.Text.Trim().ToString();
+            String estado = this.ddEstado.Text.Trim();
             String fecha = this.fecha.Text.Trim();
             String diagnostico = this.diagnostico.Text.Trim();
             String idReporte = Request.QueryString["idReporte"].ToString();
 
-            if (verificarDatosEstadoReporte(diagnostico, estado, fecha) &&
-                insertarEstadoReporte(diagnostico, estado, fecha, idReporte))
+           
+
+            if (verificarDatosEstadoReporte(diagnostico, estado, fecha)&& insertarEstadoReporte(diagnostico, estado, fecha, idReporte))
             {
                 Verificador.mostrarMensaje("El estado del reporte fue realizado", Page);
                 Response.Redirect(url: "ReportesErroresVendedor.aspx");
