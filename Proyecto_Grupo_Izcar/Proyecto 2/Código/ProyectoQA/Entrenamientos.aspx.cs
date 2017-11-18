@@ -38,7 +38,7 @@ namespace ProyectoQA
             try
             {
                 conexion.AbrirConexion();
-                conexion.setCommandText("call getEntrenamientos();");
+                conexion.setCommandText("call getEntrenamientosClientes('"+ pIdUsuario+"');");
                 IDataReader resultadosQuery = conexion.getResultados();
                 entrenamientos = crearVistaEntrenamiento(resultadosQuery);
                 conexion.CerrarConexion();
@@ -71,7 +71,7 @@ namespace ProyectoQA
                 fecha = reader[2].ToString();
                 ubicacion = reader[5].ToString();
                 empresa = reader[6].ToString();
-                //estado = reader[7].ToString();
+                estado = reader[7].ToString();
                 idEntrenamiento = reader[0].ToString();
                 entrenamiento += "<tr>" +
                             "<td>" + nombre + "</td>" +
@@ -80,8 +80,8 @@ namespace ProyectoQA
                             "<td>" + horaFin + "</td>" +
                             "<td>" + ubicacion + "</td>" +
                             "<td>" + empresa + "</td>" +
-                            //"<td>" + estado + "</td>" +
-                          //  "<td>" + "<a href='RegistroRespuestaEntrenamiento.aspx?idEntrenamiento=" + idEntrenamiento + "'>Editar respuesta</a>" + "</td>" +
+                            "<td>" + estado + "</td>" +
+                            "<td>" + "<a href='RegistroRespuestaEntrenamiento.aspx?idEntrenamiento=" + idEntrenamiento + "'>Editar respuesta</a>" + "</td>" +
                         "</tr>";
             }
             return entrenamiento;
