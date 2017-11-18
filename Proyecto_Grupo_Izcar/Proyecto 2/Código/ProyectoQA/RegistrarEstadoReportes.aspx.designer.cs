@@ -10,51 +10,51 @@
 namespace ProyectoQA {
     
     
-    public partial class Registro {
+    public partial class RegistrarEstadoReportes {
         
         /// <summary>
-        /// loginForm control.
+        /// fecha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm loginForm;
+        protected global::System.Web.UI.WebControls.TextBox fecha;
         
         /// <summary>
-        /// correoUsuarioRegistrar control.
+        /// ddEstado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox correoUsuarioRegistrar;
+        protected global::System.Web.UI.WebControls.DropDownList ddEstado;
         
         /// <summary>
-        /// contrasenaRegistrar control.
+        /// diagnostico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contrasenaRegistrar;
+        protected global::System.Web.UI.WebControls.TextBox diagnostico;
         
         /// <summary>
-        /// contrasenaConfirmarRegistrar control.
+        /// registrarEstadoButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox contrasenaConfirmarRegistrar;
+        protected global::System.Web.UI.WebControls.Button registrarEstadoButton;
         
         /// <summary>
-        /// Registrar control.
+        /// cancelarRespuesta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Registrar;
+        protected global::System.Web.UI.WebControls.LinkButton cancelarRespuesta;
     }
 }

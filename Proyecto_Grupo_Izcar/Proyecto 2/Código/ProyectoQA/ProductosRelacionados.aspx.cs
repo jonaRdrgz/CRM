@@ -50,7 +50,7 @@ namespace ProyectoQA
                 return false;
             }
         }
-        public String crearVistaProductosRelacionados(IDataReader reader)
+       /* public String crearVistaProductosRelacionados(IDataReader reader)
         {
             String nombre;
             String precio;
@@ -67,12 +67,45 @@ namespace ProyectoQA
                             "<td>" + precio + "$ </td>";
             }
             return productoRelacionado;
+        }*/
+
+
+
+        public String crearVistaProductosRelacionados(IDataReader reader)
+        {
+            
+            String productoRelacionado = "";
+            int contador = 0;
+
+            while (reader.Read())
+            {
+                if (contador % 4 == 0)
+                {
+                    productoRelacionado += "<div class = 'row'>";
+                }
+                productoRelacionado += "<div class='col-lg-3'>" +
+                                       "<div class='hpanel hyellow contact-panel'>" +
+                                           "<div class='panel-body'>" +
+                                              
+                                              "<div class='text-muted font-bold m-b-xs'>Nombre: " + reader[1].ToString() + "</div>" +
+                                              "<div class='text-muted font-bold m-b-xs'>Precio: $" + reader[2].ToString() + "</div>" +
+                                           
+                                          "</div>" +
+                                       "</div>" +
+                                   "</div>";
+                if (contador % 4 == 3)
+                {
+                    productoRelacionado += "</div>";
+                }
+                contador++;
+            }
+            return productoRelacionado;
         }
         public void verProductosRelacionados(object sender, EventArgs e)
         {
             String idUsuario = Session["idUsuario"].ToString();
 
-            if (consultarProductosRelacionados(idUsuario, vistaProductosRelacionados))
+            if (consultarProductosRelacionados(idUsuario,vistaProductosRelacionados))
             {
                 Page_Load(sender, e);
             }

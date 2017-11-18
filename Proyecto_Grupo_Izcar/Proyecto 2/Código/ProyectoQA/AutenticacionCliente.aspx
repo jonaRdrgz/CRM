@@ -50,9 +50,11 @@
                                 
                             </div>
                             
-                            <asp:Button ID="Button1" runat="server" CssClass ="btn btn-success btn-block" Text="Ingresar al CRM" OnClick="ingresar" />
-                            <asp:Button ID="Button2" runat="server" CssClass ="btn btn-default btn-block" Text="Registrarse al CRM" href ="" OnClick="registrarRef" />
+                            <asp:Button ID="Button1" runat="server" CssClass ="btn btn-success btn-block" Text="Ingresar como Cliente" OnClick="ingresar" />
+                           
+                            
                         </form>
+                       
                 </div>
             </div>
         </div>

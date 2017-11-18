@@ -106,6 +106,10 @@
                 </ul>
             </li>
 
+             <li>
+             <a href="PuntosContacto.aspx"><span class="nav-label">Puntos de Contacto</span></a>
+            </li>
+
             <li>
              <a href="ReporteErrores.aspx"><span class="nav-label">Reportes de Errores</span></a>
             </li>

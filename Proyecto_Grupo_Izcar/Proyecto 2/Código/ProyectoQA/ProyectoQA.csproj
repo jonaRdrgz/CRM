@@ -185,6 +185,8 @@
     <Content Include="pages\wizard.html" />
     <Content Include="ProductosRelacionados.aspx" />
     <Content Include="PropuestaVentas.aspx" />
+    <Content Include="PuntosContacto.aspx" />
+    <Content Include="RegistrarEstadoReportes.aspx" />
     <Content Include="Registro.aspx" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="RegistroCliente.aspx" />
@@ -192,6 +194,7 @@
     <Content Include="RegistroRespuestas.aspx" />
     <Content Include="RegistroVentas.aspx" />
     <Content Include="ReporteErrores.aspx" />
+    <Content Include="ReportesErroresVendedor.aspx" />
     <Content Include="scripts\mostrarPropuestaVenta.js" />
     <Content Include="scripts\jquery-3.2.1.js" />
     <Content Include="scripts\jquery-3.2.1.min.js" />
@@ -705,6 +708,20 @@
     <Compile Include="ProductosRelacionados.aspx.designer.cs">
       <DependentUpon>ProductosRelacionados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PuntosContacto.aspx.cs">
+      <DependentUpon>PuntosContacto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PuntosContacto.aspx.designer.cs">
+      <DependentUpon>PuntosContacto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarEstadoReportes.aspx.cs">
+      <DependentUpon>RegistrarEstadoReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarEstadoReportes.aspx.designer.cs">
+      <DependentUpon>RegistrarEstadoReportes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistroCliente.aspx.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -725,6 +742,13 @@
     </Compile>
     <Compile Include="ReporteErrores.aspx.designer.cs">
       <DependentUpon>ReporteErrores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportesErroresVendedor.aspx.cs">
+      <DependentUpon>ReportesErroresVendedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReportesErroresVendedor.aspx.designer.cs">
+      <DependentUpon>ReportesErroresVendedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tests\TestAutenticacion.cs" />
     <Compile Include="Tests\TestConexion.cs" />

@@ -50,7 +50,7 @@
                                 <asp:TextBox ID="contrasenaConfirmarRegistrar" type ="password" CssClass ="form-control" runat="server" required =""></asp:TextBox> </div>
                             </div>
                             <div class="text-center" runat ="server">
-                                 <asp:Button ID="Registrar"  runat="server"  CssClass ="btn btn-success" Text="Registrar" OnClick="registrarUsuario" />
+                                 <asp:Button ID="Registrar"  runat="server"  CssClass ="btn btn-success" Text="Registrar" OnClick="registrarUsuario" BackColor="Green" BorderColor ="Green" Font-Bold ="true" />
                         
                                 <a id="Cancelar" href ="Autenticacion.aspx" class ="btn btn-default" >Cancelar </a>
                         
