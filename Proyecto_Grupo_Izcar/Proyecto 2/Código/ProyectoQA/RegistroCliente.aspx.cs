@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Data;
 
+
 namespace ProyectoQA
 {
     public partial class RegistroCliente : System.Web.UI.Page
@@ -118,8 +119,12 @@ namespace ProyectoQA
             if (verificarDatosUsuario(correoUsuario, contrasena, contrasenaAux) &&
                 insertarUsuario(correoUsuario, contrasena))
             {
-                MessageBox.Show("Se ha registrado con éxito");
-                Response.Redirect(url: "Autenticacion.aspx");
+                //MessageBox.Show("Se ha registrado con éxito");
+               /* string str = "Se ha registrado con éxito en el sistema CRM, ahora puede ingresar al sistema";
+                Response.Write("<script language=javascript>alert('" + str + "');</script>");*/
+
+                
+               Response.Redirect(url: "Autenticacion.aspx");
             }
             else
             {

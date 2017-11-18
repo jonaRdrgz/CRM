@@ -73,7 +73,7 @@ namespace ProyectoQA
         }
         public void registrarEstadoReporte(object sender, EventArgs e)
         {
-            String estado = this.ddEstado.Text.Trim();
+            String estado = this.ddEstado.Text.Trim().ToString();
             String fecha = this.fecha.Text.Trim();
             String diagnostico = this.diagnostico.Text.Trim();
             String idReporte = Request.QueryString["idReporte"].ToString();
