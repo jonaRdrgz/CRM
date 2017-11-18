@@ -128,8 +128,10 @@ namespace ProyectoQA
                 GUIBuilder.inyectarHTML(entrenamientos, etiqueta);
                 return true;
             }
-            catch
+            catch (MySqlException ex)
             {
+                MessageBox.Show("Falló la operación " + ex.Message);
+                Verificador.mostrarMensaje(Page);
                 return false;
             }
         }
@@ -172,7 +174,7 @@ namespace ProyectoQA
                 Page_Load(sender, e);
             }
             else
-            {
+            { 
                 Verificador.mostrarMensaje(Page);
             }
         }

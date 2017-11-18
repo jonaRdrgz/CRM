@@ -188,6 +188,7 @@
     <Content Include="Registro.aspx" />
     <None Include="scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="RegistroCliente.aspx" />
+    <Content Include="RegistroRespuestaEntrenamiento.aspx" />
     <Content Include="RegistroRespuestas.aspx" />
     <Content Include="RegistroVentas.aspx" />
     <Content Include="ReporteErrores.aspx" />
@@ -710,6 +711,13 @@
     </Compile>
     <Compile Include="RegistroCliente.aspx.designer.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroRespuestaEntrenamiento.aspx.cs">
+      <DependentUpon>RegistroRespuestaEntrenamiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroRespuestaEntrenamiento.aspx.designer.cs">
+      <DependentUpon>RegistroRespuestaEntrenamiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReporteErrores.aspx.cs">
       <DependentUpon>ReporteErrores.aspx</DependentUpon>

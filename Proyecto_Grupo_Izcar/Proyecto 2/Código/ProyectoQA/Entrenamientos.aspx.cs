@@ -32,17 +32,17 @@ namespace ProyectoQA
             //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
         }
 
-        public Boolean consultarEntrenamiento(String pIdUsuario, HtmlGenericControl etiqueta)
+        public Boolean consultarEntrenamientos(String pIdUsuario, HtmlGenericControl etiqueta)
         {
-            String entrenamiento = "";
+            String entrenamientos = "";
             try
             {
                 conexion.AbrirConexion();
                 conexion.setCommandText("call getEntrenamientos();");
                 IDataReader resultadosQuery = conexion.getResultados();
-                entrenamiento = crearVistaContacto(resultadosQuery);
+                entrenamientos = crearVistaEntrenamiento(resultadosQuery);
                 conexion.CerrarConexion();
-                GUIBuilder.inyectarHTML(entrenamiento, etiqueta);
+                GUIBuilder.inyectarHTML(entrenamientos, etiqueta);
                 return true;
             }
             catch
@@ -51,33 +51,38 @@ namespace ProyectoQA
             }
         }
 
-        public String crearVistaContacto(IDataReader reader)
+        public string crearVistaEntrenamiento(IDataReader reader)
         {
-            int contador = 0;
+            String nombre;
+            String horaInicio;
+            String horaFin;
+            String fecha;
+            String ubicacion;
+            String empresa;
+            String estado;
+            String idEntrenamiento;
+
             String entrenamiento = "";
             while (reader.Read())
             {
-                if (contador % 4 == 0)
-                {
-                    entrenamiento += "<div class = 'row'>";
-                }
-                entrenamiento += "<div class='col-lg-3'>" +
-                                "<div class='hpanel hred contact-panel'>" +
-                                    "<div class='panel-body'>" +
-                                       "<h3><a  value = " + reader[0].ToString() + ">" + reader[1].ToString() + "</a></h3>" +
-                                       "<div class='text-muted font-bold m-b-xs'>Fecha: " + reader[2].ToString() + "</div>" +
-                                       "<div class='text-muted font-bold m-b-xs'>Hora Inicio: " + reader[3].ToString() + "</div>" +
-                                       "<div class='text-muted font-bold m-b-xs'>Hora Fin: " + reader[4].ToString() + "</div>" +
-                                       "<div class='text-muted font-bold m-b-xs'>Ubicación: " + reader[5].ToString() + "</div>" +
-                                       "<div class='text-muted font-bold m-b-xs'>Empresa: " + reader[6].ToString() + "</div>" +
-                                   "</div>" +
-                                "</div>" +
-                            "</div>";
-                if (contador % 4 == 3)
-                {
-                    entrenamiento += "</div>";
-                }
-                contador++;
+                nombre = reader[1].ToString();
+                horaInicio = reader[3].ToString();
+                horaFin = reader[4].ToString();
+                fecha = reader[2].ToString();
+                ubicacion = reader[5].ToString();
+                empresa = reader[6].ToString();
+                //estado = reader[7].ToString();
+                idEntrenamiento = reader[0].ToString();
+                entrenamiento += "<tr>" +
+                            "<td>" + nombre + "</td>" +
+                            "<td>" + fecha + "</td>" +
+                            "<td>" + horaInicio + "</td>" +
+                            "<td>" + horaFin + "</td>" +
+                            "<td>" + ubicacion + "</td>" +
+                            "<td>" + empresa + "</td>" +
+                            //"<td>" + estado + "</td>" +
+                          //  "<td>" + "<a href='RegistroRespuestaEntrenamiento.aspx?idEntrenamiento=" + idEntrenamiento + "'>Editar respuesta</a>" + "</td>" +
+                        "</tr>";
             }
             return entrenamiento;
         }
@@ -86,15 +91,15 @@ namespace ProyectoQA
         {
             String idUsuario = Session["idUsuario"].ToString();
 
-            if (consultarEntrenamiento(idUsuario, Element))
+            if (consultarEntrenamientos(idUsuario, vistaEntrenamientos))
             {
                 Page_Load(sender, e);
             }
             else
             {
-
                 Verificador.mostrarMensaje(Page);
             }
         }
+
     }
 }
