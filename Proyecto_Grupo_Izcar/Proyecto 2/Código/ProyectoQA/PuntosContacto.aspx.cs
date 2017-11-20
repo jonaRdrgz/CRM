@@ -1,4 +1,16 @@
-﻿using System;
+﻿/**
+ *	Clase PuntosContacto
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +22,10 @@ using System.Data;
 
 namespace ProyectoQA
 {
+    /**
+    *	Clase para crear visualizaciones de puntos de contacto
+    *
+    */
     public partial class PuntosContacto : System.Web.UI.Page
     {
 

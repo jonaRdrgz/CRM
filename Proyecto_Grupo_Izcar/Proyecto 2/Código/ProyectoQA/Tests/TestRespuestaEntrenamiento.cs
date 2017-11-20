@@ -1,4 +1,16 @@
-﻿using NUnit.Framework;
+﻿/**
+ *	Clase TestRespuestaEntrenamiento
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +20,11 @@ namespace ProyectoQA.Tests
 {
 
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de respuestas de entrenamiento
+    *
+    */
     public class TestRespuestaEntrenamiento
     {
         [TestCase]

@@ -1,4 +1,16 @@
-﻿using NUnit.Framework;
+﻿/**
+ *	Clase TestRegistroCliente
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +19,11 @@ using System.Web;
 namespace ProyectoQA.Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de registrar clientes
+    *
+    */
     public class TestRegistroCliente
     {
         [TestCase]

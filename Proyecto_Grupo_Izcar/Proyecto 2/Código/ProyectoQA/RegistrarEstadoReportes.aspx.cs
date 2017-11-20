@@ -1,4 +1,16 @@
-﻿using System;
+﻿/**
+ *	Clase RegistrarEstadoReportes
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +19,11 @@ using System.Web.UI.WebControls;
 
 namespace ProyectoQA
 {
+
+    /**
+    *	Clase para registrar los estados de los reportes
+    *
+    */
     public partial class RegistrarEstadoReportes : System.Web.UI.Page
     {
         private IConexion conexion;

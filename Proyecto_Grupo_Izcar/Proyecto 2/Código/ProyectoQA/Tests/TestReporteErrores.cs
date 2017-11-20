@@ -1,4 +1,16 @@
-﻿using NUnit.Framework;
+﻿/**
+ *	Clase TestReporteErrores
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using NUnit.Framework;
 using Rhino.Mocks;
 using System;
 using System.Collections.Generic;
@@ -10,6 +22,11 @@ using System.Web.UI.HtmlControls;
 namespace ProyectoQA.Tests
 {
     [TestFixture]
+
+    /**
+    *	Clase para realizar pruebas de reporte de errores
+    *
+    */
     public class TestReporteErrores
     {
         [TestCase]

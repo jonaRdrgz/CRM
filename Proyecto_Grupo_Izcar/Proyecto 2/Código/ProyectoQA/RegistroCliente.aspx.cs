@@ -1,4 +1,16 @@
-﻿using System;
+﻿/**
+ *	Clase RegistrarEstadoReportes
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +24,10 @@ using System.Data;
 
 namespace ProyectoQA
 {
+    /**
+    *	Clase para registrar clientes
+    *
+    */
     public partial class RegistroCliente : System.Web.UI.Page
     {
         private IConexion conexion;

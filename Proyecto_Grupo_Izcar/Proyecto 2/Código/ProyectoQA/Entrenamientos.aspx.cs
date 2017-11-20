@@ -1,4 +1,16 @@
-﻿using MySql.Data.MySqlClient;
+﻿/**
+ *	Clase Entrenamientos
+ *	
+ *	Version 1.0
+ *	
+ *	10/11/2017
+ *
+ *	Jonathan Rodríguez
+ *	Melissa Molina Corrales
+ *	Edwin Cen Xu
+ */
+
+using MySql.Data.MySqlClient;
 using ProyectoQA.Classes;
 using System;
 using System.Collections.Generic;
@@ -14,6 +26,11 @@ using System.Windows.Forms;
 
 namespace ProyectoQA
 {
+
+    /**
+    *	Clase para crear visualizaciones de entrenamientos
+    *
+    */
     public partial class Entrenamientos : System.Web.UI.Page
     {
         private IConexion conexion;
