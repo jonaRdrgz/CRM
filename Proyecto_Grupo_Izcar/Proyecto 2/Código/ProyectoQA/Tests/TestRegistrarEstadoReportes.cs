@@ -52,11 +52,11 @@ namespace ProyectoQA.Tests
             Assert.AreEqual(true, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString())));
         }
 
-        [TestCase]
+
         public void insertarEstadoReporte_RegistrarEstado_ReturnTrue()
         {
             RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
-            Assert.AreEqual(true, (estadoReporte.insertarEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString())));
+            Assert.AreEqual(true, (estadoReporte.insertarEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString(),"1")));
         }
 
     }

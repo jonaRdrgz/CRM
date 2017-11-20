@@ -685,7 +685,6 @@
       <DependentUpon>AutenticacionCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\FakeConexion.cs" />
-    <Compile Include="Classes\FakePuntosdeContacto.cs" />
     <Compile Include="Classes\GUIBuilder.cs" />
     <Compile Include="Classes\IConexion.cs" />
     <Compile Include="ClienteHome.Master.cs">

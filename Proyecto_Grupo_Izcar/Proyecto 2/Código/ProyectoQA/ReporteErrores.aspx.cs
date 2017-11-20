@@ -30,9 +30,8 @@ namespace ProyectoQA
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //conexion = new Conexion("localhost", "mydb", "root", "", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
-            //popularProductos();
+            conexion = new Conexion("localhost", "mydb", "root", "", "3306");
+
         }
 
         //Registro (Probado)
@@ -64,6 +63,7 @@ namespace ProyectoQA
                 return true;
             }
         }
+
         public Boolean insertarReporteError(String pIdProducto, String pDescripcion, String pFecha, String pCorreo, String pIdCliente, String pIdVendedor)
         {
             try
@@ -82,6 +82,7 @@ namespace ProyectoQA
                 return false;
             }
         }
+
         public void registrarReporteError(object sender, EventArgs e)
         {
             String idProducto = this.ddIdProducto.Text.Trim();
@@ -119,10 +120,9 @@ namespace ProyectoQA
                 GUIBuilder.inyectarHTML(reportes, etiqueta);
                 return true;
             }
-            catch(MySqlException ex)
+            catch
 
             {
-                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
