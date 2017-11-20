@@ -30,6 +30,7 @@ namespace ProyectoQA.Tests
             conexion.AbrirConexion();
             Assert.AreEqual(ConnectionState.Open, conexion.getConexion().State);
         }
+
         [TestCase]
         public void CerrarConexion_CredencialesValidas_CloseState()
         {

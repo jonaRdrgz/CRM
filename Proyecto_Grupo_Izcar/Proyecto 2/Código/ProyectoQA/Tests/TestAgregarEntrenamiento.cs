@@ -78,14 +78,15 @@ namespace ProyectoQA.Tests
         }
 
         [TestCase]
-        public void crearVistaEntrenameiento_NoCreaStringEntrenamiento_ReturnStringVacio()
+        public void crearVistaEntrenamiento_NoCreaStringEntrenamiento_ReturnStringVacio()
         {
             IDataReader readerStub = MockRepository.GenerateStub<IDataReader>();
             readerStub.Stub(x => x.Read()).Return(false);
             IConexion fakeConexion = new FakeConexion(true, true, true, true);
             AgregarEntrenamiento entrenamiento = new AgregarEntrenamiento(fakeConexion);
-            Assert.AreNotEqual("", entrenamiento.crearVistaEntrenamiento(readerStub));
+            Assert.AreEqual("", entrenamiento.crearVistaEntrenamiento(readerStub));
         }
+
         [TestCase]
         public void consultarEntrenamiento_NoException_ReturnTrue()
         {
@@ -100,7 +101,7 @@ namespace ProyectoQA.Tests
             HtmlGenericControl fakeTag = MockRepository.GenerateStub<HtmlGenericControl>();
             IConexion fakeConexion = new FakeConexion(true, true, true, false, true);
             AgregarEntrenamiento entrenamiento = new AgregarEntrenamiento(fakeConexion);
-            Assert.AreEqual(true, entrenamiento.consultarEntrenamientos("1", fakeTag));
+            Assert.AreEqual(false, entrenamiento.consultarEntrenamientos("1", fakeTag));
         }
     }
 }

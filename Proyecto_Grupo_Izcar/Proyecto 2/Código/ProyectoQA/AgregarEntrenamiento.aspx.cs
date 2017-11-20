@@ -75,7 +75,6 @@ namespace ProyectoQA
        {
             try
             {
-                MessageBox.Show(pIdEmpresa);
                 conexion.AbrirConexion();
                 conexion.setCommandText("call insertEntrenamiento('" + pNombre + "','" + pFecha + "','" + pHoraInicio +
                                         "','" + pHoraFin + "','" + pUbicacion + "','" + pIdEmpresa + "');");
