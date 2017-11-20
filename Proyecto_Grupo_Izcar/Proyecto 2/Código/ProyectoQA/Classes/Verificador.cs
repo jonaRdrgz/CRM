@@ -82,9 +82,21 @@ namespace ProyectoQA
                 return true;
             }
         }
-        public static Boolean verificarLargoContrasena(String pContrasena)
+        public static Boolean verificarContraseñaCorta(String pContrasena)
         {
-            if (pContrasena.Length < 6 || pContrasena.Length > 20)
+            if (pContrasena.Length < 6 )
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static Boolean verificarContraseñaLarga(String pContrasena)
+        {
+            if (pContrasena.Length > 20)
             {
                 return false;
             }

@@ -77,9 +77,14 @@ namespace ProyectoQA
                 Verificador.mostrarMensaje("Correo electrónico ya existente", Page);
                 return false;
             }
-            else if (!Verificador.verificarLargoContrasena(pContrasena))
+            else if (!Verificador.verificarContraseñaCorta(pContrasena))
             {
                 Verificador.mostrarMensaje("Largo de contraseña corto, digite 6 o mas caracteres para su contraseña", Page);
+                return false;
+            }
+            else if (!Verificador.verificarContraseñaLarga(pContrasena))
+            {
+                Verificador.mostrarMensaje("Largo de contraseña muy largo, la contraseña debe ser menor a 20 caracteres", Page);
                 return false;
             }
             else if (!pContrasena.Equals(pContrasenaAux))

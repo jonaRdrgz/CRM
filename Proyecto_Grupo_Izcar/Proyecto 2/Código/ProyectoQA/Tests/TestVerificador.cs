@@ -59,17 +59,18 @@ namespace ProyectoQA.Tests
         [TestCase]
         public void verificarLargoContrasena_ContrasenaCorta_ReturnFalse()
         {
-            Assert.AreEqual(false, (Verificador.verificarLargoContrasena("1234")));
+            Assert.AreEqual(false, (Verificador.verificarContraseñaCorta("1234")));
         }
         [TestCase]
         public void verificarLargoContrasena_ContrasenaLarga_ReturnFalse()
         {
-            Assert.AreEqual(false, (Verificador.verificarLargoContrasena("1234137892731273712893771289737129837812793712")));
+            Assert.AreEqual(false, (Verificador.verificarContraseñaLarga("1234137892731273712893771289737129837812793712")));
         }
         [TestCase]
         public void verificarLargoContrasena_ContrasenaValida_ReturnTrue()
         {
-            Assert.AreEqual(true, (Verificador.verificarLargoContrasena("12345678")));
+            Assert.AreEqual(true, (Verificador.verificarContraseñaCorta("12345678")));
+            Assert.AreEqual(true, (Verificador.verificarContraseñaLarga("12345678")));
         }
     }
 }
