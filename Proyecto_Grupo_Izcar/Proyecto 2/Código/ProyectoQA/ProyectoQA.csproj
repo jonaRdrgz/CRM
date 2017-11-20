@@ -685,6 +685,7 @@
       <DependentUpon>AutenticacionCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Classes\FakeConexion.cs" />
+    <Compile Include="Classes\FakePuntosdeContacto.cs" />
     <Compile Include="Classes\GUIBuilder.cs" />
     <Compile Include="Classes\IConexion.cs" />
     <Compile Include="ClienteHome.Master.cs">
@@ -759,10 +760,13 @@
     <Compile Include="Tests\TestGUIBuilder.cs" />
     <Compile Include="Tests\TestProductosRelacionados.cs" />
     <Compile Include="Tests\TestPropuestaVentas.cs" />
+    <Compile Include="Tests\TestPuntosContacto.cs" />
+    <Compile Include="Tests\TestRegistrarEstadoReportes.cs" />
     <Compile Include="Tests\TestRegistro.cs" />
     <Compile Include="Tests\TestRegistroRespuestas.cs" />
     <Compile Include="Tests\TestRegistroVentas.cs" />
     <Compile Include="Tests\TestRegitroCliente.cs" />
+    <Compile Include="Tests\TestReporteErrores.cs" />
     <Compile Include="Tests\TestRespuestaEntrenamiento.cs" />
     <Compile Include="Tests\TestVerificador.cs" />
     <Compile Include="Classes\Verificador.cs" />
