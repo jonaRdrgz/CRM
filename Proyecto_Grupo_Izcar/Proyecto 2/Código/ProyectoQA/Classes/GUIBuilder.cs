@@ -156,6 +156,5 @@ namespace ProyectoQA.Classes
             return ventaXContacto;
         }
 
-        //Nuevo
     }
 }

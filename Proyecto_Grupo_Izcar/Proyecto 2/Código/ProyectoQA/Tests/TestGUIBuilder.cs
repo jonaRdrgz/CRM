@@ -181,5 +181,25 @@ namespace ProyectoQA.Tests
             IConexion fakeConexion = new FakeConexion(true, true, true, true, true);
             Assert.Catch<Exception>(() => GUIBuilder.ventaXContacto(1, "1", fakeConexion));
         }
+        [TestCase]
+        public void getVendedores_UnaRepeticion_ReturnList()
+        {
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            List<KeyValuePair<String, String>> resultados = GUIBuilder.getVendedores(fakeConexion);
+            Assert.AreEqual(1, (resultados.Count));
+        }
+        [TestCase]
+        public void getVendedores_NoRepeticion_ReturnEmptyList()
+        {
+            IConexion fakeConexion = new FakeConexion(true, true, true, false);
+            List<KeyValuePair<String, String>> resultados = GUIBuilder.getVendedores(fakeConexion);
+            Assert.AreEqual(0, (resultados.Count));
+        }
+        [TestCase]
+        public void getVendedores_ThrowsExeption()
+        {
+            IConexion fakeConexion = new FakeConexion(true, true, true, true, true);
+            Assert.Catch<Exception>(() => GUIBuilder.getVendedores(fakeConexion));
+        }
     }
 }

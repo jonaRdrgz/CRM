@@ -1,9 +1,11 @@
 ﻿using NUnit.Framework;
+using Rhino.Mocks;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
-
+using System.Web.UI.HtmlControls;
 namespace ProyectoQA.Tests
 {
     [TestFixture]
@@ -13,50 +15,65 @@ namespace ProyectoQA.Tests
         [TestCase]
         public void verificarDatosEstadoReporte_DiagnosticoVacio_ReturnFalse()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(false, (estadoReporte.verificarDatosEstadoReporte(null, "Rechazado", DateTime.Now.ToString())));
         }
 
         [TestCase]
         public void verificarDatosEstadoReporte_DiagnosticoNoVacio_ReturnTrue()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(true, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString())));
         }
 
         [TestCase]
         public void verificarDatosEstadoReporte_EstadoVacio_ReturnFalse()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(false, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", null, DateTime.Now.ToString())));
         }
 
         [TestCase]
-        public void verificarDatosEstadoReporte_EstadoVacio_ReturnTrue()
+        public void verificarDatosEstadoReporte_EstadoNoVacio_ReturnTrue()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(true, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString())));
         }
 
         [TestCase]
         public void verificarDatosEstadoReporte_FechaVacio_ReturnFalse()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(false, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", "Rechazado", null)));
         }
 
         [TestCase]
         public void verificarDatosEstadoReporte_FechaNoVacio_ReturnTrue()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes(fakeConexion);
             Assert.AreEqual(true, (estadoReporte.verificarDatosEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString())));
         }
 
 
-        public void insertarEstadoReporte_RegistrarEstado_ReturnTrue()
+        [TestCase]
+        public void insertarEstadoReporte_NoException_ReturnTrue()
         {
-            RegistrarEstadoReportes estadoReporte = new RegistrarEstadoReportes();
-            Assert.AreEqual(true, (estadoReporte.insertarEstadoReporte("Revision Completa", "Rechazado", DateTime.Now.ToString(),"1")));
+            IConexion fakeConexion = new FakeConexion(true, true, true, true);
+            RegistrarEstadoReportes reporteError = new RegistrarEstadoReportes(fakeConexion);
+            Assert.AreEqual(true, (reporteError.insertarEstadoReporte( "Revision","Rechazado", DateTime.Now.ToString(), "1")));
+        }
+        [TestCase]
+        public void insertarEstadoReporte_ThrowException_ReturnFalse()
+        {
+            IConexion fakeConexion = new FakeConexion(true, true, true, true, true);
+            RegistrarEstadoReportes reporteError = new RegistrarEstadoReportes(fakeConexion);
+            Assert.AreEqual(false, (reporteError.insertarEstadoReporte("Revision", "Rechazado", DateTime.Now.ToString(), "1")));
         }
 
     }

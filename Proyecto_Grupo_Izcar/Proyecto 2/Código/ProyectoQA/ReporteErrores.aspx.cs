@@ -76,9 +76,8 @@ namespace ProyectoQA
                 conexion.CerrarConexion();
                 return true;
             }
-            catch(MySqlException ex)
+            catch
             {
-                MessageBox.Show("Falló la operación " + ex.Message);
                 return false;
             }
         }
