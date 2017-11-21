@@ -1,15 +1,10 @@
-﻿using MySql.Data.MySqlClient;
-using ProyectoQA.Classes;
+﻿using ProyectoQA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+
 
 namespace ProyectoQA
 {
@@ -19,7 +14,7 @@ namespace ProyectoQA
 
         public PropuestaVentas()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public PropuestaVentas(IConexion pConexion)
@@ -29,10 +24,10 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+        
         }
 
-        //Registro (Probado)
+     
         public Boolean verificarDatosPropuesta(String pIdProducto, String pPrecio, String pFecha, String pContacto)
         {
             if (String.IsNullOrEmpty(pIdProducto))
@@ -97,7 +92,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista (Probado)
+      
         public Boolean consultarPropuestaVenta(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String propuestaVentas = "";
@@ -157,7 +152,7 @@ namespace ProyectoQA
             }
         }
 
-        //SelectBox (Probado)
+        
         public void popularProductos(object sender, EventArgs e)
         {
             try

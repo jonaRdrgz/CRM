@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using MySql.Data.MySqlClient;
-using System.Text;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.Data;
 
 namespace ProyectoQA
@@ -16,7 +9,6 @@ namespace ProyectoQA
         private IConexion conexion;
         public Registro()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public Registro(IConexion pConexion)
@@ -25,15 +17,13 @@ namespace ProyectoQA
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
         }
         public void loginRef(object sender, EventArgs e)
         {
             Response.Redirect(url: "Autenticacion.aspx");
         }
 
-        //Registro
+       
         public Boolean verificarCorreoDuplicado(String correoUsuario)
         {
             Boolean resultado;

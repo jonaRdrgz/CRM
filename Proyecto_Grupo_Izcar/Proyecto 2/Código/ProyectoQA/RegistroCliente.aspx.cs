@@ -11,16 +11,8 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using MySql.Data.MySqlClient;
-using System.Text;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
 using System.Data;
-
+using System.Windows.Forms;
 
 namespace ProyectoQA
 {
@@ -33,7 +25,6 @@ namespace ProyectoQA
         private IConexion conexion;
         public RegistroCliente()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public RegistroCliente(IConexion pConexion)
@@ -43,14 +34,14 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
         }
         public void loginRef(object sender, EventArgs e)
         {
             Response.Redirect(url: "Autenticacion.aspx");
         }
 
-        //Registro
+   
         public Boolean verificarCorreoDuplicado(String correoUsuario)
         {
             Boolean resultado;
@@ -140,11 +131,7 @@ namespace ProyectoQA
             if (verificarDatosUsuario(correoUsuario, contrasena, contrasenaAux) &&
                 insertarUsuario(correoUsuario, contrasena))
             {
-                //MessageBox.Show("Se ha registrado con éxito");
-               /* string str = "Se ha registrado con éxito en el sistema CRM, ahora puede ingresar al sistema";
-                Response.Write("<script language=javascript>alert('" + str + "');</script>");*/
-
-                
+                MessageBox.Show("Se ha registrado con éxito");
                Response.Redirect(url: "Autenticacion.aspx");
             }
             else

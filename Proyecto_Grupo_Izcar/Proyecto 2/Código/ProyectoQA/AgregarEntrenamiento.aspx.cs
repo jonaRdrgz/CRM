@@ -10,18 +10,13 @@
  *	Edwin Cen Xu
  */
 
-using MySql.Data.MySqlClient;
+
 using ProyectoQA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
 
 namespace ProyectoQA
 {
@@ -36,7 +31,7 @@ namespace ProyectoQA
 
         public AgregarEntrenamiento()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public AgregarEntrenamiento(IConexion pConexion)
@@ -49,7 +44,7 @@ namespace ProyectoQA
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
 
-        //Registro (Probado)
+      
         public Boolean verificarDatosEntrenamiento(String pNombre, String pFecha, String pHoraInicio, String pHoraFin, String pUbicacion, String pIdEmpresa)
         {
             if (String.IsNullOrEmpty(pNombre))
@@ -128,7 +123,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista (Probado)
+       
         public Boolean consultarEntrenamientos(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String entrenamientos = "";

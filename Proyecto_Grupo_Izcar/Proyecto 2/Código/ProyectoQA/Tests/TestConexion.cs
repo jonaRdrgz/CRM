@@ -1,10 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 
 namespace ProyectoQA.Tests
 {

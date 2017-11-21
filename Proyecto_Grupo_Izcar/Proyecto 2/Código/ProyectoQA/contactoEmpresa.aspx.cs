@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Services;
-using System.Web.UI;
-using MySql.Data.MySqlClient;
-using System.Text;
-using System.Windows.Forms;
 using System.Data;
 using System.Web.UI.HtmlControls;
 using ProyectoQA.Classes;
@@ -20,7 +14,7 @@ namespace ProyectoQA
         public ContactoEmpresaForm()
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("localhost", "mydb", "root", "", "3306");
+           
         }
         public ContactoEmpresaForm(IConexion pConexion)
         {
@@ -29,10 +23,10 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
         }
 
-        //Registro (Probado)
+        
         public Boolean verificarDatosEmpresa(String pNombreEmpresa, String pDireccionEmpresa, String pTelefonoEmpresa)
         {
             if (String.IsNullOrEmpty(pNombreEmpresa))
@@ -101,7 +95,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista (Probado)
+      
         public Boolean consultarContactoEmpresa(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String contactoEmpresa = "";
@@ -163,7 +157,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista de ventas y propuestas (Probado)
+        
         [WebMethod]
         public static String propuestaVentaXContactoJS(int idContactoPersona, Boolean accion)
         {

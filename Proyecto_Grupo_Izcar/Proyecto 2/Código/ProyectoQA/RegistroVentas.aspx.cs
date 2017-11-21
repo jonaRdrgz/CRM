@@ -1,12 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿
 using ProyectoQA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
@@ -18,7 +14,7 @@ namespace ProyectoQA
 
         public RegistroVentas()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public RegistroVentas(IConexion pConexion)
@@ -29,11 +25,10 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
-            //popularProductos();
+            
         }
 
-        //Registro (Probado)
+        
         public Boolean verificarDatosVenta(String pIdProducto, String pDescuento, String pPorcentajeComision, String pFecha, String pContacto)
         {
             if (String.IsNullOrEmpty(pIdProducto))
@@ -103,7 +98,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista (Probado)
+       
         public Boolean consultarVentas(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String ventas = "";
@@ -160,7 +155,7 @@ namespace ProyectoQA
 
         }
 
-        //SelectBox (Probado)
+    
         public void popularProductos(object sender, EventArgs e)
         {
             try

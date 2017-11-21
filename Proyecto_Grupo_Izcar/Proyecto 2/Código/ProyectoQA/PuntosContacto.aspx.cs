@@ -11,11 +11,6 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using ProyectoQA.Classes;
 using System.Web.UI.HtmlControls;
 using System.Data;
@@ -33,7 +28,7 @@ namespace ProyectoQA
 
         public PuntosContacto()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
 
@@ -45,7 +40,7 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+          
         }
         public Boolean consultarVendedores(HtmlGenericControl etiqueta)
         {

@@ -1,14 +1,6 @@
 ﻿using System;
 using System.Web.Services;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Data;
 using System.Web.UI.HtmlControls;
 using ProyectoQA.Classes;
@@ -21,7 +13,7 @@ namespace ProyectoQA
 
         public ContactoPersonaForm()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+         
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public ContactoPersonaForm(IConexion pConexion)
@@ -31,10 +23,10 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
         }
 
-        //Registro (Probado)
+       
         public Boolean verificarDatosPersona(String pNombrePersona, String pApellido1Persona, String pDireccionPersona, String pTelefonoPersona, String pCorreoPersona)
         {
 
@@ -115,7 +107,7 @@ namespace ProyectoQA
             }       
         }
 
-        //Vista (Probado)
+  
         public Boolean consultarContactoPersona(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String contactoPersona = "";
@@ -177,7 +169,6 @@ namespace ProyectoQA
             }
         }
 
-        //Vista de ventas y propuestas (Probado)
         [WebMethod]
         public static String propuestaVentaXContactoJS(int idContactoPersona, Boolean accion)
         {

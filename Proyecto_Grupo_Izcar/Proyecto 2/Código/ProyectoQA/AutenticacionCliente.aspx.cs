@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Data;
-using System.Web.SessionState;
+
 
 namespace ProyectoQA
 {
@@ -36,7 +31,7 @@ namespace ProyectoQA
             Response.Redirect(url: "RegistroCliente.aspx");
         }
 
-        //Autenticación
+ 
         public void autenticarCliente(String pUsername, String pPassword)
         {
             conexion.AbrirConexion();

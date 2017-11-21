@@ -9,18 +9,14 @@
  *	Melissa Molina Corrales
  *	Edwin Cen Xu
  */
-using MySql.Data.MySqlClient;
+
 using ProyectoQA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
+
 
 namespace ProyectoQA
 {
@@ -34,7 +30,6 @@ namespace ProyectoQA
 
         public ReporteErrores()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
 
@@ -49,7 +44,7 @@ namespace ProyectoQA
 
         }
 
-        //Registro (Probado)
+       
         public Boolean verificarDatosReporte(String pIdProducto, String pDescripcion, String pFecha, String pCorreo)
         {
             if (String.IsNullOrEmpty(pIdProducto))
@@ -120,7 +115,7 @@ namespace ProyectoQA
             }
         }
 
-        //Vista (Probado)
+      
         public Boolean consultarReportes(String pIdUsuario, HtmlGenericControl etiqueta)
         {
             String reportes = "";
@@ -192,7 +187,7 @@ namespace ProyectoQA
         }
 
 
-        //SelectBox (Probado)
+       
         public void popularProductos(object sender, EventArgs e)
         {
             try

@@ -1,15 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using ProyectoQA.Classes;
+﻿using ProyectoQA.Classes;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
+
 
 namespace ProyectoQA
 {
@@ -18,7 +11,7 @@ namespace ProyectoQA
         private IConexion conexion;
         public ProductosRelacionados()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+            
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public ProductosRelacionados(IConexion pConexion)
@@ -28,7 +21,7 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+           
         }
 
         public Boolean consultarProductosRelacionados(String pIdUsuario, HtmlGenericControl etiqueta)

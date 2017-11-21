@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace ProyectoQA
 {
@@ -13,7 +8,7 @@ namespace ProyectoQA
 
         public RegistroRespuestas()
         {
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+          
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
         }
         public RegistroRespuestas(IConexion pConexion)
@@ -23,10 +18,10 @@ namespace ProyectoQA
         protected void Page_Load(object sender, EventArgs e)
         {
             conexion = new Conexion("localhost", "mydb", "root", "root", "3306");
-            //conexion = new Conexion("icampos.me", "mydb", "root", "nT4LZIYR5LYzoHAjAKtw", "32769");
+          
         }
 
-        //Registro (Probado)
+       
         public Boolean verificarDatosRespuesta(String pRespuesta, String pEstado, String pFecha)
         {
             if (String.IsNullOrEmpty(pRespuesta))

@@ -1,11 +1,8 @@
 ﻿using NUnit.Framework;
-using Rhino.Mocks;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Web;
-using System.Web.SessionState;
+
 
 namespace ProyectoQA.Tests
 {
@@ -34,5 +31,4 @@ namespace ProyectoQA.Tests
             Autenticacion autenticacion = new Autenticacion(fakeConexion);
             Assert.Catch<HttpException>(() => autenticacion.autenticar("jefalva@live.com", "12345678"));
         }
-    }
-}
+    }}
